@@ -1,6 +1,24 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block page_header %}
+    <div class="container header-container">
+        <div class="row">
+            <div class="col"></div>
+        </div>
+    </div>
+{% endblock %}
+
 {% block content %}
-<h1 class="display-4 text-success"> test <h1>
+<div class="container h-100">
+    <div class="row h-100 align-items-center">
+        <div class="col-12 col-md-6">
+            <h1>The Big Bang Collection</h1>
+            <p>Welcome to our exclusive collection.</p>
+        </div>
+        <div class="col-12 col-md-6 text-center">
+            <a href="" class="btn btn-dark shop-now-btn">Shop Now</a>
+        </div>
+    </div>
+</div>
 {% endblock %}
