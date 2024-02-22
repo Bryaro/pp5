@@ -1,0 +1,223 @@
+[
+    {
+        "pk": 1,
+        "model": "products.product",
+        "fields": {
+            "sku": "CW0001BIG",
+            "name": "Big Bang",
+            "description": "Capturing the explosive beauty of creation, the Big Bang watch features a dynamic design that mimics the universe's birth. With a dial that sparkles with a galaxy pattern, it's a piece of cosmic art.",
+            "price": 1200.00,
+            "category": 1,
+            "rating": 4.9,
+            "image": "media/bigbang.jpg"
+        }
+    },
+    {
+        "pk": 2,
+        "model": "products.product",
+        "fields": {
+            "sku": "CW0002SUP",
+            "name": "Supernova",
+            "description": "Illuminating the cosmos, the Supernova watch dazzles with a design inspired by the brilliant light of a star's explosive end. Its dial glows, embodying the power and beauty of a supernova.",
+            "price": 1500.00,
+            "category": 1,
+            "rating": 5.0,
+            "image": "media/supernova.jpg"
+        }
+    },
+    {
+        "pk": 3,
+        "model": "products.product",
+        "fields": {
+            "sku": "CW0003VEN",
+            "name": "Venus",
+            "description": "Echoing the allure of the morning star, the Venus watch combines elegance with brilliance. With a rose gold finish and a dial that captures Venus' glow, it's a watch that enchants.",
+            "price": 1100.00,
+            "category": 2,
+            "rating": 4.8,
+            "image": "media/venus.jpg"
+        }
+    },
+    {
+        "pk": 4,
+        "model": "products.product",
+        "fields": {
+            "sku": "CW0004MAR",
+            "name": "Mars",
+            "description": "Inspired by the red planet, the Mars watch features a robust design with a red dial and a durable case that mirrors Mars' rugged landscape. It's a watch for the adventurous spirit.",
+            "price": 1250.00,
+            "category": 2,
+            "rating": 4.7,
+            "image": "media/mars.jpg"
+        }
+    },
+    {
+        "pk": 5,
+        "model": "products.product",
+        "fields": {
+            "sku": "CW0005SAT",
+            "name": "Saturn",
+            "description": "Encircling your wrist like Saturn's rings, this watch features a unique ring design around the dial. With a striking resemblance to Saturn, it's a celestial marvel.",
+            "price": 1400.00,
+            "category": 2,
+            "rating": 4.9,
+            "image": "media/saturn.jpg"
+        }
+    },
+    {
+        "pk": 6,
+        "model": "products.product",
+        "fields": {
+            "sku": "CW0006URA",
+            "name": "Uranus",
+            "description": "Reflecting Uranus' icy blue, this watch features a cool blue dial and a sleek, modern design. It's a watch that combines mystery with elegance.",
+            "price": 1300.00,
+            "category": 2,
+            "rating": 4.6,
+            "image": "media/uranus.jpg"
+        }
+    },
+    {
+        "pk": 7,
+        "model": "products.product",
+        "fields": {
+            "sku": "CW0007PLX",
+            "name": "Planet-X",
+            "description": "For the explorers of the unknown, the Planet-X watch embodies the mystery of the unseen. With a design that suggests the enigmatic, this watch is a tribute to the worlds beyond.",
+            "price": 1600.00,
+            "category": 2,
+            "rating": 5.0,
+            "image": "media/planetx.jpg"
+        }
+    },
+    {
+        "pk": 6,
+        "model": "products.product",
+        "fields": {
+            "sku": "CW0006URA",
+            "name": "Uranus",
+            "description": "Reflecting Uranus' icy blue, this watch features a cool blue dial and a sleek, modern design. It's a watch that combines mystery with elegance.",
+            "price": 1300.00,
+            "category": 2,
+            "rating": 4.6,
+            "image": "uranus.jpg"
+        }
+    },
+    {
+        "pk": 7,
+        "model": "products.product",
+        "fields": {
+            "sku": "CW0007PLX",
+            "name": "Planet-X",
+            "description": "For the explorers of the unknown, the Planet-X watch embodies the mystery of the unseen. With a design that suggests the enigmatic, this watch is a tribute to the worlds beyond.",
+            "price": 1600.00,
+            "category": 2,
+            "rating": 5.0,
+            "image": "planetx.jpg"
+        }
+    },
+    {
+        "pk": 8,
+        "model": "products.product",
+        "fields": {
+            "sku": "CW0008NEP",
+            "name": "Neptune",
+            "description": "Dive into the depths of the cosmos with the Neptune watch, featuring a deep blue dial and silver accents that mirror the distant planet's mystique and allure.",
+            "price": 1350.00,
+            "category": 2,
+            "rating": 4.8,
+            "image": "neptune.jpg"
+        }
+    },
+    {
+        "pk": 9,
+        "model": "products.product",
+        "fields": {
+            "sku": "CW0009JUP",
+            "name": "Jupiter",
+            "description": "Embrace the majesty of the solar system's largest planet with the Jupiter watch. Its swirling patterns and striking colors are reminiscent of Jupiter's famous Great Red Spot.",
+            "price": 1450.00,
+            "category": 2,
+            "rating": 4.7,
+            "image": "jupiter.jpg"
+        }
+    },
+    {
+        "pk": 10,
+        "model": "products.product",
+        "fields": {
+            "sku": "CW0010MER",
+            "name": "Mercury",
+            "description": "Inspired by the swift movement of Mercury around the sun, this watch features a sleek, metallic design. It's the perfect blend of speed and style.",
+            "price": 1150.00,
+            "category": 2,
+            "rating": 4.6,
+            "image": "mercury.jpg"
+        }
+    },
+    {
+        "pk": 11,
+        "model": "products.product",
+        "fields": {
+            "sku": "CW0011LUN",
+            "name": "Luna Astro",
+            "description": "The Luna Astro watch pays homage to the moon's phases with a dial that changes appearance with time, mirroring the lunar cycle. It's a celestial wonder on your wrist.",
+            "price": 1250.00,
+            "category": 3,
+            "rating": 4.9,
+            "image": "lunaastro.jpg"
+        }
+    },
+    {
+        "pk": 12,
+        "model": "products.product",
+        "fields": {
+            "sku": "CW0012PHO",
+            "name": "Phobos",
+            "description": "Named after Mars' moon, the Phobos watch is bold and striking, featuring a dark, mysterious dial with red accents that hint at its Martian inspiration.",
+            "price": 1280.00,
+            "category": 3,
+            "rating": 4.7,
+            "image": "phobos.jpg"
+        }
+    },
+    {
+        "pk": 13,
+        "model": "products.product",
+        "fields": {
+            "sku": "CW0013DEI",
+            "name": "Deimos",
+            "description": "Complementing its sibling, the Deimos watch captures the essence of the farther of Mars' two moons. It features a sleek, dark design with subtle hints of red.",
+            "price": 1280.00,
+            "category": 3,
+            "rating": 4.7,
+            "image": "deimos.jpg"
+        }
+    },
+    {
+        "pk": 14,
+        "model": "products.product",
+        "fields": {
+            "sku": "CW0014BRAC",
+            "name": "PYRAMID - Unisex cuff",
+            "description": "316L Stainless Steel Length: 60 mm (2.36 inches) Width 45mm (1.77 inches) Thickness: 2mm (0.07inches) Rustproof Comes with our minimal Cosmos packaging",
+            "price": 399.0,
+            "category": 4,
+            "rating": 4.8,
+            "image": "media/pyramid_bracelet.jpg"
+        }
+    },
+    {
+        "pk": 15,
+        "model": "products.product",
+        "fields": {
+            "sku": "CW0015CARD",
+            "name": "Cosmos Slide Card Holder",
+            "description": "Minimalist brushed metal unisex card holder that holds all of your essentials and keeps them safe with anti-theft technology. Material: aluminum alloy Weight: 60 grams Available colours: Black, Silver, Rose Dimensions: 96mm * 65mm * 10mm Holds: 4-6 plastic cards or up to 10 thin cards",
+            "price": 290.0,
+            "category": 3,
+            "rating": 4.9,
+            "image": "media/cosmos_card_holder.jpg"
+        }
+    }    
+]
