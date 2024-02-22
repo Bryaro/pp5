@@ -9,7 +9,7 @@
             "price": 1200.00,
             "category": 1,
             "rating": 4.9,
-            "image": "media/bigbang.jpg"
+            "image": "bigbang.jpg"
         }
     },
     {
@@ -22,7 +22,7 @@
             "price": 1500.00,
             "category": 1,
             "rating": 5.0,
-            "image": "media/supernova.jpg"
+            "image": "supernova.jpg"
         }
     },
     {
@@ -35,7 +35,7 @@
             "price": 1100.00,
             "category": 2,
             "rating": 4.8,
-            "image": "media/venus.jpg"
+            "image": "venus.jpg"
         }
     },
     {
@@ -48,7 +48,7 @@
             "price": 1250.00,
             "category": 2,
             "rating": 4.7,
-            "image": "media/mars.jpg"
+            "image": "mars.jpg"
         }
     },
     {
@@ -61,7 +61,7 @@
             "price": 1400.00,
             "category": 2,
             "rating": 4.9,
-            "image": "media/saturn.jpg"
+            "image": "saturn.jpg"
         }
     },
     {
@@ -74,7 +74,7 @@
             "price": 1300.00,
             "category": 2,
             "rating": 4.6,
-            "image": "media/uranus.jpg"
+            "image": "uranus.jpg"
         }
     },
     {
@@ -87,7 +87,7 @@
             "price": 1600.00,
             "category": 2,
             "rating": 5.0,
-            "image": "media/planetx.jpg"
+            "image": "planet-x.jpg"
         }
     },
     {
@@ -204,7 +204,7 @@
             "price": 399.0,
             "category": 4,
             "rating": 4.8,
-            "image": "media/pyramid_bracelet.jpg"
+            "image": "pyramid_bracelet.jpg"
         }
     },
     {
@@ -217,7 +217,7 @@
             "price": 290.0,
             "category": 3,
             "rating": 4.9,
-            "image": "media/cosmos_card_holder.jpg"
+            "image": "cosmos_card_holder.jpg"
         }
     }    
 ]
