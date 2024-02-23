@@ -18,6 +18,18 @@
                 <hr class="w-50 mb-1">
             </div>
         </div>
+        <div class="row justify-content-center">
+            <div class="col-12 col-sm-8 col-md-6 col-lg-4 text-center mt-3 mb-4">
+                <div class="sorting">
+                    <select id="sort-by" class="custom-select" onchange="location = this.value;">
+                        <option value="">Sort by price & rating</option>
+                        <option value="{% url 'products' %}?sort=price&direction=asc">Price (Low first)</option>
+                        <option value="{% url 'products' %}?sort=price&direction=desc">Price (High first)</option>
+                        <option value="{% url 'products' %}?sort=rating&direction=desc">Rating (High to Low)</option>
+                    </select>
+                </div>
+            </div>
+        </div>
         <div class="row">
             <div class="product-container col-10 offset-1">
                 <div class="row mt-1 mb-2"></div>

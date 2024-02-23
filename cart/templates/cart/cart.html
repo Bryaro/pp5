@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_header %}
+    <div class="container header-container">
+        <div class="row">
+            <div class="col"></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+<div class="overlay"></div>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-8">
+            <h2 class="logo-font text-center mt-3">Your Cart</h2>
+            <hr class="mb-4">
+            {% if cart_items %}
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">Item</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Subtotal</th>
+                            <th scope="col">Remove</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in cart_items %}
+                            <tr>
+                                <td>{{ item.product.name }}</td>
+                                <td>{{ item.product.price }} SEK</td>
+                                <td>
+                                    <!-- will later use 'update_cart' view for updating cart item quantities -->
+                                    <form action="{% url 'update_cart' item.product.id %}" method="post">
+                                        {% csrf_token %}
+                                        <input type="number" name="quantity" value="{{ item.quantity }}" min="1" class="form-control" style="width: 70px;">
+                                        <button type="submit" class="btn btn-update">Update</button>
+                                    </form>
+                                </td>
+                                <td>{{ item.get_total }} SEK</td>
+                                <td>
+                                    <!-- same here, will 'remove_from_cart' is a view for removing items from the cart -->
+                                    <a href="{% url 'remove_from_cart' item.product.id %}" class="btn btn-danger">Remove</a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <div class="cart-summary">
+                    <h4>Cart Total: {{ cart_total }} SEK</h4>
+                    <a href="{% url 'checkout' %}" class="btn btn-primary">Proceed to Checkout</a>
+                </div>
+            {% else %}
+                <p class="text-center">Your cart is empty.</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
