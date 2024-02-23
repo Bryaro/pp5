@@ -7,7 +7,7 @@
             "name": "Big Bang",
             "description": "Capturing the explosive beauty of creation, the Big Bang watch features a dynamic design that mimics the universe's birth. With a dial that sparkles with a galaxy pattern, it's a piece of cosmic art.",
             "price": 1200.00,
-            "category": 1,
+            "category": 9,
             "rating": 4.9,
             "image": "bigbang.jpg"
         }
@@ -20,7 +20,7 @@
             "name": "Supernova",
             "description": "Illuminating the cosmos, the Supernova watch dazzles with a design inspired by the brilliant light of a star's explosive end. Its dial glows, embodying the power and beauty of a supernova.",
             "price": 1500.00,
-            "category": 1,
+            "category": 9,
             "rating": 5.0,
             "image": "supernova.jpg"
         }
@@ -33,7 +33,7 @@
             "name": "Venus",
             "description": "Echoing the allure of the morning star, the Venus watch combines elegance with brilliance. With a rose gold finish and a dial that captures Venus' glow, it's a watch that enchants.",
             "price": 1100.00,
-            "category": 2,
+            "category": 10,
             "rating": 4.8,
             "image": "venus.jpg"
         }
@@ -46,7 +46,7 @@
             "name": "Mars",
             "description": "Inspired by the red planet, the Mars watch features a robust design with a red dial and a durable case that mirrors Mars' rugged landscape. It's a watch for the adventurous spirit.",
             "price": 1250.00,
-            "category": 2,
+            "category": 10,
             "rating": 4.7,
             "image": "mars.jpg"
         }
@@ -59,7 +59,7 @@
             "name": "Saturn",
             "description": "Encircling your wrist like Saturn's rings, this watch features a unique ring design around the dial. With a striking resemblance to Saturn, it's a celestial marvel.",
             "price": 1400.00,
-            "category": 2,
+            "category": 10,
             "rating": 4.9,
             "image": "saturn.jpg"
         }
@@ -72,7 +72,7 @@
             "name": "Uranus",
             "description": "Reflecting Uranus' icy blue, this watch features a cool blue dial and a sleek, modern design. It's a watch that combines mystery with elegance.",
             "price": 1300.00,
-            "category": 2,
+            "category": 10,
             "rating": 4.6,
             "image": "uranus.jpg"
         }
@@ -85,7 +85,7 @@
             "name": "Planet-X",
             "description": "For the explorers of the unknown, the Planet-X watch embodies the mystery of the unseen. With a design that suggests the enigmatic, this watch is a tribute to the worlds beyond.",
             "price": 1600.00,
-            "category": 2,
+            "category": 10,
             "rating": 5.0,
             "image": "planet-x.jpg"
         }
@@ -98,7 +98,7 @@
             "name": "Uranus",
             "description": "Reflecting Uranus' icy blue, this watch features a cool blue dial and a sleek, modern design. It's a watch that combines mystery with elegance.",
             "price": 1300.00,
-            "category": 2,
+            "category": 10,
             "rating": 4.6,
             "image": "uranus.jpg"
         }
@@ -111,7 +111,7 @@
             "name": "Planet-X",
             "description": "For the explorers of the unknown, the Planet-X watch embodies the mystery of the unseen. With a design that suggests the enigmatic, this watch is a tribute to the worlds beyond.",
             "price": 1600.00,
-            "category": 2,
+            "category": 10,
             "rating": 5.0,
             "image": "planetx.jpg"
         }
@@ -124,7 +124,7 @@
             "name": "Neptune",
             "description": "Dive into the depths of the cosmos with the Neptune watch, featuring a deep blue dial and silver accents that mirror the distant planet's mystique and allure.",
             "price": 1350.00,
-            "category": 2,
+            "category": 10,
             "rating": 4.8,
             "image": "neptune.jpg"
         }
@@ -137,7 +137,7 @@
             "name": "Jupiter",
             "description": "Embrace the majesty of the solar system's largest planet with the Jupiter watch. Its swirling patterns and striking colors are reminiscent of Jupiter's famous Great Red Spot.",
             "price": 1450.00,
-            "category": 2,
+            "category": 10,
             "rating": 4.7,
             "image": "jupiter.jpg"
         }
@@ -150,7 +150,7 @@
             "name": "Mercury",
             "description": "Inspired by the swift movement of Mercury around the sun, this watch features a sleek, metallic design. It's the perfect blend of speed and style.",
             "price": 1150.00,
-            "category": 2,
+            "category": 10,
             "rating": 4.6,
             "image": "mercury.jpg"
         }
@@ -163,7 +163,7 @@
             "name": "Luna Astro",
             "description": "The Luna Astro watch pays homage to the moon's phases with a dial that changes appearance with time, mirroring the lunar cycle. It's a celestial wonder on your wrist.",
             "price": 1250.00,
-            "category": 3,
+            "category": 11,
             "rating": 4.9,
             "image": "lunaastro.jpg"
         }
@@ -176,7 +176,7 @@
             "name": "Phobos",
             "description": "Named after Mars' moon, the Phobos watch is bold and striking, featuring a dark, mysterious dial with red accents that hint at its Martian inspiration.",
             "price": 1280.00,
-            "category": 3,
+            "category": 11,
             "rating": 4.7,
             "image": "phobos.jpg"
         }
@@ -189,7 +189,7 @@
             "name": "Deimos",
             "description": "Complementing its sibling, the Deimos watch captures the essence of the farther of Mars' two moons. It features a sleek, dark design with subtle hints of red.",
             "price": 1280.00,
-            "category": 3,
+            "category": 11,
             "rating": 4.7,
             "image": "deimos.jpg"
         }
@@ -202,7 +202,7 @@
             "name": "PYRAMID - Unisex cuff",
             "description": "316L Stainless Steel Length: 60 mm (2.36 inches) Width 45mm (1.77 inches) Thickness: 2mm (0.07inches) Rustproof Comes with our minimal Cosmos packaging",
             "price": 399.0,
-            "category": 4,
+            "category": 2,
             "rating": 4.8,
             "image": "pyramid_bracelet.jpg"
         }

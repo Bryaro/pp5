@@ -38,5 +38,29 @@
             "name": "new_arrivals",
             "frontend_name": "New Arrivals"
         }
+    },
+    {
+        "pk": 9,
+        "model": "products.category",
+        "fields": {
+            "name": "big bang",
+            "frontend_name": "Big Bang"
+        }
+    },
+    {
+        "pk": 10,
+        "model": "products.category",
+        "fields": {
+            "name": "solar system",
+            "frontend_name": "Solar System"
+        }
+    },
+    {
+        "pk": 11,
+        "model": "products.category",
+        "fields": {
+            "name": "luna",
+            "frontend_name": "Luna"
+        }
     }
 ]

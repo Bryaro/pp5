@@ -7,9 +7,11 @@
                 Explore Products
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="all-products-link">
-                <a href="" class="dropdown-item" role="menuitem">Shop by Price</a>
-                <a href="" class="dropdown-item" role="menuitem">Shop by Rating</a>
-                <a href="{% url 'products' %}" class="dropdown-item" role="menuitem">Browse Categories</a>
+                {% comment %} <a href="" class="dropdown-item" role="menuitem">Shop by Price</a>
+                <a href="" class="dropdown-item" role="menuitem">Shop by Rating</a> {% endcomment %}
+                <a href="{% url 'products' %}?category=accessories" class="dropdown-item" role="menuitem">Accessories</a>
+                <a href="{% url 'products' %}?category=clearance" class="dropdown-item" role="menuitem">On sale</a>
+                <a href="{% url 'products' %}" class="dropdown-item" role="menuitem">All Products</a>
             </div>
         </li>
 
@@ -18,10 +20,10 @@
                 Discover Our Watches
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="our-watches-link">
-                <a href="" class="dropdown-item" role="menuitem">Big Bang Collection</a>
-                <a href="" class="dropdown-item" role="menuitem">Solar System Series</a>
-                <a href="" class="dropdown-item" role="menuitem">Luna Line</a>
-                <a href="{% url 'products' %}" class="dropdown-item" role="menuitem">View All Watches</a>
+                <a href="{% url 'products' %}?category=bigbang" class="dropdown-item" role="menuitem">Big Bang Collection</a>
+                <a href="{% url 'products' %}?category=solar" class="dropdown-item" role="menuitem">Solar System Series</a>
+                <a href="{% url 'products' %}?category=luna" class="dropdown-item" role="menuitem">Luna Line</a>
+                <a href="{% url 'products' %}?category=solar,bigbang,luna" class="dropdown-item" role="menuitem">All Watches</a>
             </div>
         </li>
     </ul>
