@@ -10,53 +10,85 @@
 {% endblock %}
 
 {% block content %}
-<div class="overlay"></div>
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-12 col-lg-8">
-            <h2 class="logo-font text-center mt-3">Your Cart</h2>
-            <hr class="mb-4">
-            {% if cart_items %}
-                <table class="table table-hover">
-                    <thead>
-                        <tr>
-                            <th scope="col">Item</th>
-                            <th scope="col">Price</th>
-                            <th scope="col">Quantity</th>
-                            <th scope="col">Subtotal</th>
-                            <th scope="col">Remove</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for item in cart_items %}
+    <div class="overlay"></div>
+    <div class="container mb-2">
+        <div class="row">
+            <div class="col">
+                <hr>
+                <h2 class="logo-font mb-4">Shopping cart</h2>
+                <hr>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                {% if cart_items %}
+                    <div class="table-responsive rounded">
+                        <table class="table table-sm table-borderless">
+                            <thead class="text-black">
+                                <tr>
+                                    <th scope="col">Product Info</th>
+                                    <th scope="col"></th>
+                                    <th scope="col">Price</th>
+                                    <th scope="col">Qty</th>
+                                    <th scope="col">Subtotal</th>
+                                </tr>
+                            </thead>
+
+                            {% for item in cart_items %}
+                                <tr>
+                                    <td class="p-3 w-25">
+                                        <img class="img-fluid rounded" src="{{ item.product.image.url }}">
+                                    </td>
+                                    <td class="py-3">
+                                        <p class="my-0"><strong>{{ item.product.name }}</strong></p>
+                                        <p class="my-0 small text-muted">SKU: {{ item.product.sku|upper }}</p>
+                                    </td>
+                                    <td class="py-3">
+                                        <p class="my-0">SEK {{ item.product.price }}</p>
+                                    </td>
+                                    <td class="py-3 w-25">
+                                        <p class="my-0">{{ item.quantity }}</p>
+                                    </td>
+                                    <td class="py-3">
+                                        <p class="my-0">SEK {{ item.product.price }}</p>
+                                    </td>
+                                </tr>
+                            {% endfor %}
                             <tr>
-                                <td>{{ item.product.name }}</td>
-                                <td>{{ item.product.price }} SEK</td>
-                                <td>
-                                    <!-- will later use 'update_cart' view for updating cart item quantities -->
-                                    <form action="{% url 'update_cart' item.product.id %}" method="post">
-                                        {% csrf_token %}
-                                        <input type="number" name="quantity" value="{{ item.quantity }}" min="1" class="form-control" style="width: 70px;">
-                                        <button type="submit" class="btn btn-update">Update</button>
-                                    </form>
-                                </td>
-                                <td>{{ item.get_total }} SEK</td>
-                                <td>
-                                    <!-- same here, will 'remove_from_cart' is a view for removing items from the cart -->
-                                    <a href="{% url 'remove_from_cart' item.product.id %}" class="btn btn-danger">Remove</a>
+                                <td colspan="5" class="pt-5 text-right">
+                                    <h6><strong>Total: SEK {{ total|floatformat:2 }}</strong></h6>
+                                    <h6>Shipping: 0 SEK</h6>
                                 </td>
                             </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-                <div class="cart-summary">
-                    <h4>Cart Total: {{ cart_total }} SEK</h4>
-                    <a href="{% url 'checkout' %}" class="btn btn-primary">Proceed to Checkout</a>
-                </div>
-            {% else %}
-                <p class="text-center">Your cart is empty.</p>
-            {% endif %}
+                            <tr>
+                                <td colspan="5" class="text-right">
+                                    <a href="{% url 'products' %}" class="btn btn-outline-black rounded-0 btn-lg">
+                                        <span class="icon">
+                                            <i class="fas fa-chevron-left"></i>
+                                        </span>
+                                        <span class="text-uppercase">Keep Shopping</span>
+                                    </a>
+                                    <a href="" class="btn btn-black rounded-0 btn-lg">
+                                        <span class="text-uppercase">Secure Checkout</span>
+                                        <span class="icon">
+                                            <i class="fas fa-lock"></i>
+                                        </span>
+                                    </a>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                {% else %}
+                    <p class="lead mb-5">Your cart is empty.</p>
+                    <a href="{% url 'products' %}" class="btn btn-outline-black rounded-0 btn-lg">
+                        <span class="icon">
+                            <i class="fas fa-chevron-left"></i>
+                        </span>
+                        <span class="text-uppercase">Keep Shopping</span>
+                    </a>
+                {% endif %}
+            </div>
         </div>
     </div>
-</div>
 {% endblock %}
