@@ -53,6 +53,13 @@
                                     <td class="py-3">
                                         <p class="my-0">SEK {{ item.product.price }}</p>
                                     </td>
+                                    <td class="py-3 w-25">
+                                        <div class="input-group">
+                                            <button type="button" class="btn btn-outline-secondary btn-sm decrement-btn" data-product-id="{{ item.product.id }}">-</button>
+                                            <input type="text" class="form-control text-center quantity-input" value="{{ item.quantity }}" readonly data-product-id="{{ item.product.id }}">
+                                            <button type="button" class="btn btn-outline-secondary btn-sm increment-btn" data-product-id="{{ item.product.id }}">+</button>
+                                        </div>
+                                    </td>
                                 </tr>
                             {% endfor %}
                             <tr>
@@ -91,4 +98,6 @@
             </div>
         </div>
     </div>
+        
 {% endblock %}
+    
