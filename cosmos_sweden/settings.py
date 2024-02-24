@@ -28,6 +28,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['8000-bryaro-pp5-k2tlzmd5ekc.ws-eu108.gitpod.io']
 
+CSRF_TRUSTED_ORIGINS = ['https://8000-bryaro-pp5-k2tlzmd5ekc.ws-eu108.gitpod.io']
 
 # Application definition
 
@@ -85,6 +86,7 @@ TEMPLATES = [
             ],
             'builtins': [
                 'crispy_forms.templatetags.crispy_forms_tags',
+                'crispy_forms.templatetags.crispy_forms_field',
             ]
         },
     },
