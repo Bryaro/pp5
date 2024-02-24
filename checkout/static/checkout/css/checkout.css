@@ -59,8 +59,9 @@
     max-width: 200px;
     margin-bottom: 20px;
     animation: spin 2s linear infinite;
-    transform-origin: center;
+    transform-origin: 50% 50%;
 }
+
 
 
 @keyframes spin {
