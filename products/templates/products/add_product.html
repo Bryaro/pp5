@@ -2,10 +2,45 @@
 {% load static %}
 
 {% block content %}
-  <h2>Add Product</h2>
-  <form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Save</button>
-  </form>
+<div class="container mt-5" style="max-width: 800px;">
+  <div class="card mb-5">
+    <div class="card-header">
+      <h2 class="text-center m-0">Add Product</h2>
+    </div>
+    <div class="card-body">
+      <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="text-center">
+          <button type="submit" class="btn btn-success">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Displaying products in a more aesthetic list format -->
+  <h3 class="mb-4">Existing Products</h3>
+  <div class="list-group">
+    {% for product in products %}
+    <div class="list-group-item d-flex align-items-center justify-content-between" style="border: 1px solid #ddd; padding: 20px;">
+      <div class="d-flex align-items-center">
+        {% if product.image %}
+        <img src="{{ product.image.url }}" alt="{{ product.name }}" style="width: 40px; height: auto; margin-right: 20px;">
+        {% else %}
+        <img src="{{ MEDIA_URL }}noimage.png" alt="No image available" style="width: 40px; height: auto; margin-right: 20px;">
+        {% endif %}
+        <div>
+          <h5 class="mb-1">{{ product.name }}</h5>
+          <small>Price: {{ product.price }} SEK</small>
+        </div>
+      </div>
+      <div>
+        <a href="{% url 'product_info' product.id %}" class="btn btn-primary btn-sm">View</a>
+        <a href="#" class="btn btn-secondary btn-sm">Edit</a>
+        <a href="#" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">Delete</a>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
 {% endblock %}

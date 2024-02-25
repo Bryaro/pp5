@@ -61,7 +61,6 @@
             </form>
           </div>
           <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
-            <div>User authenticated: {{ request.user.is_authenticated }}</div>
               <ul class="list-inline list-unstyled text-center text-lg-right my-0">
                   <li class="list-inline-item dropdown">
                       <a class="text-white nav-link" href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -127,8 +126,10 @@
     {% block page_header %}
     {% endblock %}
 
-    {% block content %}
-    {% endblock %}
+    <div class="main-content" style="padding-top: 120px;">
+        {% block content %}
+        {% endblock %}
+    </div>
 
     {% block postloadjs %}
     {% endblock %}

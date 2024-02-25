@@ -76,9 +76,9 @@ def add_product(request):
         form = ProductForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            # Redirect or show a success message
             return redirect('products')
     else:
         form = ProductForm()
-    
-    return render(request, 'products/add_product.html', {'form': form})
+    # simply to query all products for now, till full CRUD is checked
+    products = Product.objects.all()
+    return render(request, 'products/add_product.html', {'form': form, 'products': products})
