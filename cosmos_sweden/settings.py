@@ -27,7 +27,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv('SECRET_KEY', 'default_secret_key_if_not_set')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+ENVIRONMENT = os.getenv('DJANGO_ENV', 'development')
+
+DEBUG = ENVIRONMENT == 'development'
+
+# For production, ensure DEBUG is False
+if ENVIRONMENT == 'production':
+    DEBUG = False
 
 ALLOWED_HOSTS = ['8000-bryaro-pp5-k2tlzmd5ekc.ws-eu108.gitpod.io']
 
