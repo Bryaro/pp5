@@ -68,6 +68,9 @@
                         <span class="text-uppercase">Keep Shopping</span>
                     </a>
                     <input type="submit" class="btn btn-black rounded-0 text-uppercase mt-5" value="Add to Cart">
+                    {% if request.user.is_staff or request.user.is_superuser %}
+                    <a href="{% url 'edit_product' product.id %}" class="btn btn-warning mt-5">Edit product</a>
+                    {% endif %}
                 </div>
                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
 

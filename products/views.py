@@ -91,7 +91,7 @@ def edit_product(request, product_id):
         form = ProductForm(request.POST, request.FILES, instance=product)
         if form.is_valid():
             form.save()
-            return redirect('product_info', product_id=product.id)
+            return redirect('add_product')
     else:
         form = ProductForm(instance=product)
     
@@ -100,3 +100,11 @@ def edit_product(request, product_id):
         'product': product,
     }
     return render(request, 'products/edit_product.html', context)
+
+@login_required
+@user_passes_test(staff_or_superuser_check)
+def delete_product(request, product_id):
+    product = get_object_or_404(Product, id=product_id)
+    product.delete()
+    messages.success(request, 'Product deleted successfully!')
+    return redirect('add_product')
