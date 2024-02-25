@@ -82,3 +82,21 @@ def add_product(request):
     # simply to query all products for now, till full CRUD is checked
     products = Product.objects.all()
     return render(request, 'products/add_product.html', {'form': form, 'products': products})
+
+@login_required
+@user_passes_test(staff_or_superuser_check)
+def edit_product(request, product_id):
+    product = get_object_or_404(Product, id=product_id)
+    if request.method == 'POST':
+        form = ProductForm(request.POST, request.FILES, instance=product)
+        if form.is_valid():
+            form.save()
+            return redirect('product_info', product_id=product.id)
+    else:
+        form = ProductForm(instance=product)
+    
+    context = {
+        'form': form,
+        'product': product,
+    }
+    return render(request, 'products/edit_product.html', context)
