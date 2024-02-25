@@ -2,7 +2,12 @@ from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.db.models import Q
 from .models import Product, Category
-# Create your views here.
+
+from django.contrib.auth.decorators import login_required, user_passes_test
+from .forms import ProductForm
+
+def staff_or_superuser_check(user):
+    return user.is_staff or user.is_superuser
 
 def all_products(request):
     """ View to show all products and search for sorting queries """
@@ -62,3 +67,18 @@ def product_info(request, product_id):
     }
 
     return render(request, 'products/product_info.html', context)
+
+
+@login_required
+@user_passes_test(staff_or_superuser_check)
+def add_product(request):
+    if request.method == 'POST':
+        form = ProductForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            # Redirect or show a success message
+            return redirect('products')
+    else:
+        form = ProductForm()
+    
+    return render(request, 'products/add_product.html', {'form': form})
