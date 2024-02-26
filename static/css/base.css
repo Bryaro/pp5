@@ -138,6 +138,16 @@ a.category-badge > span.badge:hover {
           padding-top: 164px;
       }
   }
+
+
+  /* Custom style for allauth htmls */
+  /* Additional responsive adjustments */
+  @media (max-width: 768px) {
+    .card-body {
+      padding: 20px; /* Adjust padding for smaller screens */
+    }
+  }
+  
   
   /* pad the top a bit when navbar is collapsed on mobile */
   @media (max-width: 991px) {
