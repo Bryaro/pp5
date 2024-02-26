@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container bg-white">
+    <h2>My Profile</h2>
+    <a href="" class="btn btn-primary">Edit Profile</a>
+    <a href="" class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete Account</a>
+    
+    <h3>My Order History</h3>
+    <ul >
+        <li>order #123 </li>
+        <li class="text-danger text-uppercase"> visual message for me: after profile done, Next step to finish orders </li>
+        {% comment %} after profile done, Next step to finish orders {% endcomment %}
+    </ul>
+</div>
+{% endblock %}
