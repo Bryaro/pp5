@@ -8,10 +8,17 @@
     <a href="" class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete Account</a>
     
     <h3>My Order History</h3>
-    <ul >
-        <li>order #123 </li>
-        <li class="text-danger text-uppercase"> visual message for me: after profile done, Next step to finish orders </li>
-        {% comment %} after profile done, Next step to finish orders {% endcomment %}
+    <ul>
+        {% for order in orders %}
+        <li>
+            <strong>Order Number:</strong> {{ order.order_number }}<br>
+            <strong>Date:</strong> {{ order.date }}<br>
+            <strong>Order Total:</strong> {{ order.grand_total }}<br>
+            <a href="">View</a>
+        </li>
+        {% empty %}
+        <li>No orders yet.</li>
+        {% endfor %}
     </ul>
 </div>
 {% endblock %}
