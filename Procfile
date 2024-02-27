@@ -1,1 +1,1 @@
-web: gunicorn cosmos_sweden.wsgi:applicationd
+web: gunicorn cosmos_sweden.wsgi:application
