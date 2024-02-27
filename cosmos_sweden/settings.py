@@ -28,7 +28,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY', '')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = 'DEVELOPMENT' in os.environ
+ENVIRONMENT = os.getenv('DJANGO_ENV', 'development')
+
+DEBUG = ENVIRONMENT == 'development'
+
+# For production, ensure DEBUG is False
+if ENVIRONMENT == 'production':
+    DEBUG = False
 
 ALLOWED_HOSTS = ['8000-bryaro-pp5-k2tlzmd5ekc.ws-eu108.gitpod.io', 'pp5-bryar-475062670c00.herokuapp.com']
 
@@ -109,8 +115,7 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 SITE_ID = 1
-
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 ACCOUNT_EMAIL_REQUIRED = True
@@ -222,15 +227,16 @@ STRIPE_PUBLIC_KEY = os.getenv('STRIPE_PUBLIC_KEY', '')
 STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY', '')
 STRIPE_WH_SECRET = os.getenv('STRIPE_WH_SECRET', '')
 
-# Email Configuration for Development
-# if 'DEVELOPMENT' in os.environ:
-#     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-#     DEFAULT_FROM_EMAIL = 'cosmos-sweden@example.com'
-# else:
-#     # Email Configuration for Production
-#     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-#     EMAIL_HOST = 'smtp.gmail.com'
-#     EMAIL_PORT = 587
-#     EMAIL_USE_TLS = True
-#     EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
-#     EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+Email Configuration for Development
+if 'DEVELOPMENT' in os.environ:
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+    DEFAULT_FROM_EMAIL = 'cosmos-sweden@example.com'
+else:
+    # Email Configuration for Production
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    EMAIL_HOST = 'smtp.gmail.com'
+    EMAIL_PORT = 587
+    EMAIL_USE_TLS = True
+    EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+    EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+    DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_HOST_USER')
