@@ -35,7 +35,7 @@ DEBUG = ENVIRONMENT == 'development'
 if ENVIRONMENT == 'production':
     DEBUG = False
 
-ALLOWED_HOSTS = ['8000-bryaro-pp5-k2tlzmd5ekc.ws-eu108.gitpod.io']
+ALLOWED_HOSTS = ['8000-bryaro-pp5-k2tlzmd5ekc.ws-eu108.gitpod.io', 'pp5-bryar-475062670c00.herokuapp.com']
 
 CSRF_TRUSTED_ORIGINS = ['https://8000-bryaro-pp5-k2tlzmd5ekc.ws-eu108.gitpod.io']
 
