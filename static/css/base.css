@@ -119,37 +119,14 @@ a.category-badge > span.badge:hover {
 /* 404 Page Specific Styles */
 .error-404 {
     text-align: center;
-    padding: 50px;
+    height: 100vh;
     font-family: "Arial", sans-serif;
-    color: #fff;
-    background-color: #000;
     background: url('/media/404_error_page_bg.webp') no-repeat center center fixed;
     background-size: cover;
 }
 
-.error-404 h1 {
-    font-size: 2em;
-}
-
-.error-404 p {
-    font-size: 1.2em;
-}
-
-.error-404 .buttons {
-    margin-top: 20px;
-}
-
-.error-404 .button {
-    padding: 10px 20px;
-    margin: 0 10px;
-    background-color: #22a7f0;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 5px;
-}
-
-.error-404 .button:hover {
-    background-color: #3bc0f3;
+.error-404-text-content {
+    background-color: rgba(255, 255, 255, 0.9);
 }
 
 

@@ -1,19 +1,15 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>404 - Lost in Space</title>
-    <link href="{% static 'css/base.css' %}" rel="stylesheet">
-</head>
-<body class="error-404">
-    <img src="{% static 'images/404_error_page_bg.webp' %}" alt="Lost in Space" style="max-width: 100%; height: auto;">
-    <h1>Oops! You're lost in space.</h1>
-    <p>The page you're looking for might have been removed, had its name changed, or is temporarily unavailable.</p>
-    <div class="buttons">
-        <a href="/" class="button">Take Me Home</a>
-        <a href="javascript:history.back()" class="button">Go Back</a>
+
+{% block content %}
+<div class="error-404 mt-5 d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+    <div class="error-404-text-content p-4">
+        <h1>Oops! You're lost in space.</h1>
+        <p>The page you're looking for might have been removed, had its name changed, or is temporarily unavailable.</p>
+        <div class="buttons mt-4">
+            <a href="{% url 'home' %}" class="btn btn-black">Take Me Home</a>
+            <a href="javascript:history.back()" class="btn btn-black">Go Back</a>
+        </div>
     </div>
-</body>
-</html>
+</div>
+{% endblock %}
