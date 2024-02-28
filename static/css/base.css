@@ -119,7 +119,7 @@ a.category-badge > span.badge:hover {
 /* 404 Page Specific Styles */
 .error-404 {
     text-align: center;
-    height: 100vh;
+    height: 85vh;
     font-family: "Arial", sans-serif;
     background: url('/media/404_error_page_bg.webp') no-repeat center center fixed;
     background-size: cover;
