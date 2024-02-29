@@ -37,6 +37,9 @@
             <li><a class="dropdown-item" href="{% url 'products' %}?sort=rating&direction=desc">Rating (High to Low)</a></li>
           </ul>
         </li>
+        <li class="nav-item dropdown">
+          <a href="{% url 'reviews:all_reviews' %}" class="btn btn-dark">Customer Reviews</a>
+        </li>
       </ul>
 
       <form class="form-inline my-2 my-lg-0 ml-auto" action="{% url 'products' %}" method="GET">

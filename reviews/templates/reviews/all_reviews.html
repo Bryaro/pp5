@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>All Reviews</h2>
+<div>
+    {% for review in reviews %}
+    <div>
+        <h3>{{ review.product.name }}</h3>
+        <p>Rating: {{ review.rating }} Stars</p>
+        <p>{{ review.comment }}</p>
+        {% if review.image %}
+        <img src="{{ review.image.url }}" alt="Review image" style="max-width: 100px;">
+        {% endif %}
+        <hr>
+    </div>
+    {% empty %}
+    <p>No reviews yet.</p>
+    {% endfor %}
+</div>
+{% endblock %}

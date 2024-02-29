@@ -38,6 +38,11 @@ body {
     margin-left: 75%;
 }
 
+.cosmos_logo-image {
+    max-width: 100px;
+    margin-left: 75%;
+}
+
 .shop-now-button {
     background: black;
     color: white;

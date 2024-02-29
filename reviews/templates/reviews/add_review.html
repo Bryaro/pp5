@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Write a review for {{ product.name }}</h2>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Submit Review</button>
+</form>
+
+<h3>Reviews</h3>
+{% for review in product.reviews.all %}
+    <div class="review">
+        <p>Rating: {{ review.rating }} Stars</p>
+        <p>{{ review.comment }}</p>
+        {% if review.image %}
+            <img src="{{ review.image.url }}" alt="Review image" style="width:100px;height:auto;">
+        {% endif %}
+    </div>
+{% endfor %}
+{% endblock %}
