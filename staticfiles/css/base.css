@@ -1,0 +1,194 @@
+html {
+    height: 100%;
+}
+
+body {
+    background: url('/media/homepage_bg.webp') no-repeat center center fixed;
+    background-size: cover;
+    min-height: 100vh; /* Use min-height instead of height */
+    font-family: 'Lato';
+    color: black;
+    display: flex; /* Set body to use flexbox */
+    flex-direction: column; /* Stack children vertically */
+}
+
+/* from Bulma */
+.icon {
+    align-items: center;
+    display: inline-flex;
+    justify-content: center;
+    height: 1.5rem;
+    width: 1.5rem;
+}
+
+.logo-font {
+    text-transform: uppercase;
+}
+
+.main-logo-link {
+    width: fit-content;
+}
+
+.main-content {
+    flex-grow: 1;
+}
+
+.logo-image {
+    max-width: 100px;
+    margin-left: 75%;
+}
+
+.cosmos_logo-image {
+    max-width: 100px;
+    margin-left: 75%;
+}
+
+.shop-now-button {
+    background: black;
+    color: white;
+    min-width: 260px;
+}
+
+.btn-black {
+    background: black;
+    color: white;
+}
+
+.shop-now-button:hover,
+.shop-now-button:active,
+.shop-now-button:focus,
+.btn-black:hover,
+.btn-black:active,
+.btn-black:focus {
+    background: #222;
+    color: white;
+}
+
+.text-black {
+    color: #000 !important;
+}
+
+.border-black {
+    border: 1px solid black !important;
+}
+
+.bg-black {
+    background: #000;
+}
+
+.overlay {
+	height: 100%;
+	width: 100%;
+	top: 0;
+	left: 0;
+	position: fixed;
+	background: white;
+	z-index: -1;
+}
+.navbar {
+    width: 100%;
+}
+
+/* Custom CSS for the search form */
+.search-input, .search-button {
+    background-color: #000; /* Black background */
+    color: #fff; /* White text */
+    border: 1px solid #fff; /* White border */
+}
+
+/* Ensures the search icon inside the button is white */
+.search-button .fas {
+    color: #fff;
+}
+
+/* Apply the styles to the input and button specifically */
+.search-input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #fff;
+    opacity: 1; /* Firefox */
+}
+
+.search-input:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #fff;
+}
+
+.search-input::-ms-input-placeholder { /* Microsoft Edge */
+    color: #fff;
+}
+
+a.category-badge > span.badge:hover {
+    background: #212529 !important;
+    color: #fff !important;
+}
+
+.btt-button {
+    height: 42px;
+    width: 42px;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+}
+
+.btt-link,
+.update-link,
+.remove-item {
+    cursor: pointer;
+}
+
+
+/* 404 Page Specific Styles */
+.error-404 {
+    text-align: center;
+    height: 85vh;
+    font-family: "Arial", sans-serif;
+    background: url('/media/404_error_page_bg.webp') no-repeat center center fixed;
+    background-size: cover;
+}
+
+.error-404-text-content {
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+/* -------------------------------- Media Queries */
+
+/* Slightly larger container on xl screens */
+@media (min-width: 1200px) {
+    .container {
+      max-width: 80%;
+    }
+  }
+  
+  /* fixed top navbar only on medium and up */
+  @media (min-width: 992px) {
+      .fixed-top-desktop-only {
+          position: fixed;
+          top: 0;
+          right: 0;
+          left: 0;
+          z-index: 1030;
+      }
+  
+      .header-container {
+          padding-top: 164px;
+      }
+  }
+
+
+  /* Custom style for allauth htmls */
+  /* Additional responsive adjustments */
+  @media (max-width: 768px) {
+    .card-body {
+      padding: 20px; /* Adjust padding for smaller screens */
+    }
+  }
+  
+  
+  /* pad the top a bit when navbar is collapsed on mobile */
+  @media (max-width: 991px) {
+      .header-container {
+          padding-top: 116px;
+      }
+  
+      body {
+          height: calc(100vh - 116px);
+      }
+  }
