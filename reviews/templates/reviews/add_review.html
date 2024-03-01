@@ -1,20 +1,37 @@
 {% extends 'base.html' %}
 {% block content %}
-<h2>Write a review for {{ product.name }}</h2>
-<form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Submit Review</button>
-</form>
+{% load static %}
 
-<h3>Reviews</h3>
-{% for review in product.reviews.all %}
-    <div class="review">
-        <p>Rating: {{ review.rating }} Stars</p>
-        <p>{{ review.comment }}</p>
-        {% if review.image %}
-            <img src="{{ review.image.url }}" alt="Review image" style="width:100px;height:auto;">
-        {% endif %}
-    </div>
-{% endfor %}
+<div class="container my-4">
+    <h2 class="mb-3">Write a review for {{ product.name }}</h2>
+    <form method="post" enctype="multipart/form-data" class="mb-4">
+        {% csrf_token %}
+        <div class="form-group">
+            {{ form|crispy }}
+        </div>
+        <button type="submit" class="btn btn-primary">Submit Review</button>
+    </form>
+
+    <h3>Reviews</h3>
+    {% for review in product.reviews.all %}
+        <div class="card mb-3">
+            <div class="card-body">
+                <h5 class="card-title">
+                    Rating:
+                    {% for star in "12345" %}
+                        {% if forloop.counter <= review.rating %}
+                            <img src="{% static 'images/filled_rocket.png' %}" alt="Filled rocket" style="width: 20px; height: 20px;">
+                        {% else %}
+                            <img src="{% static 'images/unfilled_rocket.png' %}" alt="Unfilled rocket" style="width: 20px; height: 20px;">
+                        {% endif %}
+                    {% endfor %}
+                </h5>
+                <p class="card-text">{{ review.comment }}</p>
+                {% if review.image %}
+                    <img src="{{ review.image.url }}" class="img-fluid" alt="Review image" style="max-width: 100px; height: auto;">
+                {% endif %}
+            </div>
+        </div>
+    {% endfor %}
+</div>
 {% endblock %}

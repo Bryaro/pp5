@@ -1,20 +1,36 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
-<h2>All Reviews</h2>
-<div>
-    {% for review in reviews %}
-    <div>
-        <h3>{{ review.product.name }}</h3>
-        <p>Rating: {{ review.rating }} Stars</p>
-        <p>{{ review.comment }}</p>
-        {% if review.image %}
-        <img src="{{ review.image.url }}" alt="Review image" style="max-width: 100px;">
-        {% endif %}
-        <hr>
+<div class="container mt-5">
+    <h2 class="mb-4">All Reviews</h2>
+    <div class="row">
+        {% for review in reviews %}
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title">{{ review.product.name }}</h3>
+                    <p class="card-text"><strong>Rating:</strong>
+                        {% for star in "12345" %}
+                            {% if forloop.counter <= review.rating %}
+                                <img src="{% static 'images/filled_rocket.png' %}" alt="Filled rocket" style="width: 20px; height: 20px;">
+                            {% else %}
+                                <img src="{% static 'images/unfilled_rocket.png' %}" alt="Unfilled rocket" style="width: 20px; height: 20px;">
+                            {% endif %}
+                        {% endfor %}
+                    </p>                    
+                    <p class="card-text">{{ review.comment }}</p>
+                </div>
+                {% if review.image %}
+                <img src="{{ review.image.url }}" class="card-img-bottom" alt="Review image" style="max-width: 50%; height: auto;">
+                {% endif %}
+            </div>
+        </div>
+        {% empty %}
+        <div class="col-12">
+            <p>No reviews yet...</p>
+        </div>
+        {% endfor %}
     </div>
-    {% empty %}
-    <p>No reviews yet...</p>
-    {% endfor %}
 </div>
 {% endblock %}
