@@ -1,40 +1,60 @@
 {% extends 'base.html' %}
-{% block content %}
 {% load static %}
 
-<div class="container my-4">
-    <h2 class="mb-3">Write a review for {{ product.name }}</h2>
+{% block content %}
+<div class="overlay"></div>
+<div class=" bg-white text-black container mt-5" style="max-width: 756px;">
+    <div class="p-3 rounded text-center my-5">
+        <h2 class="mb-0">Write a review for {{ product.name }}</h2>
+    </div>
     <form method="post" enctype="multipart/form-data" class="mb-4">
         {% csrf_token %}
-        <div class="form-group">
-            {{ form|crispy }}
-        </div>
-        <button type="submit" class="btn btn-primary">Submit Review</button>
+        {{ form|crispy }}
+        <button type="submit" class="btn btn-info">Submit Review</button>
     </form>
 
-    <h3>Reviews</h3>
+    <h3 class="text-black text-center my-4">Reviews</h3>
     {% for review in product.reviews.all %}
-        <div class="card mb-3">
-            <div class="card-body">
-                <h5 class="card-title">
-                    Rating:
+        <div class="col-12 mb-4">
+            <div class="card border-light mb-3">
+                <div class="card-header text-center bg-white">
                     {% for star in "12345" %}
                         {% if forloop.counter <= review.rating %}
-                            <img src="{% static 'images/filled_rocket.png' %}" alt="Filled rocket" style="width: 20px; height: 20px;">
+                            <img src="{% static 'images/filled_rocket.png' %}" alt="Filled Rocket" class="rocket me-1">
                         {% else %}
-                            <img src="{% static 'images/unfilled_rocket.png' %}" alt="Unfilled rocket" style="width: 20px; height: 20px;">
+                            <img src="{% static 'images/unfilled_rocket.png' %}" alt="Unfilled Rocket" class="rocket me-1">
                         {% endif %}
                     {% endfor %}
-                </h5>
+                </div>
+                <div class="bg-light card-body">
+                    <blockquote class="blockquote text-center">
+                        <p class="mb-0">&ldquo;{{ review.comment }}&rdquo;</p>
+                        <footer class="blockquote-footer">
+                            {{ review.user.username }}
+                        </footer>
+                    </blockquote>
+                    {% if review.image %}
+                        <div class="text-center">
+                            <img src="{{ review.image.url }}" class="img-fluid rounded" alt="Review image" style="max-width: 100px; height: auto;">
+                        </div>
+                    {% endif %}
+                </div>
                 {% if user.is_authenticated and user == review.user %}
-                <a href="{% url 'reviews:edit_review' review_id=review.id %}" class="btn btn-secondary btn-sm">Edit</a>
-                {% endif %}
-                <p class="card-text">{{ review.comment }}</p>
-                {% if review.image %}
-                    <img src="{{ review.image.url }}" class="img-fluid" alt="Review image" style="max-width: 100px; height: auto;">
+                <div class="card-footer text-center bg-white">
+                    <a href="{% url 'reviews:edit_review' review_id=review.id %}" class="btn btn-warning btn-sm">Edit</a>
+                </div>
                 {% endif %}
             </div>
         </div>
+    {% empty %}
+        <p class="text-center">No reviews yet...</p>
     {% endfor %}
 </div>
+
+<style>
+    .rocket {
+        width: 20px;
+        height: 20px;
+    }
+</style>
 {% endblock %}

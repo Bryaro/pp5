@@ -2,32 +2,42 @@
 {% load static %}
 
 {% block content %}
-<div class="container mt-5">
-    <h2 class="mb-4">All Reviews</h2>
+<div class="container mt-5" style="max-width: 756px;">
+    <div class="bg-light p-3 rounded text-center my-5">
+        <h2 class="mb-0">Customer Review</h2>
+    </div>
     <div class="row">
         {% for review in reviews %}
-        <div class="col-md-4 mb-4">
-            <div class="card">
-                <div class="card-body">
-                    <h3 class="card-title">{{ review.product.name }}</h3>
-                    <p class="card-text"><strong>User:</strong> {{ review.user.username }}</p>
-                    <p class="card-text"><strong>Rating:</strong>
-                        {% for star in "12345" %}
-                            {% if forloop.counter <= review.rating %}
-                                <img src="{% static 'images/filled_rocket.png' %}" alt="Filled rocket" style="width: 20px; height: 20px;">
-                            {% else %}
-                                <img src="{% static 'images/unfilled_rocket.png' %}" alt="Unfilled rocket" style="width: 20px; height: 20px;">
-                            {% endif %}
-                        {% endfor %}
-                    </p>                    
-                    <p class="card-text">{{ review.comment }}</p>
-                    <!-- Edit link for the user's own review -->
-                    {% if user.is_authenticated and user == review.user %}
-                    <a href="{% url 'reviews:edit_review' review_id=review.id %}" class="btn btn-secondary btn-sm">Edit</a>
-                    {% endif %}
+        <div class="col-12 mb-4">
+            <div class="card border-light mb-3">
+                <div class="card-header text-center bg-white">
+                    {% for star in "12345" %}
+                        {% if forloop.counter <= review.rating %}
+                            <img src="{% static 'images/filled_rocket.png' %}" alt="Filled Rocket" class="rocket me-1">
+                        {% else %}
+                            <img src="{% static 'images/unfilled_rocket.png' %}" alt="Unfilled Rocket" class="rocket me-1">
+                        {% endif %}
+                    {% endfor %}
                 </div>
-                {% if review.image %}
-                <img src="{{ review.image.url }}" class="card-img-bottom" alt="Review image" style="max-width: 50%; height: auto;">
+                <div class="card-body">
+                    <div class="row">
+                        {% if review.product.image %}
+                            <div class="col-4 col-lg-3 d-flex align-items-center justify-content-center">
+                                <img src="{{ review.product.image.url }}" alt="{{ review.product.name }}" class="img-fluid" style="max-width: 100px; max-height: 100px;">
+                            </div>
+                        {% endif %}
+                        <div class="{% if review.product.image %}col-8 col-lg-9{% else %}col-12{% endif %}">
+                            <h4 class="text-center card-text text-muted">&ldquo;{{ review.comment }}&rdquo;</h4>
+                            <p class="blockquote-footer card-title text-center text-capitalize">
+                                <cite title="Source Title">
+                                    {{ review.user.username }}
+                                </cite>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                {% if user.is_authenticated and user == review.user %}
+                <a href="{% url 'reviews:edit_review' review_id=review.id %}" class="btn btn-warning btn-sm">Edit</a>
                 {% endif %}
             </div>
         </div>
@@ -38,4 +48,24 @@
         {% endfor %}
     </div>
 </div>
+
+<style>
+    .rocket {
+        width: 20px;
+        height: 20px;
+    }
+    .card-header {
+        padding: 0.5rem 1rem; /* Adjust as needed */
+    }
+    .card-body {
+        padding: 1rem;
+    }
+    .img-fluid {
+        border-radius: 0.25rem;
+    }
+    /* If you need italic style for the quotes */
+    .card-text {
+        font-style: italic;
+    }
+</style>
 {% endblock %}
