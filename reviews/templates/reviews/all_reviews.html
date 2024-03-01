@@ -10,6 +10,7 @@
             <div class="card">
                 <div class="card-body">
                     <h3 class="card-title">{{ review.product.name }}</h3>
+                    <p class="card-text"><strong>User:</strong> {{ review.user.username }}</p>
                     <p class="card-text"><strong>Rating:</strong>
                         {% for star in "12345" %}
                             {% if forloop.counter <= review.rating %}
@@ -20,6 +21,10 @@
                         {% endfor %}
                     </p>                    
                     <p class="card-text">{{ review.comment }}</p>
+                    <!-- Edit link for the user's own review -->
+                    {% if user.is_authenticated and user == review.user %}
+                    <a href="{% url 'reviews:edit_review' review_id=review.id %}" class="btn btn-secondary btn-sm">Edit</a>
+                    {% endif %}
                 </div>
                 {% if review.image %}
                 <img src="{{ review.image.url }}" class="card-img-bottom" alt="Review image" style="max-width: 50%; height: auto;">

@@ -26,6 +26,9 @@
                         {% endif %}
                     {% endfor %}
                 </h5>
+                {% if user.is_authenticated and user == review.user %}
+                <a href="{% url 'reviews:edit_review' review_id=review.id %}" class="btn btn-secondary btn-sm">Edit</a>
+                {% endif %}
                 <p class="card-text">{{ review.comment }}</p>
                 {% if review.image %}
                     <img src="{{ review.image.url }}" class="img-fluid" alt="Review image" style="max-width: 100px; height: auto;">
