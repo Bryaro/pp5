@@ -7,7 +7,8 @@ from .forms import OrderForm
 from .models import Order, OrderLineItem
 from products.models import Product
 from cart.contexts import cart_contents
-
+from django.core.mail import send_mail
+from django.conf import settings
 import stripe
 import json
 
@@ -125,6 +126,13 @@ def checkout_success(request, order_number):
     messages.success(request, f'Order successfully processed! \
         Your order number is {order_number}. A confirmation \
         email will be sent to {order.email}.')
+    
+    # Send order confirmation email
+    subject = 'Order Confirmation'
+    message = f'Thank you for your order {order.full_name}. Your order number is {order.order_number}.'
+    email_from = settings.DEFAULT_FROM_EMAIL
+    recipient_list = [order.email, ]
+    send_mail(subject, message, email_from, recipient_list)
 
     if 'cart' in request.session:
         del request.session['cart']
