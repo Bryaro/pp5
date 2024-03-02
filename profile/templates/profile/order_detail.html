@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container bg-white">
+    <h2>Order: #{{ order.order_number|slice:":7" }}</h2>
+    <p><strong>Date:</strong> {{ order.date }}</p>
+    <p><strong>Full Name:</strong> {{ order.full_name }}</p>
+    <p><strong>Email:</strong> {{ order.email }}</p>
+    <p><strong>Phone Number:</strong> {{ order.phone_number }}</p>
+    <p><strong>Address:</strong> {{ order.street_address1 }}{% if order.street_address2 %}, {{ order.street_address2 }}{% endif %}, {{ order.town_or_city }}, {{ order.county }}, {{ order.postcode }}, {{ order.country }}</p>
+    <p><strong>Order Total:</strong> {{ order.grand_total }}</p>
+    <p><strong>Shipping:</strong> {{ order.delivery_cost }}</p>
+    <h3>Items:</h3>
+    <div class="row">
+        <ul style="list-style-type: none;">
+            {% for item in order.lineitems.all %}
+            <li style="margin-bottom: 10px;">
+                <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" style="width: 50px; height: auto; float: left; margin-right: 10px;">
+                <p>{{ item.product.name }} (Quantity: {{ item.quantity }})</p>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div style="clear: both;"></div>
+    <a href="{% url 'profile' %}">Back to Profile</a>
+    <a href="{% url 'home' %}">Back to Profile</a>
+</div>
+{% endblock %}

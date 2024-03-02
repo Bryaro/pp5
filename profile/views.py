@@ -1,5 +1,5 @@
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from checkout.models import Order
 
 
@@ -12,3 +12,12 @@ def profile(request):
     # Debugging statement to see if orders are being fetched (will remove before finishing my pp5)
     print(orders)
     return render(request, 'profile/profile.html', {'orders': orders})
+
+
+@login_required
+def view_order_detail(request, order_number):
+    order = get_object_or_404(Order, order_number=order_number, email=request.user.email)
+    context = {
+        'order': order
+    }
+    return render(request, 'profile/order_detail.html', context)
