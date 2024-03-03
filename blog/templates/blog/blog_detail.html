@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-3">
+    <div class="blog-post">
+        <h2 class="blog-post-title">{{ post.title }}</h2>
+        <p class="blog-post-meta">{{ post.created_on|date:"F d, Y" }} by {{ post.author }}</p>
+        <div>{{ post.body|linebreaks }}</div>
+    </div>
+
+    <div class="comments mt-4">
+        <h5>Comments</h5>
+        {% for comment in post.comments.all %}
+        <div class="card mb-2">
+            <div class="card-body">
+                <p>{{ comment.body|linebreaks }}</p>
+                <p class="card-text"><small class="text-muted">Commented by {{ comment.author }} on {{ comment.created_on|date:"F d, Y" }}</small></p>
+            </div>
+        </div>
+        {% empty %}
+        <p>No comments yet.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
