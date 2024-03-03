@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
+<div class="overlay"></div>
 <div class="container mt-3">
     <div class="blog-post">
         <h2 class="blog-post-title">{{ post.title }}</h2>
@@ -7,17 +8,26 @@
         <div>{{ post.body|linebreaks }}</div>
     </div>
 
+    <div class="comments-form mt-4">
+        <h5>Leave a Comment</h5>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <textarea name="body" class="form-control" placeholder="Leave a comment" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Post Comment</button>
+        </form>
+    </div>
+
     <div class="comments mt-4">
         <h5>Comments</h5>
-        {% for comment in post.comments.all %}
-        <div class="card mb-2">
-            <div class="card-body">
-                <p>{{ comment.body|linebreaks }}</p>
-                <p class="card-text"><small class="text-muted">Commented by {{ comment.author }} on {{ comment.created_on|date:"F d, Y" }}</small></p>
-            </div>
+        {% for comment in comments %}
+        <div class="comment" style="margin-bottom: 20px;">
+            <p class="comment-name"><strong>{{ comment.user.username }}</strong> - {{ comment.created_on|date:"F d, Y" }}</p>
+            <p class="comment-body">{{ comment.body }}</p>
         </div>
         {% empty %}
-        <p>No comments yet.</p>
+            <p>No comments yet.</p>
         {% endfor %}
     </div>
 </div>
