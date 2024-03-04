@@ -55,7 +55,7 @@
                       <a class="text-white nav-link" href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           <div class="text-center">
                               <div><i class="fas fa-user-astronaut fa-lg"></i></div>
-                              <p class="my-0">My Account</p>
+                              <p class="my-0">Account</p>
                           </div>
                       </a>
                       <div class="dropdown-menu border-0" aria-labelledby="user-options">
@@ -73,14 +73,14 @@
                     </div>
                   </li>
                   <li class="list-inline-item">
-                      <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-white{% endif %} nav-link" href="{% url 'view_cart' %}">
+                      <a class="{% if grand_total %}text-success{% else %}text-white{% endif %} nav-link" href="{% url 'view_cart' %}">
                           <div class="text-center">
                               <div><i class="fas fa-shopping-basket fa-lg"></i></div>
                               <p class="my-0">
                                   {% if grand_total %}
-                                    SEK {{ grand_total|floatformat:2 }}
+                                    {{ grand_total|floatformat:2 }} SEK
                                   {% else %}
-                                    SEK 0.00
+                                    0.00 SEK
                                   {% endif %}
                               </p>
                           </div>
@@ -110,7 +110,7 @@
     {% block page_header %}
     {% endblock %}
 
-    <div class="main-content" style="padding-top: 120px;">
+    <div class="main-content">
         {% block content %}
         {% endblock %}
     </div>

@@ -31,6 +31,7 @@ body {
 
 .main-content {
     flex-grow: 1;
+    padding-top: 0px;
 }
 
 .logo-image {
@@ -86,6 +87,7 @@ body {
 	z-index: -1;
 }
 .navbar {
+    border-bottom: 1px solid gray;
     width: 100%;
 }
 
@@ -170,6 +172,10 @@ input, textarea, select {
     width: 30px;
   }
 
+.all-auth-base {
+    padding-top: 0px;
+}
+
 /* -------------------------------- Media Queries */
 
 /* Slightly larger container on xl screens */
@@ -200,6 +206,14 @@ input, textarea, select {
   @media (max-width: 768px) {
     .card-body {
       padding: 20px; /* Adjust padding for smaller screens */
+    }
+  }
+
+  /* MIN WIDTH 768 spec for desktop header */
+  @media (min-width: 768px) {
+    .main-content {
+        flex-grow: 1;
+        padding-top: 100px;
     }
   }
   
