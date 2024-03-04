@@ -43,6 +43,14 @@ def edit_review(request, review_id):
     })
 
 
+@login_required
+def delete_review(request, review_id):
+    review = get_object_or_404(Review, id=review_id, user=request.user)
+    product_id = review.product.id
+    review.delete()
+    return redirect('product_info', product_id=product_id)
+
+
 def all_reviews(request):
     reviews = Review.objects.all()
     return render(request, 'reviews/all_reviews.html', {'reviews': reviews})

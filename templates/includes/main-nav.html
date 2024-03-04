@@ -18,23 +18,12 @@
 
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle text-black" href="#" id="productsDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
-            Explore Products
+            Explore Cosmos Products
           </a>
           <ul class="dropdown-menu" aria-labelledby="productsDropdown">
             <li><a class="dropdown-item" href="{% url 'products' %}?category=accessories">Accessories</a></li>
             <li><a class="dropdown-item" href="{% url 'products' %}?category=clearance">On sale</a></li>
             <li><a class="dropdown-item" href="{% url 'products' %}">All Products</a></li>
-          </ul>
-        </li>
-
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle text-black" href="#" id="sortDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
-            Sort Products
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="sortDropdown">
-            <li><a class="dropdown-item" href="{% url 'products' %}?sort=price&direction=asc">Price (Low to High)</a></li>
-            <li><a class="dropdown-item" href="{% url 'products' %}?sort=price&direction=desc">Price (High to Low)</a></li>
-            <li><a class="dropdown-item" href="{% url 'products' %}?sort=rating&direction=desc">Rating (High to Low)</a></li>
           </ul>
         </li>
         <li class="nav-item dropdown">
