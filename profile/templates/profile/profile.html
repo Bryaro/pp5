@@ -7,21 +7,20 @@
         <h2>My Profile</h2>
         <form action="{% url 'delete_account' %}" method="post">
             {% csrf_token %}
-            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteAccountModal">
+            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteAccountModal">
                 Delete My Account
-              </button>
+            </button>
         </form>
     </div>
     
     <h3>My Order History</h3>
-    <!-- Check if there are any orders -->
     {% if orders %}
     <div class="list-group">
         {% for order in orders %}
         <div class="list-group-item list-group-item-action flex-column align-items-start mb-3">
             <div class="d-flex w-100 justify-content-between">
                 <h5 class="mb-1">Order: #{{ order.order_number|slice:":7" }}</h5>
-                <small>Date: {{ order.date }}</small>
+                <small>Date: {{ order.date|date:"D, d M Y" }}</small>
             </div>
             <p class="mb-1"><strong>Order Total:</strong> {{ order.grand_total }} SEK</p>
             <a href="{% url 'order_detail' order.order_number %}" class="btn btn-sm btn-outline-primary">View</a>
@@ -32,7 +31,6 @@
     <p>No orders yet.</p>
     {% endif %}
 </div>
-<!-- Delete Account Modal -->
 <div class="modal fade" id="deleteAccountModal" tabindex="-1" role="dialog" aria-labelledby="deleteAccountModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
