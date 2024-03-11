@@ -19,7 +19,7 @@
         {% for order in orders %}
         <div class="list-group-item list-group-item-action flex-column align-items-start mb-3">
             <div class="d-flex w-100 justify-content-between">
-                <h5 class="mb-1">Order: #{{ order.order_number|slice:":7" }}</h5>
+                <h5 class="mb-1">Order: #{{ order.order_number|slice:":5" }}</h5>
                 <small>Date: {{ order.date|date:"D, d M Y" }}</small>
             </div>
             <p class="mb-1"><strong>Order Total:</strong> {{ order.grand_total }} SEK</p>

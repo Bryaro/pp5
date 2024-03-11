@@ -4,6 +4,7 @@ from products.models import Product
 from django.contrib.auth.decorators import login_required
 from .models import Review
 from django.db.models import Avg
+from checkout.models import Order
 
 @login_required
 def add_review(request, product_id):
@@ -63,3 +64,11 @@ def product_average_rate_calculator(product_id):
     if average_rating is not None:
         product.rating = round(average_rating, 2)
         product.save()
+
+
+def profile(request):
+    orders = Order.objects.filter(email=request.user.email).order_by('-date')  # Use 'user=request.user' if you've linked the Order model directly to the User model
+    context = {
+        'orders': orders,
+    }
+    return render(request, 'profile.html', context)

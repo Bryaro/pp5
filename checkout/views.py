@@ -12,6 +12,7 @@ from django.conf import settings
 import stripe
 import json
 
+
 @require_POST
 def cache_checkout_data(request):
     try:
@@ -127,7 +128,6 @@ def checkout_success(request, order_number):
         Your order number is {order_number}. A confirmation \
         email will be sent to {order.email}.')
     
-    # Send order confirmation email
     subject = 'Order Confirmation'
     message = f'Thank you for your order {order.full_name}. Your order number is {order.order_number}.'
     email_from = settings.DEFAULT_FROM_EMAIL
