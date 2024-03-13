@@ -4,9 +4,12 @@
 <html lang="en">
   <head>
     {% block meta %}
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Discover the universe on your wrist with Cosmos Watches - featuring exclusive collections like Neptune, Jupiter, BigBang, and more. Explore our premium space-themed timepieces today.">
+    <meta name="keywords" content="Cosmos Watches, space-themed watches, Neptune watch, Jupiter watch, BigBang watch, Supernova watch, Hypernova, Uranus, Saturn, Planet-X, Phobos, Deimos, Mars, Venus, luxury watches, unique watches">
     {% endblock %}
 
     {% block extra_meta %}
@@ -35,7 +38,7 @@
     {% block extra_js %}
     {% endblock %}
 
-    <title>Cosmos Watches! {% block extra_title %} {% endblock %}</title>
+    <title>{% block title %}Cosmos Watches: Explore Our Space-Themed Timepieces{% endblock %} | Your Universe on Your Wrist</title>
   </head>
   <body>
     <header class="container-fluid fixed-top header-content">

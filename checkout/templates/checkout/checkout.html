@@ -64,7 +64,8 @@
                     </div>
                     <div class="col-3">
                         <p class="my-0"> 👨‍🚀 Free 🪐 {{ delivery | floatformat:2 }}</p>
-                        <p class="my-0">SEK {{ total | floatformat:2 }}</p>
+                        <p class="my-0">{{ total | floatformat:2 }} SEK
+                        </p>
                     </div>
                 </div>
             </div>
@@ -75,7 +76,15 @@
                     <fieldset class="rounded px-3 mb-5">
                         <legend class="fieldset-label small text-black px-2 w-auto">Details</legend>
                         {{ order_form.full_name | as_crispy_field }}
-                        {{ order_form.email | as_crispy_field }}
+                        {% if user.is_authenticated %}
+                        <!-- Display the email field as read-only for authenticated users -->
+                        <input type="email" name="email" value="{{ user.email }}" readonly class="form-control" id="id_email">
+                        <!-- Optionally, include a hidden field to ensure the email is submitted with the form -->
+                        <input type="hidden" name="email" value="{{ user.email }}">
+                        {% else %}
+                            <!-- For non-authenticated users, render the email field normally -->
+                            {{ order_form.email | as_crispy_field }}
+                        {% endif %}
                     </fieldset>
                     <fieldset class="rounded px-3 mb-5">
                         <legend class="fieldset-label small text-black px-2 w-auto">Delivery</legend>
