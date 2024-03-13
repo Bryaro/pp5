@@ -37,3 +37,9 @@ Visit the live demo on Heroku: [Cosmos Watches Live Demo](https://pp5-bryar-4750
 1. Clone the repository to your local machine:
    ```sh
    git clone https://github.com/Bryaro/pp5.git
+
+
+### Marketing
+#### Socialmedia
+facebook ![Facebook](/media/documentations/facebook_screenshot.png)
+Instagram ![Facebook](/media/documentations/instagram_screenshot.png)
