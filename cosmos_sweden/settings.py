@@ -33,7 +33,7 @@ ALLOWED_HOSTS = ['8000-bryaro-pp5-k2tlzmd5ekc.ws-us110.gitpod.io', '8000-bryaro-
 
 CSRF_TRUSTED_ORIGINS = [
     'https://8000-bryaro-pp5-k2tlzmd5ekc.ws-eu108.gitpod.io',
-    'https://8000-bryaro-pp5-k2tlzmd5ekc.ws-us108.gitpod.io'
+    'https://8000-bryaro-pp5-k2tlzmd5ekc.ws-us110.gitpod.io'
 ]
 # Application definition
 
@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     'profile',
     'reviews',
     'blog',
+    'newsletter',
 
     'crispy_forms',
     'storages',

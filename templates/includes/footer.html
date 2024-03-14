@@ -1,15 +1,32 @@
 <footer class="footer bg-black text-white mt-3">
     <div class="container text-center py-3">
         <div class="social-links">
-            <!-- Facebook Link -->
+            <!-- Social Links -->
             <a href="https://www.facebook.com/cosmossweden/" target="_blank" rel="noopener" class="text-white mx-2">
                 <i class="fab fa-facebook"></i> Facebook
             </a>
-            <!-- Instagram Link -->
             <a href="https://www.instagram.com/cosmos_sweden/" target="_blank" rel="noopener" class="text-white mx-2">
                 <i class="fab fa-instagram"></i> Instagram
             </a>
         </div>
         &copy; {{ now.year }} Cosmos Watches. All Rights Reserved.
+    </div>
+    <div class="newsletter-signup py-3">
+        <form action="{% url 'newsletter_signup' %}" method="post">
+            {% csrf_token %}
+            <h5>Subscribe to our Newsletter</h5>
+            <div class="form-group">
+                <input type="email" name="email" class="form-control" placeholder="Enter your email" aria-label="Email Address">
+            </div>
+            <div class="form-group">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="subscribeCheck">
+                    <label class="form-check-label" for="subscribeCheck">
+                        I agree to receive newsletters and promotional emails.
+                    </label>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Subscribe</button>
+        </form>
     </div>
 </footer>
