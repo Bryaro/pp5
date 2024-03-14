@@ -1,6 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from .forms import ContactForm
+from django.core.mail import send_mail
+from django.contrib import messages
+from django.conf import settings 
 
-# Create your views here.
 
 def index(request):
     """ View to return idnex page """
@@ -13,3 +16,35 @@ def about(request):
 def faq(request):
     """ View to FAQ page """
     return render(request, 'home/faq.html')
+
+def contact(request):
+    """ View to Contact page """
+    return render(request, 'home/contact.html')
+
+
+def contact(request):
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            name = form.cleaned_data['name']
+            email = form.cleaned_data['email']
+            message = form.cleaned_data['message']
+
+            subject = f"Contact Form Submission from {name}"
+            message = f"From: {name}\nEmail: {email}\n\nMessage:\n{message}"
+            recipient_list = [settings.DEFAULT_FROM_EMAIL]
+
+            send_mail(
+                subject,
+                message,
+                email,
+                recipient_list,
+                fail_silently=False,
+            )
+
+            messages.success(request, 'Your message has been sent. Thank you!')
+            return redirect('home')
+    else:
+        form = ContactForm()
+
+    return render(request, 'home/contact.html', {'form': form})
