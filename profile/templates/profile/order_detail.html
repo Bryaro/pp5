@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block content %}
-<div class="container bg-white">
+<div class="container bg-white mt-5 pt-5">
     <h2>Order: #{{ order.order_number|slice:":5" }}</h2>
     <p><strong>Date:</strong> {{ order.date }}</p>
     <p><strong>Full Name:</strong> {{ order.full_name }}</p>
@@ -23,7 +23,7 @@
         </ul>
     </div>
     <div style="clear: both;"></div>
-    <a href="{% url 'profile' %}">Back to Profile</a>
-    <a href="{% url 'home' %}">Back to Profile</a>
+    <a href="{% url 'profile' %}" class="btn btn-info">Back to Profile</a>
+    <a href="{% url 'home' %}" class="btn btn-black">Back home</a>
 </div>
 {% endblock %}
