@@ -170,7 +170,7 @@ input, textarea, select {
 }
 
 .password-change {
-    width: 300px;
+    width: fit-content;
 }
 
 /* -------------------------------- Media Queries */
