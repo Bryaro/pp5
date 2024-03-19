@@ -165,9 +165,13 @@ input, textarea, select {
     box-sizing: border-box;
 }
   
-  #image-clear_id {
+#image-clear_id {
     width: 30px;
-  }
+}
+
+.password-change {
+    width: 300px;
+}
 
 /* -------------------------------- Media Queries */
 
