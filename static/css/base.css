@@ -177,7 +177,10 @@ input, textarea, select {
 }
 
 .password-change {
-    width: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
 }
 
 /* -------------------------------- Media Queries */
