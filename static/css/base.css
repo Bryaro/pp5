@@ -183,6 +183,11 @@ input, textarea, select {
     height: 100%;
 }
 
+.container {
+    justify-content: center;
+    width: 400px;
+}
+
 /* -------------------------------- Media Queries */
 
 /* Slightly larger container on xl screens */
@@ -221,6 +226,11 @@ input, textarea, select {
     .main-content {
         flex-grow: 1;
         padding-top: 100px;
+    }
+
+    .container {
+        justify-content: center;
+        width: 800px;
     }
   }
   

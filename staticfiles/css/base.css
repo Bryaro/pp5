@@ -175,6 +175,11 @@ input, textarea, select {
     align-items: center;
     height: 100%;
 }
+
+.container {
+    justify-content: center;
+    width: 400px;
+}
 /* -------------------------------- Media Queries */
 
 /* Slightly larger container on xl screens */
@@ -205,6 +210,11 @@ input, textarea, select {
   @media (max-width: 768px) {
     .card-body {
       padding: 20px; /* Adjust padding for smaller screens */
+    }
+    
+    .container {
+        justify-content: center;
+        width: 800px;
     }
   }
   
