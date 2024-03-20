@@ -169,13 +169,6 @@ input, textarea, select {
     width: 30px;
 }
 
-.password-change {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-}
-
 .container {
     justify-content: center;
     width: 400px;
@@ -211,7 +204,7 @@ input, textarea, select {
     .card-body {
       padding: 20px; /* Adjust padding for smaller screens */
     }
-    
+
     .container {
         justify-content: center;
         width: 800px;

@@ -176,13 +176,6 @@ input, textarea, select {
     padding-top: 0px;
 }
 
-.password-change {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-}
-
 .container {
     justify-content: center;
     width: 400px;
