@@ -173,6 +173,10 @@ input, textarea, select {
     justify-content: center;
     width: 400px;
 }
+
+.alert-success {
+    margin-top: 50px;
+}
 /* -------------------------------- Media Queries */
 
 /* Slightly larger container on xl screens */
