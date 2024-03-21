@@ -129,13 +129,11 @@
 {% include 'products/includes/quantity_input_script.html' %}
 
 <script type="text/javascript">
-    // New functionality for increment/decrement icons
     $('.increment-qty, .decrement-qty').click(function(e) {
         var form = $(this).closest('.update-form');
         form.submit();
     });
 
-    // Remove item and reload on click
     $('.remove-item').click(function(e) {
         var csrfToken = "{{ csrf_token }}";
         var itemId = $(this).attr('id').split('remove_')[1];
@@ -147,6 +145,6 @@
          .done(function() {
              location.reload();
          });
-    })
+    });
 </script>
 {% endblock %}
