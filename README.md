@@ -72,3 +72,10 @@ By integrating our e-commerce business model with these targeted marketing strat
 
 We are constantly exploring new technologies and marketing approaches to enhance our online presence and customer engagement. Augmented reality (AR) viewings, virtual try-ons, and interactive online events are among the innovations we are considering to offer an even more engaging and personalized shopping experience.
 
+...
+
+## Testing
+
+To ensure the Cosmos Watches platform meets our high standards for reliability and user experience, we've outlined comprehensive testing guidelines. You can find these by visiting our [Testing Documentation](testing.md).
+
+...
