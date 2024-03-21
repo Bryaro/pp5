@@ -37,6 +37,13 @@
     {% endblock %}
 
     {% block extra_js %}
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            setTimeout(function() {
+                $('.alert').fadeOut('fast');
+            }, 3000);
+        });
+    </script>
     {% endblock %}
 
     <title>{% block title %}Cosmos Watches: Explore Our Space-Themed Timepieces{% endblock %} | Your Universe on Your Wrist</title>
@@ -113,7 +120,7 @@
     </header>
   
     {% if messages %}
-    <div class="container mt-3">
+    <div class="message-container" style="position: fixed; top: 20px; left: 50%; transform: translateX(-50%); z-index: 1050; width: auto; padding: 0 20px;">
         {% for message in messages %}
         <div class="alert alert-{{ message.tags }}">
             {{ message }}
