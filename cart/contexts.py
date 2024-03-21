@@ -3,7 +3,11 @@ from products.models import Product
 
 
 def cart_contents(request):
-
+    """
+    Context processor function to make the cart's contents available
+    to all templates across the application. Calculates the total cost and
+    the total number of items in the cart.
+    """
     cart_items = []
     total = 0
     product_count = 0

@@ -3,16 +3,25 @@ from .models import Order
 
 
 class OrderForm(forms.ModelForm):
+    """
+    A form for creating and updating Orders.
+
+    This form is linked to the Order model and
+    specifies which fields should be included in the form.
+    It can customize form initialization to set placeholders,
+    can apply CSS classes, and manage the autofocus
+    of input fields to improve user experience.
+    """
     class Meta:
         model = Order
         fields = (
-            'full_name', 
-            'email', 
+            'full_name',
+            'email',
             'phone_number',
-            'street_address1', 
+            'street_address1',
             'street_address2',
-            'town_or_city', 
-            'postcode', 
+            'town_or_city',
+            'postcode',
             'country',
             'county',
         )
@@ -20,7 +29,14 @@ class OrderForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         """
         Initialize placeholders and classes, eliminate automatically generated
-        labels, and enable autofocus on the initial field.
+        labels, and set autofocus on the first field.
+
+        This method enhances form usability
+        by setting user-friendly placeholders,
+        applying custom CSS classes for styling,
+        and removing field labels for a cleaner appearance.
+        The autofocus is set on the 'full_name' field
+        to guide the user on form entry.
         """
         super().__init__(*args, **kwargs)
         placeholders = {

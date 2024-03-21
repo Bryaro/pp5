@@ -6,12 +6,17 @@ from .models import Product, Category
 from django.contrib.auth.decorators import login_required, user_passes_test
 from .forms import ProductForm
 
+
 def staff_or_superuser_check(user):
+    """Check if the user is staff or a superuser."""
     return user.is_staff or user.is_superuser
 
-def all_products(request):
-    """ View to show all products and search for sorting queries """
 
+def all_products(request):
+    """
+    Display all products, handle sorting, search queries,
+    and category filtering.
+    """
     products = Product.objects.all()
     query = None
     categories = None
@@ -31,7 +36,7 @@ def all_products(request):
                 if direction == 'desc':
                     sortkey = f'-{sortkey}'
             products = products.order_by(sortkey)
-            
+
         if 'category' in request.GET:
             categories = request.GET['category'].split(',')
             products = products.filter(category__name__in=categories)
@@ -42,10 +47,11 @@ def all_products(request):
             if not query:
                 messages.error(request, "You must enter a key word to search")
                 return redirect(reverse('products'))
-            
-            queries = Q(name__icontains=query) | Q(description__icontains=query)
+
+            queries = Q(
+                name__icontains=query) | Q(description__icontains=query)
             products = products.filter(queries)
-            
+
     current_sorting = f'{sort}_{direction}'
 
     context = {
@@ -61,7 +67,7 @@ def product_info(request, product_id):
     """ View to show product information when product is opened """
 
     product = get_object_or_404(Product, pk=product_id)
-    
+
     context = {
         'product': product,
     }
@@ -72,6 +78,9 @@ def product_info(request, product_id):
 @login_required
 @user_passes_test(staff_or_superuser_check)
 def add_product(request):
+    """
+    Allow staff or superusers to add a new product to the store.
+    """
     if request.method == 'POST':
         form = ProductForm(request.POST, request.FILES)
         if form.is_valid():
@@ -81,11 +90,17 @@ def add_product(request):
         form = ProductForm()
     # simply to query all products for now, till full CRUD is checked
     products = Product.objects.all()
-    return render(request, 'products/add_product.html', {'form': form, 'products': products})
+    return render(
+        request, 'products/add_product.html', {
+            'form': form, 'products': products})
+
 
 @login_required
 @user_passes_test(staff_or_superuser_check)
 def edit_product(request, product_id):
+    """
+    Allow staff or superusers to edit an existing product's details.
+    """
     product = get_object_or_404(Product, id=product_id)
     if request.method == 'POST':
         form = ProductForm(request.POST, request.FILES, instance=product)
@@ -94,16 +109,20 @@ def edit_product(request, product_id):
             return redirect('add_product')
     else:
         form = ProductForm(instance=product)
-    
+
     context = {
         'form': form,
         'product': product,
     }
     return render(request, 'products/edit_product.html', context)
 
+
 @login_required
 @user_passes_test(staff_or_superuser_check)
 def delete_product(request, product_id):
+    """
+    Allow staff or superusers to delete a product from the store.
+    """
     product = get_object_or_404(Product, id=product_id)
     product.delete()
     messages.success(request, 'Product deleted successfully!')

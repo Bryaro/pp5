@@ -1,7 +1,5 @@
 from django.shortcuts import render, redirect, reverse, HttpResponse
 
-# Create your views here.
-
 
 def view_cart(request):
     """ View cart to render users added items """
@@ -56,7 +54,6 @@ def adjust_cart(request, item_id):
 
 def remove_from_cart(request, item_id):
     """Remove the item from the shopping cart"""
-
     try:
         size = None
         if 'product_size' in request.POST:

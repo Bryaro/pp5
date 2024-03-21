@@ -1,4 +1,5 @@
-from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpResponse
+from django.shortcuts import render, redirect, reverse
+from django.shortcuts import get_object_or_404, HttpResponse
 from django.views.decorators.http import require_POST
 from django.contrib import messages
 from django.conf import settings
@@ -8,13 +9,20 @@ from .models import Order, OrderLineItem
 from products.models import Product
 from cart.contexts import cart_contents
 from django.core.mail import send_mail
-from django.conf import settings
 import stripe
 import json
 
 
 @require_POST
 def cache_checkout_data(request):
+    """
+    Stores checkout data in payment intent metadata,
+    before completing the purchase.
+
+    This includes the cart contents,
+    whether the user wishes to save their information,
+    and the username for authenticated users.
+    """
     try:
         pid = request.POST.get('client_secret').split('_secret')[0]
         stripe.api_key = settings.STRIPE_SECRET_KEY
@@ -32,6 +40,14 @@ def cache_checkout_data(request):
 
 @login_required
 def checkout(request):
+    """
+    Renders the checkout page, processes the form submission,
+    and creates an Order instance.
+
+    If the POST request is valid, it saves the order and its line items,
+    and redirects to checkout success.
+    Handles creation of the stripe intent for payment as well.
+    """
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
 
@@ -67,7 +83,8 @@ def checkout(request):
                         )
                         order_line_item.save()
                     else:
-                        for size, quantity in item_data['items_by_size'].items():
+                        for size, quantity in item_data[
+                             'items_by_size'].items():
                             order_line_item = OrderLineItem(
                                 order=order,
                                 product=product,
@@ -77,21 +94,22 @@ def checkout(request):
                             order_line_item.save()
                 except Product.DoesNotExist:
                     messages.error(request, (
-                        "One of the products in your cart wasn't found in our database. "
+                        "One of the products cart wasn't found in database."
                         "Please call us for assistance!")
                     )
                     order.delete()
                     return redirect(reverse('view_cart'))
 
             request.session['save_info'] = 'save-info' in request.POST
-            return redirect(reverse('checkout_success', args=[order.order_number]))
+            return redirect(
+                reverse('checkout_success', args=[order.order_number]))
         else:
             messages.error(request, 'There was an error with your form. \
                 Please double check your information.')
     else:
         cart = request.session.get('cart', {})
         if not cart:
-            messages.error(request, "There's nothing in your cart at the moment")
+            messages.error(request, "There's nothing in your cart yet")
             return redirect(reverse('products'))
 
         current_cart = cart_contents(request)
@@ -127,16 +145,20 @@ def checkout(request):
 
 def checkout_success(request, order_number):
     """
-    Handle successful checkouts
+    Handles successful checkouts,
+    notifying the user and sending a confirmation email.
+
+    Clears the cart session after successful order placement.
     """
     save_info = request.session.get('save_info')
     order = get_object_or_404(Order, order_number=order_number)
     messages.success(request, f'Order successfully processed! \
         Your order number is {order_number}. A confirmation \
         email will be sent to {order.email}.')
-    
+
     subject = 'Order Confirmation'
-    message = f'Thank you for your order {order.full_name}. Your order number is {order.order_number}.'
+    message = f'Thank you for your order {
+        order.full_name}. Your order number is {order.order_number}.'
     email_from = settings.DEFAULT_FROM_EMAIL
     recipient_list = [order.email, ]
     send_mail(subject, message, email_from, recipient_list)

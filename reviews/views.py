@@ -6,8 +6,12 @@ from .models import Review
 from django.db.models import Avg
 from checkout.models import Order
 
+
 @login_required
 def add_review(request, product_id):
+    """
+    Allows a logged-in user to add a review for a product.
+    """
     product = get_object_or_404(Product, id=product_id)
     if request.method == 'POST':
         form = ReviewForm(request.POST, request.FILES)
@@ -21,11 +25,15 @@ def add_review(request, product_id):
     else:
         form = ReviewForm()
     star_range = range(1, 6)
-    return render(request, 'reviews/add_review.html', {'form': form, 'product': product})
+    return render(
+        request, 'reviews/add_review.html', {'form': form, 'product': product})
 
 
 @login_required
 def edit_review(request, review_id):
+    """
+    Allows a logged-in user to edit their own review.
+    """
     review = get_object_or_404(Review, id=review_id, user=request.user)
     product = review.product
     if request.method == 'POST':
@@ -36,7 +44,7 @@ def edit_review(request, review_id):
             return redirect('product_info', product_id=review.product.id)
     else:
         form = ReviewForm(instance=review)
-    
+
     return render(request, 'reviews/add_review.html', {
         'form': form,
         'product': product,
@@ -46,6 +54,9 @@ def edit_review(request, review_id):
 
 @login_required
 def delete_review(request, review_id):
+    """
+    Allows a logged-in user to delete their own review.
+    """
     review = get_object_or_404(Review, id=review_id, user=request.user)
     product_id = review.product.id
     review.delete()
@@ -53,21 +64,31 @@ def delete_review(request, review_id):
 
 
 def all_reviews(request):
+    """
+    Displays all reviews.
+    """
     reviews = Review.objects.all()
     return render(request, 'reviews/all_reviews.html', {'reviews': reviews})
 
 
 def product_average_rate_calculator(product_id):
+    """
+    Calculates and updates the average rating
+    for a product based on its reviews.
+    """
     product = Product.objects.get(pk=product_id)
     average_rating = product.reviews.aggregate(Avg('rating'))['rating__avg']
-    
+
     if average_rating is not None:
         product.rating = round(average_rating, 2)
         product.save()
 
 
 def profile(request):
-    orders = Order.objects.filter(email=request.user.email).order_by('-date')  # Use 'user=request.user' if you've linked the Order model directly to the User model
+    """
+    Displays the user's profile and their orders.
+    """
+    orders = Order.objects.filter(email=request.user.email).order_by('-date')
     context = {
         'orders': orders,
     }

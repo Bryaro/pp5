@@ -2,20 +2,23 @@ from django.shortcuts import render, redirect
 from .forms import ContactForm
 from django.core.mail import send_mail
 from django.contrib import messages
-from django.conf import settings 
+from django.conf import settings
 
 
 def index(request):
     """ View to return idnex page """
     return render(request, 'home/index.html')
 
+
 def about(request):
     """ View to about page """
     return render(request, 'home/about.html')
 
+
 def faq(request):
     """ View to FAQ page """
     return render(request, 'home/faq.html')
+
 
 def contact(request):
     """ View to Contact page """
@@ -23,6 +26,12 @@ def contact(request):
 
 
 def contact(request):
+    """
+    Handles the contact page display and form submission.
+
+    On POST, sends an email with the form data. On success,
+    redirects to the home page with a success message.
+    """
     if request.method == 'POST':
         form = ContactForm(request.POST)
         if form.is_valid():
