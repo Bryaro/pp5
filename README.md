@@ -11,11 +11,21 @@ Visit the live demo on Heroku: [Cosmos Watches Live Demo](https://pp5-bryar-4750
 
 ## Features
 
-- Responsive web design ensuring the website is accessible on any device.
-- User authentication for secure login and registration.
-- E-commerce functionality, including a shopping cart and checkout system.
-- Blog section for the latest news and updates about our watches.
-- Admin panel for product and post management.
+- **Responsive Web Design:** Ensures the website is accessible and visually appealing on any device, from desktops to smartphones.
+- **User Authentication:** Secure login and registration functionalities for users to manage their profiles and view personal order history.
+- **E-commerce Functionality:** Including a shopping cart and checkout system, allowing users to browse, add products to their cart, and securely complete their purchases.
+- **Product Management:** Admin panel for adding, editing, and deleting products, facilitating easy management of product listings.
+- **Order history:** Enables user to view order history.
+- **Blog Section:** For the latest news, updates, and informative articles about watches and space exploration, enhancing engagement with the brand.
+- **Product Reviews and Ratings:** Customers can leave reviews and rate products they've purchased, aiding others in making informed decisions.
+- **Search Functionality:** Users can easily find products through a search bar, improving the shopping experience.
+- **Detailed Product Pages:** Offering comprehensive information, including images, descriptions, specifications, and customer reviews.
+- **Secure Payment Processing:** Integrates Stripe for safe and secure payment transactions.
+- **Personal and Payment Information Encryption:** To protect user privacy and enhance security during transactions.
+- **Social Media Integration:** For marketing and user engagement, including direct links to Facebook and Instagram.
+- **Email Newsletter Subscription:** Allowing users to subscribe to updates, offers, and news.
+
+
 
 ## Technologies Used
 
@@ -26,6 +36,7 @@ Visit the live demo on Heroku: [Cosmos Watches Live Demo](https://pp5-bryar-4750
 - Stripe for payment processing
 - AWS S3 for static and media file storage
 - Heroku for deployment
+- Mailchimp for e-mail Newsletter 
 
 ## Getting Started
 

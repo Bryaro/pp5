@@ -4,13 +4,23 @@ from django.conf import settings
 
 
 class Category(models.Model):
+    """
+    Represents a category for grouping blog posts.
+    Each category has a name and an optional description.
+    """
     name = models.CharField(max_length=100)
     description = models.TextField(blank=True)
 
     def __str__(self):
         return self.name
 
+
 class Post(models.Model):
+    """
+    Represents a blog post.
+    Each post has a title, body, creation and modification timestamps,
+    an optional image, and may be associated with multiple categories and an author.
+    """
     title = models.CharField(max_length=200)
     body = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
@@ -22,9 +32,20 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
+
 class Comment(models.Model):
-    post = models.ForeignKey('Post', on_delete=models.CASCADE, related_name='comments')
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='comments', null=True)
+    """
+    Represents a comment made by a user on a blog post.
+    Each comment is linked to a specific post and user,
+    contains a body of text, and has a timestamp indicating when it was created.
+    The comments are ordered by their creation timestamp.
+    """
+    post = models.ForeignKey(
+        'Post', on_delete=models.CASCADE, related_name='comments')
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name='comments', null=True)
     body = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
 
