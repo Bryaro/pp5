@@ -5,6 +5,9 @@ Welcome to Cosmos Watches, a Django-based web application that brings the univer
 ## Live Demo
 
 Visit the live demo on Heroku: [Cosmos Watches Live Demo](https://pp5-bryar-475062670c00.herokuapp.com/)
+![](/documentation/homepage.png)
+---
+![](/documentation/responsive_views.png)
 
 ## Features
 
