@@ -12,6 +12,12 @@ body {
     flex-direction: column; /* Stack children vertically */
 }
 
+.bg-dark-75 {
+    background-color: rgba(0, 0, 0, 0.25);
+    width: 300px;
+    padding: 0 10px;
+}
+
 /* from Bulma */
 .icon {
     align-items: center;
@@ -19,6 +25,17 @@ body {
     justify-content: center;
     height: 1.5rem;
     width: 1.5rem;
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
 }
 
 .logo-font {
@@ -47,7 +64,7 @@ body {
 .shop-now-button {
     background: black;
     color: white;
-    min-width: 260px;
+    min-width: 300px;
 }
 
 .btn-black {
@@ -136,6 +153,10 @@ a.category-badge > span.badge:hover {
     cursor: pointer;
 }
 
+.footer-header {
+    font-size: 100%;
+    font-weight: bolder;
+}
 
 /* 404 Page Specific Styles */
 .error-404 {
