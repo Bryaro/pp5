@@ -96,10 +96,30 @@ The FAQ section of the Cosmos Watches website provides answers to general questi
 
 ---
 
-![](/documentation/website_FAQ.png)
+![](/documentation/website_contact.png)
+The contact page on the Cosmos Watches website provides a simple form for visitors to fill out their name, email, and message to reach out to the brand directly. It's designed for customer inquiries, feedback, or any other communications users wish to have with the company. 
 
+---
 
+![](/documentation/website_contact_sent.png)
+When the contact form on the website is submitted, the server processes the submitted information to send an email with the sender's name, email address, and message content to the designated recipient email set in the website's settings. Upon successful email dispatch, a success message is displayed to the user, confirming the message has been sent, and then redirects the user to the home page. This process provides a straightforward way for users to communicate with the site administrators or support team.
 
+---
+
+![](/documentation/website_add_product.png)
+same page if scrolled down
+![](/documentation/website_exising_products.png)
+The product addition page on the Cosmos Watches website is designed for administrators to add new items to their catalog. This function is integral for maintaining and updating the product offerings, in the futre even ensuring the website reflects the latest inventory. Access is restricted to ensure that only authorized(superuser/admin) personnel can make changes to the product listings, safeguarding the integrity of the website's content. For detailed operations, users must log in with the appropriate credentials.
+
+---
+
+![](/documentation/website_edit_product.png)
+The page for editing a product at the provided URL requires user authentication, indicating that modifications to product details are restricted to authorized users. This setup ensures that product information, such as descriptions, pricing, and images, can be updated or corrected by administrators or staff, maintaining the accuracy and relevance of the website's offerings. For access to this feature, appropriate login credentials are necessary.
+
+---
+
+![](/documentation/mailChimp.png)
+This is an interface from the Mailchimp service, which is a marketing automation platform and an email marketing service. In the context of the Cosmos Watches website, when users subscribe to the site, their information is automatically saved in the Mailchimp audience list. This allows the website's superuser and admin to manage subscriber information, create segments for targeted campaigns, and handle communications effectively. This integration allows for streamlined communication and marketing efforts, directly reaching out to interested users with updates, promotions, and more.
 
 ### Wireframe balsamic
 Main
