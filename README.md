@@ -23,8 +23,7 @@ Visit the live demo on Heroku: [Cosmos Watches Live Demo](https://pp5-bryar-4750
 - **Secure Payment Processing:** Integrates Stripe for safe and secure payment transactions.
 - **Personal and Payment Information Encryption:** To protect user privacy and enhance security during transactions.
 - **Social Media Integration:** For marketing and user engagement, including direct links to Facebook and Instagram.
-- **Email Newsletter Subscription:** Allowing users to subscribe to updates, offers, and news.
-
+- **Email Newsletter Subscription:** Allowing users to subscribe to updates, offers, and news etc.
 
 
 ## Technologies Used
@@ -44,7 +43,7 @@ Visit the live demo on Heroku: [Cosmos Watches Live Demo](https://pp5-bryar-4750
 
 - Python 3.8 or later
 - pip
-- A virtual environment (recommended)
+- A virtual environment
 
 ### Installation
 
@@ -89,7 +88,8 @@ By integrating our e-commerce business model with these targeted marketing strat
 
 We are constantly exploring new technologies and marketing approaches to enhance our online presence and customer engagement. Augmented reality (AR) viewings, virtual try-ons, and interactive online events are among the innovations we are considering to offer an even more engaging and personalized shopping experience.
 
-
+## Color Scheme
+![](/documentation/color_scheme.png)
 
 ## Testing
 
