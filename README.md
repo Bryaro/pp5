@@ -62,6 +62,32 @@ Delete Product
 Delete Account
 ![](/documentation/balsamic_delete_Account.png)
 
+# Data Schema Description
+
+The data schema for the application encompasses several key models: `User`, `Category`, `Post`, `Comment`, `Order`, `OrderLineItem`, `Product`, and `Review`. Below is a brief overview of each model and its relationships.
+
+## Models and Relationships
+
+![](/documentation/database_scheme.png)
+
+- **User**: Represents users of the application. Users can author posts (`Post`), make comments (`Comment`), place orders (`Order`), and write reviews (`Review`).
+
+- **Category**: Categories can be associated with both blog posts (`Post`) and products (`Product`). This model facilitates grouping of posts and products into distinct categories.
+
+- **Post**: Blog posts authored by users. Each post can belong to multiple categories and has an `author`(superuser/and or admin) linking back to the `User` model.
+
+- **Comment**: Comments made on blog posts. Each comment is associated with a `Post` and a `User`.
+
+- **Order**: Orders placed by users, containing various `OrderLineItem`s. An order is linked to the user who placed it.
+
+- **OrderLineItem**: Represents individual items within an order. Each line item is linked to a `Product` and an `Order`.
+
+- **Product**: Products available for purchase. Each product belongs to a category and can have multiple reviews.
+
+- **Review**: Reviews written for products by users. Each review is linked to a `Product` and a `User`.
+
+This schema allows for a comprehensive representation of the application's data, supporting features like blogging, commenting, e-commerce, and user feedback.
+
 
 ## Technologies Used
 
