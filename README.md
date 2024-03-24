@@ -25,6 +25,43 @@ Visit the live demo on Heroku: [Cosmos Watches Live Demo](https://pp5-bryar-4750
 - **Social Media Integration:** For marketing and user engagement, including direct links to Facebook and Instagram.
 - **Email Newsletter Subscription:** Allowing users to subscribe to updates, offers, and news etc.
 
+### Wireframe balsamic
+Main
+![](/documentation/balsamic_MAIN.png)
+
+Products
+![](/documentation/balsamic_Products.png)
+
+Products Info
+![](/documentation/balsamic_Product_Info.png)
+
+Shopping Cart
+![](/documentation/balsamic_Shopping_cart.png)
+
+Pay Now
+![](/documentation/balsamic_paynow.png)
+
+Payment Confirmation
+![](/documentation/balsamic_pay_confirm.png)
+
+Profile Page
+![](/documentation/balsamic_Profile_Page.png)
+
+Order History
+![](/documentation/balsamic_Order_history.png)
+
+CRUD Product
+![](/documentation/balsamic_CRUD_product.png)
+
+Edit Product
+![](/documentation/balsamic_edit_product.png)
+
+Delete Product
+![](/documentation/balsamic_Delete_PRODUCT.png)
+
+Delete Account
+![](/documentation/balsamic_delete_Account.png)
+
 
 ## Technologies Used
 
