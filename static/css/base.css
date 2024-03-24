@@ -27,6 +27,10 @@ body {
     width: 1.5rem;
 }
 
+.d-inline-block {
+    width: inherit;
+}
+
 .visually-hidden {
     position: absolute;
     width: 1px;
