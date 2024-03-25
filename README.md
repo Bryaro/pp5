@@ -1,6 +1,14 @@
 # Cosmos Watches
 
 Welcome to Cosmos Watches, a Django-based web application that brings the universe to your wrist with our exclusive collection of space-themed timepieces. Explore our premium collections including Neptune, Jupiter, BigBang, and more, and discover your universe on your wrist today.
+git co
+This website is easy to use on any device, like your phone or computer, making sure everyone can have a good look around. It's safe to make an account, and once you do, you can keep track of what you buy and look at your past orders. Shopping is fun and straightforward here. You can add watches to a cart, check out securely, and even manage products if you're the admin/superuser.
+
+Besides shopping, there's also a section for blogs. This part has the latest news and cool stories about space and watches. You can learn a lot here and even leave reviews for the watches you buy to help others decide.
+
+Social media is a big deal for Cosmos Watches. I use their real Facebook and Instagram pages to talk to customers and share cool stuff since I earlier been the ownder of the Cosmos Watches Sweden, and this is making the website to feel more personal and connected to what people like.
+
+In short, the Cosmos Watches Sweden website is more than just a place to buy watches. It's a way to explore space themes through watches, get involved with the brand, and enjoy a smooth and secure shopping experience.
 
 ## Live Demo
 
@@ -31,7 +39,6 @@ The website's responsiveness across different devices was tested using TechSiniâ
 13. [Color Scheme](#color-scheme)
 14. [Contribution Guidelines](#contribution-guidelines)
 15. [Acknowledgments](#acknowledgments)
-16. [Contact Information](#contact-information)
 
 
 
@@ -66,53 +73,76 @@ The footer typically contains practical information and additional navigation li
 This section displays the user's selected items for purchase. Currently, it indicates that the cart is empty and provides an option to "Keep Shopping," which likely redirects users back to the product pages to continue browsing.
 
 ---
+Checkout form:
+![](/documentation/website_checkout_form.png)
+with pre-filled registered email
+
+---
+
+![](/documentation/website_shoppingcart.png)
+This section displays the user's selected items for purchase. Currently, it indicates that the cart is empty and provides an option to "Keep Shopping," which likely redirects users back to the product pages to continue browsing.
+
+---
 
 ![](/documentation/website_basket.png)
 When a product is added to the basket, the cart page displays the item(s), including details such as product name, quantity, price, and the total amount. It offers options to adjust the quantity, remove items, continue shopping, or proceed to checkout. The layout is designed to provide a clear summary of what's been selected for purchase, making it easy for users to review and manage their choices before finalizing their order.
 
 ---
 
+Payment and order confirmed:
+![](/documentation/website_shopping_confirmed.png)
+When the payment is confirmed
+
+---
+
+User Profile:
+![](/documentation/website_profile.png)
+
+---
+
+View order:
+![](/documentation/website_vewed_specific_order_hsitory.png)
+
+---
+Products:
 ![](/documentation/website_product.png)
 The products page on the Cosmos Watches website lists various space-themed timepieces and accessories. Items like the "Mars," "Phobos," and "Deimos" watches are featured, each with a price and customer rating. The page includes a sorting feature allowing viewers to organize products by price or rating. Accessories such as the "Cosmos Slide Card Holder" and "PYRAMID - Unisex cuff" are also available, showcasing a variety of options for customers interested in space-themed fashion.
 
 ---
-
+Product Info:
 ![](/documentation/website_product_info.png)
 The specific product page for the "Mars" watch at Cosmos Watches provides details about this space-themed timepiece. Inspired by the red planet, it features a robust design with a red dial and a durable case reflecting Mars' rugged terrain. It is marketed towards those with an adventurous spirit, priced at 1250.00 SEK, and has a customer rating of 5.00 out of 5.
 
 ---
-
+Add review:
 ![](/documentation/website_add_review.png)
 The page for adding a review for the "Mars" watch at Cosmos Watches is a login portal. To submit a review, users must first log in with their account credentials. This ensures that reviews are posted by verified users or purchasers, maintaining the authenticity of feedback on the website.
 
 ---
-
+Product Reviews
 ![](/documentation/website_current_product_reviews.png)
 Once a review is submitted for a product like the "Mars" watch on Cosmos Watches, it becomes visible on the product's page. This allows future customers to see real feedback from users who have purchased and experienced the watch, aiding them in making an informed decision.
 
 ---
-
+All Reviews
 ![](/documentation/website_all%20reviews.png)
 The reviews page on the Cosmos Watches website showcases customer feedback on various products. Reviews feature ratings, represented by filled rocket icons, and brief comments praising the products, such as watches and accessories, for their quality, design, and functionality. The page provides potential buyers with insights from previous customers, helping them make informed decisions about their purchases.
 
 ---
-
-![](/documentation/website_all%20reviews.png)
+Blog:
+![](/documentation/website_blog.png)
  The blog section contains articles related to space and time, aimed at enriching the reader's knowledge and connecting them to the thematic essence of the Cosmos Watches brand.
 
----
-
-![](/documentation/website_blog.png)
 One of the added post by superuser/admin: The blog post "Battery Replacement Guide for Cosmos Watches Sweden" offers a comprehensive tutorial on changing the battery of Cosmos watches, covering necessary tools, detailed steps for different back types, and advice on workspace setup, handling the battery safely, and disposal of the old battery. It also mentions the option of professional assistance for those who prefer it. Users can leave comment.
 
 ---
-
+Blog comments:
 ![](/documentation/website_blog_comment.png)
 The comment section beneath the blog post allows readers to share their thoughts, questions, or experiences related to the content of the "Battery Replacement Guide for Cosmos Watches Sweden." It's a space for community engagement and interaction with the brand, providing valuable feedback and additional insights.
 
 ---
 
-![](/documentation/)
+![](/documentation/website_blog.png)
 The comment section beneath the blog post allows readers to share their thoughts, questions, or experiences related to the content of the "Battery Replacement Guide for Cosmos Watches Sweden." It's a space for community engagement and interaction with the brand, providing valuable feedback and additional insights.
 
 ---
@@ -137,19 +167,30 @@ same page if scrolled down
 ![](/documentation/website_exising_products.png)
 The product addition page on the Cosmos Watches website is designed for administrators to add new items to their catalog. This function is integral for maintaining and updating the product offerings, in the futre even ensuring the website reflects the latest inventory. Access is restricted to ensure that only authorized(superuser/admin) personnel can make changes to the product listings, safeguarding the integrity of the website's content. For detailed operations, users must log in with the appropriate credentials.
 
+![](/documentation/website_delete_product.png)
+
 ---
 
 ![](/documentation/website_edit_product.png)
 The page for editing a product at the provided URL requires user authentication, indicating that modifications to product details are restricted to authorized users. This setup ensures that product information, such as descriptions, pricing, and images, can be updated or corrected by administrators or staff, maintaining the accuracy and relevance of the website's offerings. For access to this feature, appropriate login credentials are necessary.
 
 ---
-
+subscribed:
 ![](/documentation/subscribed.png)
 
 ---
-
+mailChimp:
 ![](/documentation/mailChimp.png)
 This is an interface from the Mailchimp service, which is a marketing automation platform and an email marketing service. In the context of the Cosmos Watches website, when users subscribe to the site, their information is automatically saved in the Mailchimp audience list. This allows the website's superuser and admin to manage subscriber information, create segments for targeted campaigns, and handle communications effectively. This integration allows for streamlined communication and marketing efforts, directly reaching out to interested users with updates, promotions, and more.
+
+---
+Warning before deleting account:
+![](/documentation/website_delete_Account.png)
+
+---
+
+Warning before deleting Product:
+![](/documentation/website_delete_product.png)
 
 ### Wireframe balsamic
 Main
@@ -170,22 +211,21 @@ Pay Now
 Payment Confirmation
 ![](/documentation/balsamic_pay_confirm.png)
 
-Profile Page
+Profile Page:
 ![](/documentation/balsamic_Profile_Page.png)
 
 Order History
 ![](/documentation/balsamic_Order_history.png)
 
-CRUD Product
+CRUD Product:
 ![](/documentation/balsamic_CRUD_product.png)
 
-Edit Product
+Edit Product:
 ![](/documentation/balsamic_edit_product.png)
 
-Delete Product
-![](/documentation/balsamic_Delete_PRODUCT.png)
+---
 
-Delete Account
+Delete Account:
 ![](/documentation/balsamic_delete_Account.png)
 
 # Data Schema Description
@@ -232,6 +272,14 @@ This schema allows for a comprehensive representation of the application's data,
 - **ElephantSQL**: An add-on for providing a managed PostgreSQL database service, making database management simpler.
 - **dj-database-url**: A Django utility allows you to utilize the `DATABASE_URL` environment variable to configure your Django application's database.
 - **Psycopg2**: A PostgreSQL adapter for Python, enabling Django applications to interact with PostgreSQL databases.
+
+## Design and Visual Resources
+
+**Canva**: A user-friendly graphic design tool that played a crucial role in the creation of our homepage image and other visual elements throughout the site. Canva enabled us to design custom, eye-catching graphics that embody the essence of Cosmos Watches, contributing significantly to our site's aesthetic appeal and user experience.
+
+**Flaticon**: Our go-to resource for icons, where we sourced the rocket icon used across the website. Flaticon offers an extensive collection of icons, allowing us to add intuitive, thematic visual cues that enhance site navigation and the overall visual language of Cosmos Watches.
+
+These design and visual resources have been instrumental in bringing the thematic elements of Cosmos Watches to life, ensuring that our platform is not only functional but also visually engaging and aligned with our cosmic theme.
 
 These technologies and tools represent a robust stack for developing, deploying, and managing a dynamic, data-driven web application like Cosmos Watches.
 
