@@ -16,20 +16,20 @@ import os
 if os.path.isfile('env.py'):
     import env
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = os.getenv('SECRET_KEY', 'default_secret_key_if_not_set')
 SECRET_KEY = os.environ.get('SECRET_KEY', '')
 
 DEBUG = False
 
-ALLOWED_HOSTS = ['8000-bryaro-pp5-k2tlzmd5ekc.ws-us110.gitpod.io', '8000-bryaro-pp5-k2tlzmd5ekc.ws-eu108.gitpod.io', 'pp5-bryar-475062670c00.herokuapp.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = [
+    '8000-bryaro-pp5-k2tlzmd5ekc.ws-us110.gitpod.io',
+    '8000-bryaro-pp5-k2tlzmd5ekc.ws-eu108.gitpod.io',
+    'pp5-bryar-475062670c00.herokuapp.com', 'localhost', '127.0.0.1']
 
 CSRF_TRUSTED_ORIGINS = [
     'https://8000-bryaro-pp5-k2tlzmd5ekc.ws-eu108.gitpod.io',
@@ -49,7 +49,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    
+
     'home',
     'products',
     'cart',
@@ -112,12 +112,10 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 SITE_ID = 1
-# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
-# ACCOUNT_EMAIL_VERIFICATION = 'none'
 ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = True
 ACCOUNT_USERNAME_MIN_LENGTH = 4
 LOGIN_URL = '/accounts/login/'

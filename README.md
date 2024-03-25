@@ -9,6 +9,9 @@ Visit the live demo on Heroku: [Cosmos Watches Live Demo](https://pp5-bryar-4750
 ---
 ![](/documentation/responsive_views.png)
 
+### Responsiveness Testing
+The website's responsiveness across different devices was tested using TechSini’s Multi Device Website Mockup Generator. You can perform similar tests by visiting [Multi-Mockup](https://techsini.com/multi-mockup/).
+
 ## Features
 
 - **Responsive Web Design:** Ensures the website is accessible and visually appealing on any device, from desktops to smartphones.
@@ -101,7 +104,7 @@ The contact page on the Cosmos Watches website provides a simple form for visito
 
 ---
 
-![](/documentation/website_contact_sent.png)
+![](/documentation/website_message_sent.png)
 When the contact form on the website is submitted, the server processes the submitted information to send an email with the sender's name, email address, and message content to the designated recipient email set in the website's settings. Upon successful email dispatch, a success message is displayed to the user, confirming the message has been sent, and then redirects the user to the home page. This process provides a straightforward way for users to communicate with the site administrators or support team.
 
 ---
@@ -115,6 +118,10 @@ The product addition page on the Cosmos Watches website is designed for administ
 
 ![](/documentation/website_edit_product.png)
 The page for editing a product at the provided URL requires user authentication, indicating that modifications to product details are restricted to authorized users. This setup ensures that product information, such as descriptions, pricing, and images, can be updated or corrected by administrators or staff, maintaining the accuracy and relevance of the website's offerings. For access to this feature, appropriate login credentials are necessary.
+
+---
+
+![](/documentation/subscribed.png)
 
 ---
 
@@ -184,7 +191,6 @@ The data schema for the application encompasses several key models: `User`, `Cat
 
 This schema allows for a comprehensive representation of the application's data, supporting features like blogging, commenting, e-commerce, and user feedback.
 
-
 ## Technologies Used
 
 - HTML, CSS, JavaScript
@@ -195,6 +201,7 @@ This schema allows for a comprehensive representation of the application's data,
 - AWS S3 for static and media file storage
 - Heroku for deployment
 - Mailchimp for e-mail Newsletter 
+
 
 ## Getting Started
 
@@ -306,3 +313,36 @@ We are constantly exploring new technologies and marketing approaches to enhance
 ## Testing
 
 To ensure the Cosmos Watches platform meets our high standards for reliability and user experience, we've outlined comprehensive testing guidelines. You can find these by visiting our [Testing Documentation](testing.md).
+
+## Additional Quality Assurance Tests
+
+### Google Lighthouse Audit
+An extensive audit was conducted covering performance, accessibility, SEO, and best practices using Google Lighthouse. Detailed audit results are provided below:
+![Google Lighthouse Audit Results](/documentation/lighthouse.png)
+
+### Code Validation and Responsiveness Testing
+
+#### CSS Code Verification
+The CSS code was thoroughly checked for standards compliance and error-free validation using the W3C CSS Validation Service. More information about the validation service can be found at [W3C CSS Validator](https://jigsaw.w3.org/css-validator/).
+![CSS Code Verification Results](/documentation/CSS_jigsaw_validator.png)
+
+#### HTML Code Verification
+HTML code validation and compliance with web standards were ensured using the W3C Markup Validation Service. Visit [W3C HTML Validator](https://validator.w3.org/) for more details.
+![HTML Code Verification Results](/documentation/HTML_W3C_validator.png)
+
+#### Python Code Quality Check
+The Python code was examined for syntax correctness and adherence to coding standards using PEP8 online checker. The testing tool used is available at [PEP8 Online Checker](https://pep8ci.herokuapp.com/).
+![Python Code Quality Check Results](/documentation/CI_python_linter.png)
+
+#### JavaScript Code Quality with JSHint
+Quality and error analysis of JavaScript code were conducted using JSHint, a tool for detecting potential problems. Explore JSHint at [JSHint](https://jshint.com/).
+![JavaScript Code Quality Results](/documentation/jshint_validator.png)
+
+### Web Accessibility Evaluation
+
+#### Web Accessibility Evaluation with WAVE
+The website's accessibility, especially contrast, was evaluated using WAVE, ensuring no contrast errors were present. For further details, check [WAVE Web Accessibility Evaluation Tool](https://wave.webaim.org/).
+![Web Accessibility Evaluation Results](/documentation/wave_contrast_test.png)
+
+
+
