@@ -245,7 +245,7 @@ select {
 
 .container {
     justify-content: center;
-    width: 400px;
+    /* width: 400px; */
 }
 
 .alert-success {
