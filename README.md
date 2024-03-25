@@ -12,6 +12,29 @@ Visit the live demo on Heroku: [Cosmos Watches Live Demo](https://pp5-bryar-4750
 ### Responsiveness Testing
 The website's responsiveness across different devices was tested using TechSini’s Multi Device Website Mockup Generator. You can perform similar tests by visiting [Multi-Mockup](https://techsini.com/multi-mockup/).
 
+# Table of Contents
+1. [Welcome to Cosmos Watches](#cosmos-watches)
+2. [Live Demo](#live-demo)
+3. [Features](#features)
+4. [Technologies Used](#technologies-used)
+5. [Getting Started](#getting-started)
+    - [Prerequisites](#prerequisites)
+    - [Installation](#installation)
+6. [Deployment Guide](#deployment-guide)
+7. [Usage Instructions](#usage-instructions)
+8. [E-commerce Business Model and Marketing Strategies](#e-commerce-business-model-and-marketing-strategies)
+9. [Data Schema Description](#data-schema-description)
+10. [Testing](#testing)
+    - [Additional Quality Assurance Tests](#additional-quality-assurance-tests)
+11. [User Story](#user-story)
+12. [Marketing](#marketing)
+13. [Color Scheme](#color-scheme)
+14. [Contribution Guidelines](#contribution-guidelines)
+15. [Acknowledgments](#acknowledgments)
+16. [Contact Information](#contact-information)
+
+
+
 ## Features
 
 - **Responsive Web Design:** Ensures the website is accessible and visually appealing on any device, from desktops to smartphones.
@@ -193,29 +216,153 @@ This schema allows for a comprehensive representation of the application's data,
 
 ## Technologies Used
 
-- HTML, CSS, JavaScript
-- Python + Django
-- PostgreSQL
-- Bootstrap 4
-- Stripe for payment processing
-- AWS S3 for static and media file storage
-- Heroku for deployment
-- Mailchimp for e-mail Newsletter 
+- **HTML**: For structuring the web pages and laying out content.
+- **CSS**: For styling the web pages and customizing the look and feel.
+- **JavaScript**: For interactive elements on the website, enhancing user experience.
+- **Python + Django**: Python as the programming language with Django as the web framework to handle backend operations, including data manipulation, URL routing, and server-side logic.
+- **PostgreSQL**: As the primary database system to store and manage application data efficiently.
+- **Bootstrap 4**: For responsive design, making the website mobile-friendly and accessible across all devices.
+- **Stripe**: Integrated for secure online payment processing.
+- **AWS S3**: Used for storing static and media files in the cloud, ensuring fast access and scalability.
+- **Heroku**: As the cloud platform service for hosting the web application, allowing it to be accessible on the internet.
+- **Mailchimp**: For managing email marketing campaigns, newsletters, and automated messages to engage with users and promote the brand effectively.
+- **Gunicorn**: A Python WSGI HTTP Server for UNIX, used to serve Python applications from Heroku.
+- **Git**: For version control, tracking changes in source code during development.
+- **GitHub**: Hosting the project repository and facilitating code management and collaboration.
+- **ElephantSQL**: An add-on for providing a managed PostgreSQL database service, making database management simpler.
+- **dj-database-url**: A Django utility allows you to utilize the `DATABASE_URL` environment variable to configure your Django application's database.
+- **Psycopg2**: A PostgreSQL adapter for Python, enabling Django applications to interact with PostgreSQL databases.
 
+These technologies and tools represent a robust stack for developing, deploying, and managing a dynamic, data-driven web application like Cosmos Watches.
+
+
+<br>
 
 ## Getting Started
 
-### Prerequisites
+### Deployment Guide:
 
-- Python 3.8 or later
-- pip
-- A virtual environment
+### Hosting and Deployment Overview
 
-### Installation
+The project is managed via GitHub for version control and is deployed on Heroku, a cloud platform service that supports Python applications. Since GitHub Pages only serves static files and cannot execute Python, Heroku is used to host the full application, including its Django backend.
 
-1. Clone the repository to your local machine:
+### Heroku Deployment and Setup
+
+#### Initial Setup on Heroku
+
+1. **Heroku Account**: Create a new account or log into an existing account at [Heroku](https://www.heroku.com/).
+2. **Heroku CLI**: If not already installed, install the Heroku Command Line Interface (CLI) by running `curl https://cli-assets.heroku.com/install.sh | sh` in your terminal.
+3. **Login via CLI**: Authenticate your Heroku CLI with `heroku login -i`.
+
+#### Database Setup with ElephantSQL
+
+1. **ElephantSQL Account**: Visit [ElephantSQL](https://www.elephantsql.com/) and log in or sign up.
+2. **Create New Instance**: Click "Create New Instance".
+3. **Instance Configuration**:
+    - Name your instance (typically, the project name).
+    - Choose "Tiny Turtle" for a free plan.
+    - Select a data center close to you.
+    - Review and create your instance.
+
+#### Creating and Configuring Heroku App
+
+- **Via Heroku CLI**:
+    - Create an app: `heroku apps:create your-app-name --region eu`.
+    - Check your apps: `heroku apps`.
+    - Verify remotes: `git remote -v`.
+
+- **Via Heroku Dashboard**:
+    - Click "New" > "Create new app".
+    - Assign a unique app name and select the nearest region.
+
+#### Database Connection on Heroku
+
+- Navigate to your app's "Settings" on Heroku.
+- Under "Config Vars", add `DATABASE_URL` with the ElephantSQL database URL as its value.
+
+### Installing Project Dependencies
+
+- **Database URL and psycopg2**: Run `pip3 install dj-database-url==0.5.0 psycopg2` and update `requirements.txt` with `pip3 freeze > requirements.txt`.
+- Modify `settings.py` to use `dj_database_url` to parse `DATABASE_URL`.
+
+### Preparing Deployment
+
+1. **Database Configuration**: In `settings.py`, configure the database to use `DATABASE_URL` in production and `db.sqlite3` locally.
+2. **Gunicorn**: Install with `pip3 install gunicorn` and update `requirements.txt`.
+---
+<details>
+<summary><b>Project Requirements</b> (click to expand)</summary>
+<br>
+
+asgiref==3.7.2
+
+boto3==1.34.50
+
+botocore==1.34.50
+
+dj-database-url==0.5.0
+
+Django==5.0.2
+
+django-allauth==0.61.1
+
+django-countries==7.2.1
+
+django-crispy-forms==1.14.0
+
+django-rated-reviews==1.0.1
+
+django-storages==1.14.2
+
+gunicorn==21.2.0
+
+jmespath==1.0.1
+
+oauthlib==3.2.2
+
+pillow==10.2.0
+
+psycopg2==2.9.9
+
+PyJWT==2.8.0
+
+python3-openid==3.2.0
+
+pytz==2024.1
+
+requests-oauthlib==1.3.1
+
+s3transfer==0.10.0
+
+sqlparse==0.4.4
+
+stripe==8.4.0
+
+urllib3==2.0.7
+
+3. **Procfile**: Create a `Procfile` with `web: gunicorn your_project_name.wsgi:application`.
+4. **Static Files**: Set `DISABLE_COLLECTSTATIC=1` in Heroku's config vars to disable automatic `collectstatic`.
+5. **Allowed Hosts**: Add your Heroku app's hostname to `ALLOWED_HOSTS` in `settings.py`.
+
+</details>
+
+---
+
+### Deploying to Heroku
+
+1. **Connect GitHub and Heroku**: In your Heroku app's "Deploy" tab, link your GitHub repository and enable automatic deploys.
+2. **Manual Deployment**: If preferred, push changes to Heroku using `git push heroku main`.
+
+### GitHub Integration
+
+- **Repository Setup**: Log into GitHub, create a new repository, and follow the instructions to push your local project to GitHub.
+- **Forking**: To fork the repository, click the "Fork" button on the original repository's page.
+- **Cloning**: Clone the repository:
    ```sh
    git clone https://github.com/Bryaro/pp5.git
+
+For the Cosmos Watches project, the application is accessible at [https://pp5-bryar-475062670c00.herokuapp.com/](https://pp5-bryar-475062670c00.herokuapp.com/), and the source code is hosted on GitHub at [https://github.com/Bryaro/pp5](https://github.com/Bryaro/pp5).
+
 
 ## User story
 
@@ -344,5 +491,12 @@ Quality and error analysis of JavaScript code were conducted using JSHint, a too
 The website's accessibility, especially contrast, was evaluated using WAVE, ensuring no contrast errors were present. For further details, check [WAVE Web Accessibility Evaluation Tool](https://wave.webaim.org/).
 ![Web Accessibility Evaluation Results](/documentation/wave_contrast_test.png)
 
+## Acknowledgments
 
+- **Stack Overflow**: Immense gratitude for Stack Overflow's invaluable assistance with programming dilemmas and its community's collective wisdom.
+  
+- **Slack**: Appreciation for Slack, the collaborative platform that enhances team communication and knowledge exchange.
+  
+- **Django**: Heartfelt thanks to the Django Documentation for offering exhaustive information on setup, application, and optimal practices for Django.
 
+[↩ Back to Table of Contents](#table-of-contents)
