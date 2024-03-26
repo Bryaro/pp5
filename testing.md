@@ -133,3 +133,25 @@ This expanded testing suite is designed to comprehensively assess the functional
 ## Conclusion
 
 This manual testing guide aims to cover key functionalities of the Cosmos Watches website to ensure a seamless and secure user experience. Testers are encouraged to report any deviations from expected outcomes, as detailed in the reporting section. Continuous testing and improvement are essential to maintaining the quality and reliability of the Cosmos Watches online platform.
+
+### Browser and Device Compatibility
+
+**Ensuring Universal Access:**
+
+To guarantee that Cosmos Watches provides a seamless and universally accessible experience, extensive testing has been conducted across a variety of browsers and devices. My commitment to inclusivity and user satisfaction drives my efforts to ensure that the website performs flawlessly, regardless of how you choose to access it.
+
+**Browsers Tested:**
+
+- **Google Chrome**: Comprehensive testing on the most popular web browser, ensuring optimal performance and compatibility.
+- **Safari**: Verification on Apple's native browser, guaranteeing a smooth experience for Mac and iOS users.
+- **Microsoft Edge**: Ensuring compatibility with Microsoft's latest web browser, catering to Windows users.
+- **Mozilla Firefox**: Testing on this widely used browser to ensure a consistent and secure browsing experience.
+
+**Devices Tested:**
+
+Testing extended beyond browser compatibility to include a diverse range of devices, including smartphones, tablets, laptops, and desktop computers. I aimed to cover as many screen sizes and operating systems as possible, conducting hands-on tests with devices available to me. This approach has helped me identify and address any issues specific to certain devices, ensuring that the website is truly accessible to everyone.
+
+**Continuous Improvement:**
+
+The digital landscape is ever-evolving, and so are the devices and browsers people use. I am committed to continuous testing and improvement, adapting to new technologies and user feedback to make Cosmos Watches not just a shopping destination but a seamless and enjoyable experience for all space and watch enthusiasts.
+
