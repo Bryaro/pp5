@@ -41,6 +41,11 @@ body {
     box-sizing: border-box;
 }
 
+#div_id_remember,
+#id_remember {
+    display: none;
+}
+
 .subscribe-text {
     text-align: center;
 }
@@ -303,6 +308,7 @@ select {
         padding-bottom: 20px;
         width: 50%;
     }
+
 }
 
 

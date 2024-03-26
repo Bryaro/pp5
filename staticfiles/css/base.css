@@ -42,6 +42,11 @@ body {
     margin-left: 0;
 }
 
+#div_id_remember,
+#id_remember {
+    display: none;
+}
+
 .subscribe-text {
     text-align: center;
 }
