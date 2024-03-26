@@ -533,6 +533,31 @@ The Python code was examined for syntax correctness and adherence to coding stan
 Quality and error analysis of JavaScript code were conducted using JSHint, a tool for detecting potential problems. Explore JSHint at [JSHint](https://jshint.com/).
 ![JavaScript Code Quality Results](/documentation/jshint_validator.png)
 
+## Privacy Policy
+
+### Overview
+
+I am committed to maintaining the privacy and protection of your personal information. As part of this commitment, my Privacy Policy has been crafted to be transparent about what information I collect, how it is used, and the choices you have regarding your information.
+
+### Generation Process
+
+To ensure compliance with legal standards and best practices, I utilized the [Privacy Policy Generator](https://www.termsfeed.com/privacy-policy-generator/) provided by TermsFeed. This tool helped me create a Privacy Policy that is tailored to the specific needs and operations of my project.
+
+### Highlights of My Privacy Policy
+
+- **Information Collection:** Details on the types of information I collect and how it is gathered.
+- **Use of Information:** How I use the collected information to enhance your experience.
+- **Data Protection:** Measures in place to protect your information from unauthorized access or disclosure.
+- **Your Rights:** An overview of your rights regarding your personal information and how you can exercise them.
+
+For a complete understanding of my practices, I encourage you to read the full Privacy Policy available on my website.
+
+### Contact Me
+
+Should you have any questions or concerns about my Privacy Policy or the handling of your personal information, please feel free to contact me through the provided channels on my website.
+
+<br>
+
 ### Web Accessibility Evaluation
 
 #### Web Accessibility Evaluation with WAVE
