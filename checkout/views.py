@@ -38,7 +38,6 @@ def cache_checkout_data(request):
         return HttpResponse(content=e, status=400)
 
 
-@login_required
 def checkout(request):
     """
     Renders the checkout page, processes the form submission,
