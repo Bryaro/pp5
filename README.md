@@ -415,6 +415,89 @@ urllib3==2.0.7
 
 For the Cosmos Watches project, the application is accessible at [https://pp5-bryar-475062670c00.herokuapp.com/](https://pp5-bryar-475062670c00.herokuapp.com/), and the source code is hosted on GitHub at [https://github.com/Bryaro/pp5](https://github.com/Bryaro/pp5).
 
+---
+
+## Stripe Setup
+
+To integrate Stripe payments into your Django project, follow these steps:
+
+1. **Create a Stripe Account**: Sign up at [stripe.com](https://stripe.com) if you haven't already.
+
+2. **Obtain API Keys**: From your Stripe dashboard, navigate to the Developers > API keys section to find your Publishable Key and Secret Key.
+
+3. **Configure Environment Variables**: Store your API keys and webhook secret (`STRIPE_PUBLIC_KEY`, `STRIPE_SECRET_KEY`, `STRIPE_WH_SECRET`) in environment variables for security. This can be done in a `.env` file or directly in your environment's configuration, depending on your setup.
+
+4. **Update `settings.py`**: Ensure your project's `settings.py` includes these environment variables as shown below:
+
+   ```python
+   STRIPE_PUBLIC_KEY = os.getenv('STRIPE_PUBLIC_KEY', '')
+   STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY', '')
+   STRIPE_WH_SECRET = os.getenv('STRIPE_WH_SECRET', '')
+
+---
+
+## Integrating Stripe Webhooks
+
+Stripe webhooks are essential for real-time notifications about Stripe events. This project includes a robust implementation for handling Stripe webhook events, ensuring that actions like successful payments, failed payments, and other significant events are processed accordingly.
+
+### Overview
+
+The webhook implementation consists of two main components:
+
+- **Webhook Handler (`webhook_handler.py`)**: A class responsible for defining specific actions based on different types of webhook events received from Stripe. It includes methods for handling events such as `payment_intent.succeeded`, `payment_intent.payment_failed`, and any unhandled events.
+
+- **Webhook Receiver (`webhooks.py`)**: A Django view that listens for incoming webhook events from Stripe, verifies their authenticity, and dispatches them to the appropriate handler methods defined in the `StripeWH_Handler` class.
+
+### Setup Instructions
+
+To set up Stripe webhooks for your project, follow these steps:
+
+1. **Configure Stripe API Keys**: Ensure you have set the `STRIPE_SECRET_KEY` and `STRIPE_WH_SECRET` in your environment variables. These are crucial for interacting with the Stripe API and verifying webhook signatures.
+
+2. **Create a Webhook Endpoint on Stripe**: Log in to your Stripe dashboard and navigate to the Developers > Webhooks section. Click "Add endpoint" and specify the URL where your Django app will receive webhook events (e.g., `https://yourdomain.com/webhooks/stripe/`). Select the events you wish to receive notifications for.
+
+3. **Implement the Webhook Receiver**: In your Django app, ensure the `webhooks.py` file is correctly set up to listen for POST requests at the endpoint you specified in Stripe. This file should authenticate the incoming requests using Stripe's signature verification method.
+
+4. **Handle Events with StripeWH_Handler**: Customize the `StripeWH_Handler` class to define how your application should respond to each event. For instance, after a successful payment, you may want to create an order in your database and send a confirmation email to the user.
+
+5. **Secure Your Endpoint**: Use Django's `@csrf_exempt` decorator to exempt your webhook view from CSRF verification, as the requests will be coming from Stripe's servers. However, ensure that you verify the requests' authenticity using the signature in the headers.
+
+6. **Test Your Webhook**: Use Stripe's CLI or dashboard to send test webhook events to your endpoint. Ensure your handlers are correctly processing the events and that your application behaves as expected.
+
+### Testing and Debugging
+
+- **Stripe CLI**: Stripe offers a CLI tool that can forward webhook events to your local development server. This is invaluable for testing and debugging during development.
+
+- **Logs and Errors**: Implement logging within your webhook handlers to capture any errors or unexpected behavior. This will aid in troubleshooting and ensuring that webhooks are processed correctly.
+
+### Going Live
+
+Before going live, double-check that you've updated your webhook endpoint to the production URL and selected the appropriate events on Stripe's dashboard. It's also recommended to review Stripe's best practices for securing webhooks.
+
+---
+
+## Monitoring Webhooks
+
+After setting up your Stripe webhooks, you can monitor their performance directly from the Stripe dashboard. Below are screenshots that show where you can find information about webhook attempts and the status of your hosted endpoints.
+
+### Webhook Attempts
+
+Here you can see the list of attempts made to your webhook endpoints within the last 15 days. Each entry will show if the attempt was successful and provide details about the request.
+
+![Webhook Attempts](/documentation/webhook%20attempt.png)
+
+### Hosted Endpoints
+
+This section of the Stripe dashboard provides an overview of your webhook endpoints, showing the error rate and status of each. It's essential to keep an eye on the error rate to ensure reliable operation.
+
+![Hosted Endpoints](/documentation/webhook_endpoint.png)
+
+### Reviewing Webhook Events
+
+You should regularly review the events that Stripe sends to your webhook endpoints. Successful events indicate proper communication between Stripe and your application. If there are failed attempts, investigate the logs to determine the cause and implement necessary fixes.
+
+---
+
 
 ## User story
 
