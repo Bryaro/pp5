@@ -272,6 +272,10 @@ This schema allows for a comprehensive representation of the application's data,
 - **ElephantSQL**: An add-on for providing a managed PostgreSQL database service, making database management simpler.
 - **dj-database-url**: A Django utility allows you to utilize the `DATABASE_URL` environment variable to configure your Django application's database.
 - **Psycopg2**: A PostgreSQL adapter for Python, enabling Django applications to interact with PostgreSQL databases.
+- **Grammarly**: Utilized to check and improve the spelling, grammar, and clarity of the project's documentation and code comments.
+- **Chrome DevTools**: Used for debugging, optimizing, and ensuring the responsiveness of the web pages.
+- **Adobe Photoshop**: Used for designing and creating the logo, enhancing the visual identity of the website.
+
 
 ## Design and Visual Resources
 
