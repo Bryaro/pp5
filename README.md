@@ -503,7 +503,7 @@ You should regularly review the events that Stripe sends to your webhook endpoin
 
 For a detailed overview of the functionalities and expectations from a user's perspective, refer to our [User Stories documentation](userstory.md).
 
-### Marketing
+## Marketing
 
 ## Transition from already-owning a webshop to Custom bulding Website for project 5: Utilizing Real Social Media Presence
 
