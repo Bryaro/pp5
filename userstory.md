@@ -278,3 +278,33 @@ so I can have a seamless shopping experience on any device.
 
 #### Tasks
 - Test website navigation, product browsing, and checkout process on various screen sizes.
+
+<br>
+<br>
+
+## Agile Methodology Adapted for Solo Development
+
+In the development of the Cosmos Watches website for my school project at Code Institute, I adapted Agile methodology principles to suit a solo project environment. This approach enabled me to manage my workload effectively, prioritize tasks, and adapt to changes and feedback dynamically, ensuring a disciplined yet flexible development process.
+
+### Agile Practices for Solo Development
+
+- **Sprints**: I organized my work into one-week sprints, setting achievable goals for each sprint that aligned with the project milestones. This structure allowed me to maintain focus and momentum, ensuring consistent progress.
+
+- **Kanban Board**: Utilizing a Kanban board on GitHub, I visualized my workflow, tracking tasks from "To Do," through "In Progress," to "Done." This tool was instrumental in managing my workload and prioritizing features and bug fixes.
+  - **Project Backlog Link**: [Cosmos Watches Project Backlog](https://github.com/users/Bryaro/projects/5/views/1)
+
+- **User Stories**: The development was driven by user stories that I created to represent the needs and goals of the end-users. This approach ensured that the website's features were developed with the users' experiences and satisfaction in mind.
+
+- **Regular Reviews and Adaptation**: At the end of each sprint, I conducted a review of what was accomplished, assessed the current backlog, and adjusted plans based on what was learned. This self-reflection helped me stay aligned with project goals and adapt to any challenges or new insights.
+
+- **Continuous Learning and Improvement**: The solo application of Agile allowed me to reflect on my personal workflow and efficiency continuously. I identified areas for improvement in my development practices and iteratively enhanced my approach to problem-solving and project management.
+
+### Reflecting on the Learning Curve
+
+Adopting Agile methodologies as a student was both enlightening and challenging. While it empowered me to tackle project management systematically, I encountered hurdles, particularly with time tracking and the discipline required to update task statuses regularly. There were instances when tasks completed were not promptly moved to "Done," which occasionally affected my perception of progress and time management.
+
+This experience has been a valuable part of my learning journey, highlighting the importance of not just planning and execution but also the rigor of tracking and reflection. It taught me the significance of discipline in project management and the continuous effort needed to improve workflows and productivity. As I move forward, these lessons will be instrumental in refining my approach to both solo and collaborative projects.
+
+### Impact of Agile on Solo Development
+
+Since I was working alone on the Cosmos Watches project, I had to use the Agile method by myself. This was actually a good thing. It helped me organize my work better and make sure I was always moving forward, keeping the project's quality high. Even though Agile is usually used by teams, I found it really useful for working alone too. It helped me adjust when things changed and made sure I kept my project on the right track. Working with others is great, but this experience showed me that Agile can work well for just one person, too.

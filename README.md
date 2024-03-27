@@ -498,6 +498,15 @@ Our products are designed to appeal to space enthusiasts and watch collectors al
 
 By integrating our e-commerce business model with these targeted marketing strategies, Cosmos Watches aims to not only sell products but also to create an immersive brand experience that resonates with our customers' passions and interests.
 
+In developing this project, I focused on enhancing the website's Search Engine Optimization (SEO) to ensure better visibility and accessibility via search engines:
+
+- **Robots.txt Implementation**: A `robots.txt` file was incorporated into the website's root directory. This file is crucial for SEO as it directs search engines on which parts of the site to avoid and which pages should not be indexed. By providing clear instructions, it optimizes the website’s presence in search results, focusing on content that offers the most value.
+
+- **Sitemap Creation**: To help search engines efficiently crawl and understand the website's structure, I created a detailed sitemap. This XML-formatted sitemap lists the website's key URLs, serving as a roadmap for search engines. The sitemap was generated using [www.XML-sitemaps.com](https://www.XML-sitemaps.com), ensuring an accurate and comprehensive guide to the site's layout.
+
+These steps were key to improving the website's SEO, making it easier for search engines to index the site effectively and enhance its visibility to potential visitors.
+
+
 ### Future Directions
 
 We are constantly exploring new technologies and marketing approaches to enhance our online presence and customer engagement. Augmented reality (AR) viewings, virtual try-ons, and interactive online events are among the innovations we are considering to offer an even more engaging and personalized shopping experience.
