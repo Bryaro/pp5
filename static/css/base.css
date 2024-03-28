@@ -600,8 +600,9 @@ select {
         /* Adjust padding for smaller screens */
     }
 
-    .subscribe-btn {
-        width: 345px !important;
+    .foot {
+        display: flex;
+        justify-content: center;
     }
 }
 
