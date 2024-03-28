@@ -600,10 +600,6 @@ select {
         /* Adjust padding for smaller screens */
     }
 
-    .subscribe-btn {
-        margin-left: 0px !important;
-        width: 188px !important;
-    }
 }
 
 /* MIN WIDTH 768 spec for desktop header */
