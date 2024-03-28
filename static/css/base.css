@@ -600,11 +600,6 @@ select {
         /* Adjust padding for smaller screens */
     }
 
-    .container {
-        justify-content: center;
-        width: 800px;
-    }
-
     .subscribe-btn {
         margin-left: 0px !important;
         width: 188px !important;
