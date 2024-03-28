@@ -30,6 +30,10 @@ body {
     width: 1.5rem;
 }
 
+#id_categories {
+    display: flex;
+}
+
 /* static/css/custom.css */
 #mc_embed_signup {
     background: black;
