@@ -299,6 +299,11 @@ select {
         justify-content: center;
         width: 800px;
     }
+
+    .subscribe-btn {
+        margin-left: 0px !important;
+        width: 188px !important;
+    }
 }
 
 /* MIN WIDTH 768 spec for desktop header */
@@ -317,11 +322,6 @@ select {
     .footer-social-text {
         padding-bottom: 20px;
         width: 50%;
-    }
-
-    .subscribe-btn {
-        margin-left: 0px !important;
-        width: 188px !important;
     }
 }
 
