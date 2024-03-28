@@ -60,6 +60,11 @@ body {
     width: 188px !important;
 }
 
+.foot {
+    display: flex;
+    justify-content: center;
+}
+
 .d-inline-block {
     width: inherit;
 }
@@ -298,11 +303,6 @@ select {
     .container {
         justify-content: center;
         width: 800px;
-    }
-
-    .foot {
-        display: flex;
-        justify-content: center;
     }
 }
 

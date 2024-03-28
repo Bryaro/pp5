@@ -59,6 +59,11 @@ body {
     width: 188px !important;
 }
 
+.foot {
+    display: flex;
+    justify-content: center;
+}
+
 .d-inline-block {
     width: inherit;
 }
@@ -598,11 +603,6 @@ select {
     .card-body {
         padding: 20px;
         /* Adjust padding for smaller screens */
-    }
-
-    .foot {
-        display: flex;
-        justify-content: center;
     }
 }
 
