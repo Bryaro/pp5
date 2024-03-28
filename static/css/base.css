@@ -318,6 +318,10 @@ select {
         width: 50%;
     }
 
+    .subscribe-btn {
+        margin-left: 0px !important;
+        width: 188px !important;
+    }
 }
 
 

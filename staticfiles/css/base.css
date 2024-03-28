@@ -318,6 +318,11 @@ select {
         padding-bottom: 20px;
         width: 50%;
     }
+
+    .subscribe-btn {
+        margin-left: 0px !important;
+        width: 188px !important;
+    }
 }
 
 /* pad the top a bit when navbar is collapsed on mobile */
