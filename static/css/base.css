@@ -55,8 +55,8 @@ body {
 }
 
 .subscribe-btn {
-    margin-left: 0px;
-    width: 134%;
+    margin-left: 0px !important;
+    width: 188px !important;
 }
 
 .d-inline-block {
