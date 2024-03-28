@@ -654,7 +654,35 @@ Should you have any questions or concerns about my Privacy Policy or the handlin
 
 <br>
 
-### Web Accessibility Evaluation
+## Bug Fixes and Resolutions
+
+Here are some of the key issues I addressed during development, along with their resolutions:
+
+### Blog Page Migration Sync
+
+- **Issue**: Migrations were not synchronized between Heroku and Gitpod, leading to problems with the blog page.
+- **Resolution**: Ran migrations on Heroku to align the database schema with the application's current state.
+- **Commit**: Debugged the blog page migration sync issue.
+
+### Reviews Feature Bug
+
+- **Issue**: Encountered a problem within the reviews functionality.
+- **Resolution**: Executing migrations on Heroku fixed the issue.
+- **Commit**: Fixed a bug related to reviews; running migrations on Heroku resolved it.
+
+### Navbar Search Functionality
+
+- **Issue**: Search functionality in the navbar was not functioning correctly.
+- **Resolution**: Identified and corrected the bug affecting the search feature.
+- **Commit**: Fixed the bug affecting search functionality in the navbar.
+
+### General Notes
+
+Keeping a log of bugs and fixes is crucial for the project's development process. It helps in tracking the changes made and provides a clear history for reference.
+
+<br>
+
+## Web Accessibility Evaluation
 
 #### Web Accessibility Evaluation with WAVE
 The website's accessibility, especially contrast, was evaluated using WAVE, ensuring no contrast errors were present. For further details, check [WAVE Web Accessibility Evaluation Tool](https://wave.webaim.org/).
