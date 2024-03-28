@@ -55,6 +55,11 @@ body {
     text-align: center;
 }
 
+.subscribe-btn {
+    margin-left: 0px;
+    width: 134%;
+}
+
 .d-inline-block {
     width: inherit;
 }
