@@ -304,6 +304,12 @@ select {
         justify-content: center;
         width: 800px;
     }
+
+    .subscribe-btn-container {
+        display: flex;
+        justify-content: center; /* Center the button horizontally */
+        align-items: center; /* Center the button vertically */
+    }
 }
 
 /* MIN WIDTH 768 spec for desktop header */

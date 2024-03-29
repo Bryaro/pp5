@@ -604,6 +604,12 @@ select {
         padding: 20px;
         /* Adjust padding for smaller screens */
     }
+
+    .subscribe-btn-container {
+        display: flex;
+        justify-content: center; /* Center the button horizontally */
+        align-items: center; /* Center the button vertically */
+    }
 }
 
 /* MIN WIDTH 768 spec for desktop header */
