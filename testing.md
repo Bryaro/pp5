@@ -32,7 +32,7 @@ Below is a comprehensive list of test cases designed to cover key functionalitie
 | TC-024       | Admin deleting a comment                      | 1. Log in as an admin<br>2. Navigate to the Django admin panel<br>3. Locate and delete a comment             | The comment is deleted and no longer appears on the blog post                       | Pass         |
 | TC-025       | Filtering products by category                | 1. Navigate to the products page<br>2. Use category filters                                                  | Only products belonging to the selected category are displayed                      | Pass         |
 | TC-026       | Search functionality returns relevant results | 1. Use the search bar to search for a specific product or category                                           | The search results page displays relevant products                                   | Pass         |
-
+| TC-027       | Error page displays correctly            | 1. Attempt to access a non-existent page or product by modifying the URL directly<br>2. Trigger a server error intentionally, if possible | The error page is displayed with a user-friendly message and button options for returning to the homepage or go back | Pass         |
 
 <br>
 <br>
