@@ -59,6 +59,10 @@ body {
     width: 188px !important;
 }
 
+.subscribe-btn-container {
+    display: flex !important;
+}
+
 .foot {
     display: flex;
     justify-content: center;
@@ -603,12 +607,6 @@ select {
     .card-body {
         padding: 20px;
         /* Adjust padding for smaller screens */
-    }
-
-    .subscribe-btn-container {
-        display: flex;
-        justify-content: center; /* Center the button horizontally */
-        align-items: center; /* Center the button vertically */
     }
 }
 
