@@ -29,11 +29,16 @@ DEBUG = False
 ALLOWED_HOSTS = [
     '8000-bryaro-pp5-k2tlzmd5ekc.ws-us110.gitpod.io',
     '8000-bryaro-pp5-k2tlzmd5ekc.ws-eu108.gitpod.io',
-    'pp5-bryar-475062670c00.herokuapp.com', 'localhost', '127.0.0.1']
+    'pp5-bryar-475062670c00.herokuapp.com', 'localhost', '127.0.0.1',
+    'www.cosmos-watches.com',
+    'cosmos-watches.com',
+]
 
 CSRF_TRUSTED_ORIGINS = [
     'https://8000-bryaro-pp5-k2tlzmd5ekc.ws-eu108.gitpod.io',
-    'https://8000-bryaro-pp5-k2tlzmd5ekc.ws-us110.gitpod.io'
+    'https://8000-bryaro-pp5-k2tlzmd5ekc.ws-us110.gitpod.io',
+    'https://www.cosmos-watches.com',
+    'https://cosmos-watches.com',
 ]
 # Application definition
 
