@@ -243,4 +243,5 @@ else:
     EMAIL_USE_TLS = True
     EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
     EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
-    DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_HOST_USER')
+    # Use a custom "From" email address that is professional
+    DEFAULT_FROM_EMAIL = 'noreply@cosmos-sweden.com'  # Replace with your custom email address
