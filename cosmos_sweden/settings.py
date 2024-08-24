@@ -32,6 +32,8 @@ ALLOWED_HOSTS = [
     'pp5-bryar-475062670c00.herokuapp.com', 'localhost', '127.0.0.1',
     'www.cosmos-watches.com',
     'cosmos-watches.com',
+    'www.cosmos-sweden.com',
+    'cosmos-sweden.com',
 ]
 
 CSRF_TRUSTED_ORIGINS = [
@@ -39,6 +41,8 @@ CSRF_TRUSTED_ORIGINS = [
     'https://8000-bryaro-pp5-k2tlzmd5ekc.ws-us110.gitpod.io',
     'https://www.cosmos-watches.com',
     'https://cosmos-watches.com',
+    'https://www.cosmos-sweden.com',
+    'https://cosmos-sweden.com',
 ]
 # Application definition
 
