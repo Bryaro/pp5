@@ -147,6 +147,7 @@ def checkout_success(request, order_number):
     Handles successful checkouts,
     notifying the user and sending a confirmation email.
 
+    Sends an email to the site owner with the order details.
     Clears the cart session after successful order placement.
     """
     save_info = request.session.get('save_info')
@@ -155,12 +156,34 @@ def checkout_success(request, order_number):
         Your order number is {order_number}. A confirmation \
         email will be sent to {order.email}.')
 
+    # Send confirmation email to the customer
     subject = 'Order Confirmation'
-    message = f'Thank you for your order {
-        order.full_name}. Your order number is {order.order_number}.'
+    message = f'Thank you for your order, {order.full_name}. Your order number is {order.order_number}.'
     email_from = settings.DEFAULT_FROM_EMAIL
-    recipient_list = [order.email, ]
+    recipient_list = [order.email]
     send_mail(subject, message, email_from, recipient_list)
+
+    # Send order details to the site owner
+    subject = f'New Order: {order.order_number}'
+    order_items = OrderLineItem.objects.filter(order=order)
+    order_details = f'Order Number: {order.order_number}\n'
+    order_details += f'Customer: {order.full_name}\n'
+    order_details += f'Email: {order.email}\n'
+    order_details += f'Phone Number: {order.phone_number}\n'
+    order_details += f'Address:\n{order.street_address1}\n'
+    if order.street_address2:
+        order_details += f'{order.street_address2}\n'
+    order_details += f'{order.town_or_city}, {order.county}, {order.postcode}\n'
+    order_details += f'{order.country}\n\n'
+    order_details += 'Order Details:\n'
+
+    for item in order_items:
+        order_details += f'{item.product.name} (Size: {item.product_size if item.product_size else "N/A"}) - Quantity: {item.quantity} - Price: {item.product.price}\n'
+
+    order_details += f'\nTotal: {order.order_total}\n'
+    
+    owner_email = 'goodlivingab@gmail.com'
+    send_mail(subject, order_details, email_from, [owner_email])
 
     if 'cart' in request.session:
         del request.session['cart']
@@ -171,3 +194,4 @@ def checkout_success(request, order_number):
     }
 
     return render(request, template, context)
+
