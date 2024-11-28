@@ -65,7 +65,7 @@ def all_products(request):
 def product_info(request, product_id):
     """ View to show product information when product is opened """
     product = get_object_or_404(Product, pk=product_id)
-    additional_images = product.productimage_set.all()
+    additional_images = product.images.all()
 
     context = {
         'product': product,
@@ -83,26 +83,21 @@ def add_product(request):
     """
     if request.method == 'POST':
         form = ProductForm(request.POST, request.FILES)
-        formset = ProductImageFormSet(request.POST, request.FILES, instance=None)
+        formset = ProductImageFormSet(request.POST, request.FILES)
         if form.is_valid() and formset.is_valid():
-            product = form.save()  # Save the main product
-            formset.instance = product  # Link the formset to the product
-            formset.save()  # Save the additional images
-            messages.success(request, 'Product added successfully!')
+            product = form.save()
+            images = formset.save(commit=False)
+            for image in images:
+                image.product = product
+                image.save()
             return redirect('products')
     else:
         form = ProductForm()
-        formset = ProductImageFormSet(instance=None)  # Empty formset for additional images
-
-    # Query all products to display in the management page
+        formset = ProductImageFormSet()
     products = Product.objects.all()
     return render(
         request, 'products/add_product.html', {
-            'form': form,
-            'formset': formset,
-            'products': products,
-        }
-    )
+            'form': form, 'formset': formset, 'products': products})
 
 
 @login_required
@@ -118,7 +113,6 @@ def edit_product(request, product_id):
         if form.is_valid() and formset.is_valid():
             form.save()
             formset.save()
-            messages.success(request, 'Product updated successfully!')
             return redirect('add_product')
     else:
         form = ProductForm(instance=product)

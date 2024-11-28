@@ -11,12 +11,16 @@
       <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
-        <h4 class="mt-4">Additional Images</h4>
+        <h4>Additional Images</h4>
         {{ formset.management_form }}
-        {% for form in formset %}
-          {{ form.as_p }}
-        {% endfor %}
-        <div class="text-center mt-4">
+        <div class="formset-container">
+          {% for form in formset %}
+          <div class="formset-item mb-3">
+            {{ form.as_p }}
+          </div>
+          {% endfor %}
+        </div>
+        <div class="text-center">
           <button type="submit" class="btn btn-success">Save</button>
         </div>
       </form>

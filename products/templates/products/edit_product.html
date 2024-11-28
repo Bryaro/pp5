@@ -8,20 +8,22 @@
       <h2 class="text-center m-0">Edit Product</h2>
     </div>
     <div class="card-body">
-      <form method="post" enctype="multipart/form-data">
+      <form method="post" enctype="multipart/form-data" class="form-group">
         {% csrf_token %}
         {{ form.as_p }}
         <h4>Additional Images</h4>
         {{ formset.management_form }}
-        <div>
+        <div class="formset-container">
           {% for form in formset %}
+          <div class="formset-item mb-3">
             {{ form.as_p }}
+          </div>
           {% endfor %}
         </div>
         <div class="text-center">
-          <button type="submit" class="btn btn-success">Save Changes</button>
+          <button type="submit" class="btn btn-success">Update Product</button>
         </div>
-      </form>
+      </form>    
     </div>
   </div>
 </div>
