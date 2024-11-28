@@ -14,10 +14,22 @@
 <div class="container-fluid product-info">
     <div class="row mt-4 mb-4">
         <div class="col-md-6 text-center">
+            <!-- Display the primary product image -->
             {% if product.image %}
-            <img class="img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
+            <img class="img-fluid mb-3" src="{{ product.image.url }}" alt="{{ product.name }}">
             {% else %}
-            <img class="img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="No image available">
+            <img class="img-fluid mb-3" src="{{ MEDIA_URL }}noimage.png" alt="No image available">
+            {% endif %}
+
+            <!-- Display additional product images -->
+            {% if product.images.all %}
+            <div class="row">
+                {% for image in product.images.all %}
+                <div class="col-4 mb-3">
+                    <img class="img-fluid" src="{{ image.image.url }}" alt="Additional image">
+                </div>
+                {% endfor %}
+            </div>
             {% endif %}
         </div>
         <div class="col-md-6">
@@ -73,7 +85,6 @@
                     {% endif %}
                 </div>
                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
-
             </form>
         </div>
     </div>
