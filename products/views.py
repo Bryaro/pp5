@@ -2,9 +2,8 @@ from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.db.models import Q
 from .models import Product, Category
-
 from django.contrib.auth.decorators import login_required, user_passes_test
-from .forms import ProductForm
+from .forms import ProductForm, ProductImageFormSet
 
 
 def staff_or_superuser_check(user):
