@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.db.models import Q
-from .models import Product, Category
 from django.contrib.auth.decorators import login_required, user_passes_test
+from .models import Product, Category
 from .forms import ProductForm, ProductImageFormSet
 
 
@@ -64,11 +64,12 @@ def all_products(request):
 
 def product_info(request, product_id):
     """ View to show product information when product is opened """
-
     product = get_object_or_404(Product, pk=product_id)
+    additional_images = product.productimage_set.all()
 
     context = {
         'product': product,
+        'additional_images': additional_images,
     }
 
     return render(request, 'products/product_info.html', context)
@@ -82,17 +83,26 @@ def add_product(request):
     """
     if request.method == 'POST':
         form = ProductForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            formset.save()
+        formset = ProductImageFormSet(request.POST, request.FILES, instance=None)
+        if form.is_valid() and formset.is_valid():
+            product = form.save()  # Save the main product
+            formset.instance = product  # Link the formset to the product
+            formset.save()  # Save the additional images
+            messages.success(request, 'Product added successfully!')
             return redirect('products')
     else:
         form = ProductForm()
-    # simply to query all products for now, till full CRUD is checked
+        formset = ProductImageFormSet(instance=None)  # Empty formset for additional images
+
+    # Query all products to display in the management page
     products = Product.objects.all()
     return render(
         request, 'products/add_product.html', {
-            'form': form, 'products': products})
+            'form': form,
+            'formset': formset,
+            'products': products,
+        }
+    )
 
 
 @login_required
@@ -104,14 +114,19 @@ def edit_product(request, product_id):
     product = get_object_or_404(Product, id=product_id)
     if request.method == 'POST':
         form = ProductForm(request.POST, request.FILES, instance=product)
-        if form.is_valid():
+        formset = ProductImageFormSet(request.POST, request.FILES, instance=product)
+        if form.is_valid() and formset.is_valid():
             form.save()
+            formset.save()
+            messages.success(request, 'Product updated successfully!')
             return redirect('add_product')
     else:
         form = ProductForm(instance=product)
+        formset = ProductImageFormSet(instance=product)
 
     context = {
         'form': form,
+        'formset': formset,
         'product': product,
     }
     return render(request, 'products/edit_product.html', context)
