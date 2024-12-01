@@ -1,6 +1,7 @@
 from django.contrib import admin
+from django.db import models
+from ckeditor.widgets import CKEditorWidget
 from .models import Product, Category
-
 
 class ProductAdmin(admin.ModelAdmin):
     """
@@ -19,6 +20,12 @@ class ProductAdmin(admin.ModelAdmin):
     )
 
     ordering = ('sku',)
+
+
+    # Use CKEditor for the description field
+    formfield_overrides = {
+        models.TextField: {'widget': CKEditorWidget},
+    }
 
 
 class CategoryAdmin(admin.ModelAdmin):

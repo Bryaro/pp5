@@ -70,6 +70,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'storages',
     'ckeditor',
+    'ckeditor_uploader',
 ]
 
 MIDDLEWARE = [
@@ -191,6 +192,15 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 CKEDITOR_UPLOAD_PATH = "uploads/"
+
+# CKEditor Configuration
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'full',  # Full toolbar with all features
+        'height': 300,      # Height of the editing area
+        'width': 'auto',    # Adjusts to the page width
+    },
+}
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
