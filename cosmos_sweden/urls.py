@@ -29,4 +29,5 @@ urlpatterns = [
     path('checkout/', include('checkout.urls')),
     path('reviews/', include(('reviews.urls', 'reviews'), namespace='reviews')),
     path('blog/', include('blog.urls', namespace='blog')),
+    path('ckeditor/', include('ckeditor_uploader.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
