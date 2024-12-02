@@ -30,8 +30,6 @@ ALLOWED_HOSTS = [
     '8000-bryaro-pp5-k2tlzmd5ekc.ws-us110.gitpod.io',
     '8000-bryaro-pp5-k2tlzmd5ekc.ws-eu108.gitpod.io',
     'pp5-bryar-475062670c00.herokuapp.com', 'localhost', '127.0.0.1',
-    'www.cosmos-watches.com',
-    'cosmos-watches.com',
     'www.cosmos-sweden.com',
     'cosmos-sweden.com',
 ]
@@ -39,8 +37,6 @@ ALLOWED_HOSTS = [
 CSRF_TRUSTED_ORIGINS = [
     'https://8000-bryaro-pp5-k2tlzmd5ekc.ws-eu108.gitpod.io',
     'https://8000-bryaro-pp5-k2tlzmd5ekc.ws-us110.gitpod.io',
-    'https://www.cosmos-watches.com',
-    'https://cosmos-watches.com',
     'https://www.cosmos-sweden.com',
     'https://cosmos-sweden.com',
 ]
@@ -243,6 +239,12 @@ STRIPE_CURRENCY = 'sek'
 STRIPE_PUBLIC_KEY = os.getenv('STRIPE_PUBLIC_KEY', '')
 STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY', '')
 STRIPE_WH_SECRET = os.getenv('STRIPE_WH_SECRET', '')
+
+
+# Enforce HTTPS
+SECURE_SSL_REDIRECT = True
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
 
 # Email Configuration for Development
 if 'DEVELOPMENT' in os.environ:
