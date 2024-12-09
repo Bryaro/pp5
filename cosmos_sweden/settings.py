@@ -63,6 +63,7 @@ INSTALLED_APPS = [
     'blog',
 
     'crispy_forms',
+    'crispy_bootstrap4',
     'storages',
     'markdownify',
 ]
