@@ -36,9 +36,6 @@ ALLOWED_HOSTS = [
 
 CSRF_TRUSTED_ORIGINS = [
     'https://8000-bryaro-pp5-k2tlzmd5ekc.ws-eu108.gitpod.io',
-    'https://8000-bryaro-pp5-k2tlzmd5ekc.ws-us110.gitpod.io',
-    'https://www.cosmos-watches.com',
-    'https://cosmos-watches.com',
     'https://www.cosmos-sweden.com',
     'https://cosmos-sweden.com',
 ]
@@ -220,6 +217,10 @@ if 'USE_AWS' in os.environ:
     STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/'
     MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'
 
+
+SECURE_HSTS_SECONDS = 31536000  # One year in seconds
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_PRELOAD = True
 
 SECURE_SSL_REDIRECT = True
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
