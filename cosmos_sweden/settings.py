@@ -64,6 +64,13 @@ INSTALLED_APPS = [
 
     'crispy_forms',
     'storages',
+    'markdownify',
+]
+
+MARKDOWNIFY_STRIP = False  # Preserve HTML tags
+MARKDOWNIFY_WHITELIST_TAGS = [
+    'a', 'abbr', 'acronym', 'b', 'blockquote', 'code', 'em', 'i',
+    'li', 'ol', 'p', 'strong', 'ul', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
 ]
 
 MIDDLEWARE = [
