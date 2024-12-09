@@ -30,8 +30,6 @@ ALLOWED_HOSTS = [
     '8000-bryaro-pp5-k2tlzmd5ekc.ws-us110.gitpod.io',
     '8000-bryaro-pp5-k2tlzmd5ekc.ws-eu108.gitpod.io',
     'pp5-bryar-475062670c00.herokuapp.com', 'localhost', '127.0.0.1',
-    'www.cosmos-watches.com',
-    'cosmos-watches.com',
     'www.cosmos-sweden.com',
     'cosmos-sweden.com',
 ]
@@ -221,6 +219,10 @@ if 'USE_AWS' in os.environ:
     # Override static and media URLs in production
     STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/'
     MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'
+
+
+SECURE_SSL_REDIRECT = True
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 
 # Stripe
