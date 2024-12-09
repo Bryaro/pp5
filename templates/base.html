@@ -24,6 +24,8 @@
     {% endblock %}
 
     {% block extra_css %}
+        {{ block.super }}
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
     {% endblock %}
 
     {% block corejs %}
@@ -36,12 +38,14 @@
     {% endblock %}
 
     {% block extra_js %}
+        {{ block.super }}
+        <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', (event) => {
             setTimeout(function() {
                 $('.alert').fadeOut('fast');
             }, 3000);
-        });
+        });   
     </script>
     {% endblock %}
 

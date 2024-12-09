@@ -9,6 +9,9 @@ class ProductForm(forms.ModelForm):
     class Meta:
         model = Product
         fields = '__all__'
+        widgets = {
+            'description': forms.Textarea(attrs={'id': 'id_description'})
+        }
 
 # Inline formset for ProductImage
 ProductImageFormSet = inlineformset_factory(

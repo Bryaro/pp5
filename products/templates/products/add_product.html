@@ -10,7 +10,15 @@
     <div class="card-body">
       <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
+
         {{ form.as_p }}
+
+        <script>
+          document.addEventListener('DOMContentLoaded', function () {
+            var simplemde = new SimpleMDE({ element: document.getElementById("id_description") });
+          });
+        </script>
+
         <h4>Additional Images</h4>
         {{ formset.management_form }}
         <div class="formset-container">
