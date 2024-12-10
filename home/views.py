@@ -24,6 +24,8 @@ def contact(request):
     """ View to Contact page """
     return render(request, 'home/contact.html')
 
+def privacy_policy(request):
+    return render(request, 'privacy_policy.html')
 
 def contact(request):
     """
