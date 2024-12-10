@@ -26,7 +26,9 @@ def contact(request):
 
 def privacy_policy(request):
     return render(request, 'home/privacy_policy.html')
-
+    
+def cookie_policy(request):
+    return render(request, 'home/cookie_policy.html')
 
 def contact(request):
     """
