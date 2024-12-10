@@ -1,40 +1,91 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block overlay %}
-{% endblock %}
-
-{% block page_header %}
-    <div class="container header-container">
-        <div class="row">
-            <div class="col"></div>
-        </div>
-    </div>
-{% endblock %}
-
 {% block content %}
-<div class="container h-100 pt-5" style="max-width: 800px;">
-    <div class="card mb-5">
-        <div class="card-header">
-            <h2 class="text-center m-0">Privacy Policy</h2>
+<div class="container pt-5" style="background-color: white; padding: 30px; max-width: 800px; border-radius: 5px;">
+    <div class="card border-0">
+        <div class="card-header bg-white text-center">
+            <h2 class="m-0">Privacy Policy</h2>
+            <p class="text-muted">Last Updated: December 10, 2024</p>
         </div>
         <div class="card-body">
             <section class="privacy-policy">
-                <p>This Privacy Policy explains how Cosmos Sweden Watches ("we," "us," or "our") collects, uses, and protects your personal data when you visit our website or use our services.</p>
+                <p>Welcome to Cosmos Sweden Watches! Your privacy is critically important to us. This Privacy Policy explains how we collect, use, and protect your personal information when you visit our website or use our services.</p>
                 
-                <h3>1. Data We Collect</h3>
-                <p>We collect identifiable information such as name, email address, shipping address, and technical data like IP addresses and device information.</p>
+                <h3>1. Information We Collect</h3>
+                <p>We collect the following types of information:</p>
+                <ul>
+                    <li><strong>Personal Information:</strong> Name, email address, phone number, and shipping address.</li>
+                    <li><strong>Payment Information:</strong> Payment card details and other information necessary to process transactions securely.</li>
+                    <li><strong>Technical Data:</strong> IP address, browser type, operating system, and device details.</li>
+                    <li><strong>Usage Data:</strong> Information about your interaction with our site, including pages visited, time spent, and referring URLs.</li>
+                </ul>
                 
-                <h3>2. How We Use Your Data</h3>
-                <p>Your data is used to process orders, personalize user experience, and enhance website performance. We also use it for security purposes.</p>
+                <h3>2. How We Use Your Information</h3>
+                <p>We use your information for the following purposes:</p>
+                <ul>
+                    <li>To process and deliver your orders.</li>
+                    <li>To improve your experience with personalized content and recommendations.</li>
+                    <li>To communicate with you about orders, updates, and promotions (if you have opted in).</li>
+                    <li>To analyze website usage and improve our services.</li>
+                    <li>To comply with legal obligations and protect against fraud.</li>
+                </ul>
                 
-                <h3>3. Your Rights</h3>
-                <p>You have the right to access, rectify, or delete your personal data. Contact us at <a href="mailto:info@cosmos-sweden.com">info@cosmos-sweden.com</a>.</p>
+                <h3>3. Legal Basis for Processing</h3>
+                <p>Our processing of your personal information is based on:</p>
+                <ul>
+                    <li><strong>Consent:</strong> For marketing communications and the use of cookies.</li>
+                    <li><strong>Contract:</strong> To fulfill orders and provide requested services.</li>
+                    <li><strong>Legitimate Interests:</strong> To enhance our website, secure transactions, and prevent fraud.</li>
+                    <li><strong>Legal Obligations:</strong> For compliance with applicable laws and regulations.</li>
+                </ul>
                 
-                <h3>4. Contact Information</h3>
-                <p>If you have any questions or concerns, please contact us at <a href="mailto:info@cosmos-sweden.com">info@cosmos-sweden.com</a>.</p>
+                <h3>4. Cookies and Tracking</h3>
+                <p>We use cookies and similar technologies to enhance your experience and analyze traffic. Cookies help us:</p>
+                <ul>
+                    <li>Understand how visitors interact with our site.</li>
+                    <li>Store preferences and improve site performance.</li>
+                </ul>
+                <p>You can manage cookie preferences through your browser settings. Learn more in our <a href="{% url 'cookie-policy' %}">Cookies Policy</a>.</p>
                 
-                <p>For the full details of our Privacy Policy, please read through the sections carefully. By using our site, you agree to the terms outlined here.</p>
+                <h3>5. Data Sharing</h3>
+                <p>We do not sell your personal information. However, we may share your data with:</p>
+                <ul>
+                    <li>Trusted service providers, such as payment processors and shipping companies, to fulfill your orders.</li>
+                    <li>Legal authorities, if required by law.</li>
+                </ul>
+                
+                <h3>6. Security Measures</h3>
+                <p>We implement advanced security measures to protect your data, including:</p>
+                <ul>
+                    <li>Encryption of sensitive information.</li>
+                    <li>Regular security audits.</li>
+                    <li>Secure payment gateways.</li>
+                </ul>
+                
+                <h3>7. Your Rights</h3>
+                <p>You have the following rights regarding your personal information:</p>
+                <ul>
+                    <li>Access your data and receive a copy.</li>
+                    <li>Request corrections to inaccurate data.</li>
+                    <li>Request the deletion of your data ("right to be forgotten").</li>
+                    <li>Restrict or object to data processing.</li>
+                    <li>Data portability (receive your data in a structured format).</li>
+                </ul>
+                <p>To exercise your rights, contact us at <a href="mailto:info@cosmos-sweden.com">info@cosmos-sweden.com</a>.</p>
+                
+                <h3>8. Data Retention</h3>
+                <p>We retain your personal information only as long as necessary to fulfill the purposes outlined in this policy or to comply with legal requirements.</p>
+                
+                <h3>9. International Transfers</h3>
+                <p>If we transfer your personal data outside the EU/EEA, we ensure appropriate safeguards are in place, such as Standard Contractual Clauses (SCCs).</p>
+                
+                <h3>10. Changes to This Privacy Policy</h3>
+                <p>We may update this Privacy Policy to reflect changes in legal requirements or business practices. Updates will be published on this page, and the "Last Updated" date will be revised accordingly.</p>
+                
+                <h3>11. Contact Us</h3>
+                <p>If you have any questions or concerns about this Privacy Policy, please contact us at:</p>
+                <p><strong>Email:</strong> <a href="mailto:info@cosmos-sweden.com">info@cosmos-sweden.com</a></p>
             </section>
         </div>
     </div>
