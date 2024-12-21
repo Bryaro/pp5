@@ -15,17 +15,10 @@ class ProductAdmin(admin.ModelAdmin):
         'category',
         'price',
         'rating',
-<<<<<<< HEAD
-        'sold_out',
-        'image',
-    )
-    list_editable = ('sold_out',)
-=======
         'sold',
         'image',
     )
     list_editable = ('sold',)
->>>>>>> 27f072c (Add sold functionality to products)
     ordering = ('sku',)
 
 
