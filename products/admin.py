@@ -15,9 +15,10 @@ class ProductAdmin(admin.ModelAdmin):
         'category',
         'price',
         'rating',
+        'sold_out',
         'image',
     )
-
+    list_editable = ('sold_out',)
     ordering = ('sku',)
 
 
