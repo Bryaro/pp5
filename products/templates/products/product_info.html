@@ -19,8 +19,15 @@
             {% else %}
                 <p>No Rating</p>
             {% endif %}
+<<<<<<< HEAD
             <a href="{% url 'reviews:add_review' product.id %}">Write a Review</a>
             {% if not product.sold_out %}
+=======
+            {% if product.sold %}
+                <p class="text-danger"><strong>Sold Out</strong></p>
+            {% else %}
+                <a href="{% url 'reviews:add_review' product.id %}">Write a Review</a>
+>>>>>>> 27f072c (Add sold functionality to products)
                 <form class="form" action="{% url 'add_to_cart' product.id %}" method="POST">
                     {% csrf_token %}
                     <div class="col-12">
@@ -58,11 +65,20 @@
                             <span class="text-uppercase">Keep Shopping</span>
                         </a>
                         <input type="submit" class="btn btn-black rounded-0 text-uppercase mt-5" value="Add to Cart">
+<<<<<<< HEAD
                     </div>
                     <input type="hidden" name="redirect_url" value="{{ request.path }}">
                 </form>
             {% else %}
                 <p class="text-danger mt-5">This product is sold out and cannot be added to the cart.</p>
+=======
+                        {% if request.user.is_staff or request.user.is_superuser %}
+                            <a href="{% url 'edit_product' product.id %}" class="btn btn-warning mt-5">Edit product</a>
+                        {% endif %}
+                    </div>
+                    <input type="hidden" name="redirect_url" value="{{ request.path }}">
+                </form>
+>>>>>>> 27f072c (Add sold functionality to products)
             {% endif %}
         </div>
     </div>
