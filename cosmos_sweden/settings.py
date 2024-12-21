@@ -69,6 +69,7 @@ INSTALLED_APPS = [
 
     'crispy_forms',
     'storages',
+    'markdownify',
 ]
 
 MIDDLEWARE = [
@@ -110,6 +111,19 @@ TEMPLATES = [
         },
     },
 ]
+
+
+MARKDOWNIFY = {
+    "default": {
+        "WHITELIST_TAGS": [
+            "a", "abbr", "acronym", "b", "blockquote", "code", "em", "i",
+            "li", "ol", "p", "strong", "ul", "h1", "h2", "h3", "h4", "h5", "h6",
+        ],
+        "STRIP": False,  # Preserve HTML tags
+        "WHITELIST_ATTRS": ['href', 'title', 'alt'],  # Optional attribute whitelist
+    }
+}
+
 
 
 AUTHENTICATION_BACKENDS = [
