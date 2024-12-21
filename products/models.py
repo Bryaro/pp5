@@ -34,11 +34,7 @@ class Product(models.Model):
     name = models.CharField(max_length=254)
     description = models.TextField()
     price = models.DecimalField(max_digits=6, decimal_places=2)
-<<<<<<< HEAD
-    sold_out = models.BooleanField(default=False)
-=======
-    sold = models.BooleanField(default=False)
->>>>>>> 27f072c (Add sold functionality to products)
+    sold = models.BooleanField(default=False)  # Keep this field
     rating = models.DecimalField(
         max_digits=6, decimal_places=2, null=True, blank=True)
     image = models.ImageField(upload_to='product_images/', null=True, blank=True)
