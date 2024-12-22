@@ -24,8 +24,11 @@ def contact(request):
     """ View to Contact page """
     return render(request, 'home/contact.html')
 
+
 def policy(request):
+    """ View to Privacy Policy page """
     return render(request, 'home/policy.html')
+
 
 def contact(request):
     """
