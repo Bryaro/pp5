@@ -3,18 +3,17 @@ html {
 }
 
 body {
+    /* Original background */
+    /* background: url('/media/homepage_bg.webp') no-repeat center center fixed; */
+    /* New: Default desktop background */
     background: url('/media/homepage_bg.webp') no-repeat center center fixed;
     background-size: cover;
     min-height: 100vh;
-    /* Use min-height instead of height */
     font-family: 'Lato';
     color: black;
     display: flex;
-    /* Set body to use flexbox */
     flex-direction: column;
-    /* Stack children vertically */
 }
-
 
 .bg-dark-75 {
     background-color: rgba(0, 0, 0, 0.25);
@@ -35,7 +34,6 @@ body {
     display: flex;
 }
 
-/* static/css/custom.css */
 #mc_embed_signup {
     background: black;
     color: white;
@@ -44,7 +42,6 @@ body {
     width: 600px;
     max-width: 100%;
     box-sizing: border-box;
-    margin-left: 0;
 }
 
 #div_id_remember,
@@ -95,6 +92,7 @@ body {
 
 .main-content {
     flex-grow: 1;
+    padding-top: 0px;
 }
 
 .logo-image {
@@ -110,7 +108,7 @@ body {
 .shop-now-button {
     background: black;
     color: white;
-    min-width: 260px;
+    min-width: 300px;
 }
 
 .btn-black {
@@ -151,41 +149,24 @@ body {
 }
 
 .navbar {
+    border-bottom: 1px solid gray;
     width: 100%;
 }
 
-/* Custom CSS for the search form */
 .search-input,
 .search-button {
     background-color: #000;
-    /* Black background */
     color: #fff;
-    /* White text */
     border: 1px solid #fff;
-    /* White border */
 }
 
-/* Ensures the search icon inside the button is white */
 .search-button .fas {
     color: #fff;
 }
 
-/* Apply the styles to the input and button specifically */
 .search-input::placeholder {
-    /* Chrome, Firefox, Opera, Safari 10.1+ */
     color: #fff;
     opacity: 1;
-    /* Firefox */
-}
-
-.search-input:-ms-input-placeholder {
-    /* Internet Explorer 10-11 */
-    color: #fff;
-}
-
-.search-input::-ms-input-placeholder {
-    /* Microsoft Edge */
-    color: #fff;
 }
 
 a.category-badge>span.badge:hover {
@@ -226,7 +207,6 @@ a.category-badge>span.badge:hover {
     font-weight: bolder;
 }
 
-/* 404 Page Specific Styles */
 .error-404 {
     text-align: center;
     height: 85vh;
@@ -239,8 +219,6 @@ a.category-badge>span.badge:hover {
     background-color: rgba(255, 255, 255, 0.9);
 }
 
-
-/* Forms */
 form p {
     background-color: #f8f9fa;
     padding: 10px;
@@ -259,29 +237,25 @@ select {
     box-sizing: border-box;
 }
 
-#image-clear_id {
-    width: 30px;
+.all-auth-base {
+    padding-top: 0px;
 }
 
 .container {
     justify-content: center;
-    /* width: 400px; */
 }
 
 .alert-success {
-    margin-top: 90px;
+    margin-top: 190px;
 }
 
-/* -------------------------------- Media Queries */
-
-/* Slightly larger container on xl screens */
+/* Media Queries */
 @media (min-width: 1200px) {
     .container {
         max-width: 80%;
     }
 }
 
-/* fixed top navbar only on medium and up */
 @media (min-width: 992px) {
     .fixed-top-desktop-only {
         position: fixed;
@@ -296,41 +270,23 @@ select {
     }
 }
 
-
-/* Custom style for allauth htmls */
-/* Additional responsive adjustments */
+/* Mobile-Specific Styling */
 @media (max-width: 768px) {
+    /* Original mobile background */
+    /* background: url('/media/homepage_bg.webp') no-repeat center center fixed; */
+
+    /* New: High-quality background for mobile */
+    body {
+        background: url('/media/homepage_bg_high_quality.webp') no-repeat center center fixed;
+        background-size: cover;
+        min-height: 100vh;
+    }
+
     .card-body {
         padding: 20px;
-        /* Adjust padding for smaller screens */
-    }
-
-    .container {
-        justify-content: center;
-        width: 800px;
     }
 }
 
-/* MIN WIDTH 768 spec for desktop header */
-@media (min-width: 768px) {
-    .main-content {
-        flex-grow: 1;
-        padding-top: 100px;
-    }
-
-    .container {
-        justify-content: center;
-        width: 800px;
-    }
-
-    .footer-info-text,
-    .footer-social-text {
-        padding-bottom: 20px;
-        width: 50%;
-    }
-}
-
-/* pad the top a bit when navbar is collapsed on mobile */
 @media (max-width: 991px) {
     .header-container {
         padding-top: 116px;
