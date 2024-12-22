@@ -25,7 +25,7 @@ def contact(request):
     return render(request, 'home/contact.html')
 
 def policy(request):
-    return render(request, 'policy.html')
+    return render(request, 'home/policy.html')
 
 def contact(request):
     """
