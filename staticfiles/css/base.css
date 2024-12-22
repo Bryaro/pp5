@@ -277,7 +277,7 @@ select {
 
     /* New: High-quality background for mobile */
     body {
-        background: url('/media/homepage_bg_high_quality.webp') no-repeat center center fixed;
+        background: url('/media/Cosmos_Sweden_Phone_BG.jpg') no-repeat center center fixed;
         background-size: cover;
         min-height: 100vh;
     }
