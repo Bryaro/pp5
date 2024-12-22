@@ -4,16 +4,19 @@ html {
 
 body {
     background: url('/media/homepage_bg.webp') no-repeat center center fixed;
-    background-size: cover;
-    min-height: 100vh;
-    /* Use min-height instead of height */
+    background-size: cover; /* Ensures the background covers the entire viewport */
+    image-rendering: auto; /* Optimizes image rendering */
+    -webkit-background-size: cover; /* Ensures compatibility with older browsers */
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    height: 100%; /* Ensures the background occupies the full height */
+    margin: 0; /* Removes default margin to avoid gaps */
     font-family: 'Lato';
     color: black;
     display: flex;
-    /* Set body to use flexbox */
     flex-direction: column;
-    /* Stack children vertically */
 }
+
 
 .bg-dark-75 {
     background-color: rgba(0, 0, 0, 0.25);
