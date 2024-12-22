@@ -15,21 +15,31 @@
 {% block content %}
 <div class="container h-100 pt-5">
     <div class="row h-100 align-items-center">
-        <!-- Text Section -->
-        <div class="col-12 col-md-6 my-auto text-center text-md-start">
-            <h1 class="display-4 logo-font text-white bg-dark-75">
+        <!-- Left Section: Main Text -->
+        <div class="col-12 col-md-7 text-center text-md-left">
+            <h1 class="display-4 logo-font text-white bg-dark-75 py-2 px-3 d-inline-block">
                 Your Universe on Your Wrist
             </h1>
+            <p class="lead mt-3 text-light bg-dark-50 py-2 px-3 d-inline-block">
+                Discover elegance and precision in every tick. Timeless designs crafted for life's most meaningful moments.
+            </p>
             <div class="my-5">
-                <h2>
-                    <a href="{% url 'products' %}" class="shop-now-button btn btn-lg rounded-0 text-uppercase py-3">Shop Now</a>
-                </h2>
+                <a href="{% url 'products' %}" class="shop-now-button btn btn-lg btn-outline-light rounded-0 text-uppercase py-3 px-4">
+                    Shop Now
+                </a>
             </div>
         </div>
-        <!-- Image Section -->
-        <div class="col-12 col-md-6 text-center">
-            <img src="https://pp5-project.s3.eu-north-1.amazonaws.com/media/product_images/dEssor.jpg" alt="d'Essor Collection" class="img-fluid rounded">
-            <p class="mt-3 text-white">New Collection Coming Early 2025</p>
+        
+        <!-- Right Section: New Collection Announcement -->
+        <div class="col-12 col-md-5 text-center mt-4 mt-md-0">
+            <div class="bg-light text-dark p-4 rounded shadow">
+                <h2 class="font-weight-bold">
+                    New Collection Coming Early 2025
+                </h2>
+                <p class="mt-2">
+                    Stay tuned for the launch of <strong>d’Essor</strong>, a timeless collection blending sophistication and modernity.
+                </p>
+            </div>
         </div>
     </div>
 </div>
