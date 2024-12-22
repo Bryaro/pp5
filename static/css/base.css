@@ -268,6 +268,10 @@ select {
     .header-container {
         padding-top: 164px;
     }
+
+    .main-content {
+        padding-top: 100px; /* Padding for desktop screens */
+    }
 }
 
 /* Mobile-Specific Styling */
