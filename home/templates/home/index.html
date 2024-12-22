@@ -13,18 +13,16 @@
 {% endblock %}
 
 {% block content %}
-<div class="background-container" style="height: 100vh; width: 100%; position: relative; background: url('/media/homepage_bg.webp') no-repeat center center fixed; background-size: cover; margin: 0;">
-    <div class="container h-100 pt-5">
-        <div class="row h-100">
-            <div class="col-7 col-md-6 my-auto">
-                <h1 class="display-4 logo-font text-white bg-dark-75" style="padding: 10px; border-radius: 5px;">
-                    Your Universe on Your Wrist
-                </h1>
-                <div class="my-5">
-                    <h2>
-                        <a href="{% url 'products' %}" class="shop-now-button btn btn-lg rounded-0 text-uppercase py-3">Shop Now</a>
-                    </h2>
-                </div>
+<div class="container h-100 pt-5">
+    <div class="row h-100">
+        <div class="col-7 col-md-6 my-auto">
+            <h1 class="display-4 logo-font text-white bg-dark-75">
+                Your Universe on Your Wrist
+            </h1>
+            <div class="my-5">
+                <h2>
+                    <a href="{% url 'products' %}" class="shop-now-button btn btn-lg rounded-0 text-uppercase py-3">Shop Now</a>
+                </h2>
             </div>
         </div>
     </div>
