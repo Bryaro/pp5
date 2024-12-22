@@ -24,6 +24,8 @@ def contact(request):
     """ View to Contact page """
     return render(request, 'home/contact.html')
 
+def policy(request):
+    return render(request, 'policy.html')
 
 def contact(request):
     """
