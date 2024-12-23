@@ -278,6 +278,13 @@ select {
     }
 }
 
+
+/* Specific styling for additional images */
+.additional-images .additional-image {
+    border: none;
+    box-shadow: none;
+}
+
 /* Mobile-Specific Styling */
 @media (max-width: 768px) {
     /* Original mobile background */
