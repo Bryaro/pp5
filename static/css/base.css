@@ -272,6 +272,10 @@ select {
     .main-content {
         padding-top: 100px; /* Padding for desktop screens */
     }
+
+    .product-info {
+        margin-top: 100px;
+    }
 }
 
 /* Mobile-Specific Styling */
@@ -298,5 +302,9 @@ select {
 
     body {
         height: calc(100vh - 116px);
+    }
+
+    .product-info {
+        padding-top: 100px;
     }
 }
