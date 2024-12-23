@@ -255,10 +255,9 @@ select {
 }
 
 .product-card {
-    background-color: rgba(192, 192, 192, 0.1); /* Transparent light grey background */
-    border-radius: 8px; /* Rounded corners for better aesthetics */
-    padding: 15px; /* Padding inside the card */
-    margin-bottom: 20px; /* Add vertical spacing */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1); /* Thin border with light opacity */
+    padding-bottom: 10px; /* Add some spacing above the border for better appearance */
+    margin-bottom: 20px; /* Optional: Slight spacing between products for better visibility */
 }
 
 /* Media Queries */
