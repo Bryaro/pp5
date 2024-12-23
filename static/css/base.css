@@ -255,9 +255,8 @@ select {
 }
 
 .product-card {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1); /* Thin border with light opacity */
-    padding-bottom: 10px; /* Add some spacing above the border for better appearance */
-    margin-bottom: 20px; /* Optional: Slight spacing between products for better visibility */
+    border-bottom: 1px solid black; /* Adds a solid black border at the bottom */
+    margin-bottom: 20px; /* Adds vertical spacing between product cards */
 }
 
 /* Media Queries */
