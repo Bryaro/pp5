@@ -255,8 +255,21 @@ select {
 }
 
 .product-card {
-    border-bottom: 1px solid black; /* Adds a solid black border at the bottom */
-    margin-bottom: 20px; /* Adds vertical spacing between product cards */
+    position: relative; /* Required for the pseudo-element */
+    margin-bottom: 20px; /* Adds space between products vertically */
+}
+
+.product-card::after {
+    content: "";
+    display: block;
+    width: 70%; /* Border width set to 70% of the card */
+    height: 1px; /* Thickness of the border */
+    background-color: rgba(0, 0, 0, 0.5); /* Black color with 50% transparency */
+    margin: 0 auto; /* Center the border horizontally */
+    position: absolute;
+    bottom: 0; /* Position it at the bottom of the card */
+    left: 0;
+    right: 0;
 }
 
 /* Media Queries */
