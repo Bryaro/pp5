@@ -48,7 +48,7 @@
             <div class="additional-images">
                 {% for image in additional_images %}
                     {% if image.image %}
-                        <img class="additional-image" src="{{ image.image.url }}" alt="Additional Image">
+                        <img class="img-thumbnail" src="{{ image.image.url }}" alt="Additional Image">
                     {% endif %}
                 {% endfor %}
             </div>

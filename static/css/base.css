@@ -249,12 +249,6 @@ select {
     margin-top: 190px;
 }
 
-.additional-images img {
-    border: 2px solid white;
-    padding: 4px;
-    border-radius: 4px; /* Optional: to match the rounded aesthetic */
-}
-
 /* Media Queries */
 @media (min-width: 1200px) {
     .container {
