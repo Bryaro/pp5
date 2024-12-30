@@ -4,3 +4,6 @@ Disallow: /cart/
 Disallow: /admin/
 Disallow: /profiles/
 Sitemap: https://pp5-bryar-475062670c00.herokuapp.com/sitemap.xml
+
+User-agent: facebookexternalhit
+Allow: /
