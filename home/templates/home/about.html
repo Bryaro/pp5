@@ -64,12 +64,22 @@
 </div>
 
 <style>
-/* Add top padding for desktop view */
-@media (min-width: 992px) {
-  .card {
-    padding-top: 100px !important;
+  /* Desktop-specific styling */
+  @media (min-width: 992px) {
+    .container {
+      max-width: 70%; /* Adds left and right margins */
+    }
+  
+    .card {
+      padding-top: 100px !important; /* Adds extra top padding */
+    }
   }
-}
+  
+  /* Ensures responsive behavior for smaller screens */
+  @media (max-width: 991px) {
+    .container {
+      max-width: 90%; /* Slightly larger margin for small screens */
+    }
+  }
 </style>
-
 {% endblock %}
