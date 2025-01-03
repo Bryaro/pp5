@@ -4,7 +4,7 @@
 
 {% block content %}
 <div style="background-color: black; color: white; padding: 40px 0;">
-  <div class="container" style="background-color: black; color: white; padding: 20px; border-radius: 10px; max-width: 80%; margin: 0 auto;">
+  <div class="container" style="background-color: black; color: white; padding: 20px; border-radius: 10px; margin: 0 auto;">
     <div class="card mb-5" style="background-color: transparent; border: none;">
       <div class="card-header text-center" style="background-color: transparent; border: none;">
         <h2 class="m-0" style="color: white;">History</h2>
@@ -64,12 +64,19 @@
 </div>
 
 <style>
-/* Add top padding for desktop view */
-@media (min-width: 992px) {
-  .card {
-    padding-top: 100px !important;
+  /* Desktop-specific styling */
+  @media (min-width: 992px) {
+    .container {
+      max-width: 80%; /* Adjust max-width to 80% for computers */
+    }
   }
-}
+  
+  /* Ensures responsive behavior for smaller screens */
+  @media (max-width: 991px) {
+    .container {
+      max-width: 100%; /* Maintain 100% width for mobile */
+    }
+  }
 </style>
 
 {% endblock %}
