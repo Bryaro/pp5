@@ -64,19 +64,21 @@
 </div>
 
 <style>
-  /* Desktop-specific styling */
+  /* Add top padding for desktop view */
   @media (min-width: 992px) {
     .container {
-      max-width: 80%; /* Adjust max-width to 80% for computers */
+      max-width: 80%;
+    }
+    .card {
+      padding-top: 100px !important;
     }
   }
-  
-  /* Ensures responsive behavior for smaller screens */
-  @media (max-width: 991px) {
-    .container {
-      max-width: 100%; /* Maintain 100% width for mobile */
-    }
+
+  /* Ensure justified text alignment */
+  p {
+    text-align: justify;
   }
 </style>
+
 
 {% endblock %}
