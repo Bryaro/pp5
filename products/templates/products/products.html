@@ -17,6 +17,16 @@
         padding-bottom: 15px;
       }
     }
+
+    @media (min-width: 992px) { /* Apply only for larger screens */
+        .card-img-top.img-fluid {
+          transition: transform 0.3s ease-in-out;
+        }
+      
+        .card-img-top.img-fluid:hover {
+          transform: scale(1.1); /* Slight zoom */
+        }
+      }
   </style>
     <div class="container-fluid">
         <div class="row">
