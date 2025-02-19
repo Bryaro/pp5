@@ -4,17 +4,17 @@
 
 {% block content %}
 <div style="background-color: black; color: white; padding: 40px 0;">
-  <div class="container" style="background-color: black; color: white; padding: 20px; border-radius: 10px; margin: 0 auto; font-family: 'Roboto Mono', monospace; font-weight: 100;">
+  <div class="container" style="background-color: black; color: white; padding: 20px; border-radius: 10px; margin: 0 auto; font-family: 'Lora', serif; font-weight: 300;">
 
     <!-- Page Header -->
-    <div class="text-center mb-5">
-      <h2 class="m-0" style="color: white; font-weight: 100;">Quality & Certification</h2>
-      <p class="text-muted" style="color: #ccc; font-weight: 100;">Precision. Craftsmanship. Excellence.</p>
+    <div class="mb-5">
+      <h2 class="m-0" style="color: white; font-weight: 300;">Quality & Certification</h2>
+      <p style="color: #ccc; font-weight: 300;">Precision. Craftsmanship. Excellence.</p>
     </div>
 
     <!-- Quality Commitment Section -->
-    <section class="quality-intro text-center">
-      <p>At Cosmos Watches, quality is not just a standard—it is a promise. Every timepiece undergoes rigorous inspection and testing to ensure precision, durability, and craftsmanship that stand the test of time.</p>
+    <section class="quality-intro">
+      <p>At Cosmos Watches, quality is not just a standard—it is a promise. Every timepiece undergoes meticulous inspection and testing to ensure precision, durability, and craftsmanship that stands the test of time.</p>
       <p>We are proud to be certified by TÜV SÜD, a globally recognized authority in quality assurance. This certification confirms that our watches meet the highest industry standards.</p>
     </section>
 
@@ -22,14 +22,7 @@
       <div class="quality-row">
         <div class="quality-text">
           <h3>Certified Quality Control</h3>
-          <p>Every watch goes through an extensive pre-shipment inspection to ensure compliance with international quality benchmarks.</p>
-          <ul>
-            <li>Workmanship & Aesthetics: Each watch is examined for precision and perfection.</li>
-            <li>Functionality Testing: Movement accuracy, calibration, and waterproofing are all verified.</li>
-            <li>Material Inspection: Made with 316L stainless steel and scratch-resistant sapphire glass.</li>
-            <li>Water Resistance Testing: Watches are pressure-tested up to 3 ATM.</li>
-            <li>Certification: Approved by TÜV SÜD for compliance and durability.</li>
-          </ul>
+          <p>Every watch undergoes extensive pre-shipment inspection to ensure compliance with international benchmarks. Each piece is examined for aesthetics, movement accuracy, calibration, and waterproofing. Materials such as 316L stainless steel and scratch-resistant sapphire glass are rigorously tested to ensure durability. Every watch is pressure-tested up to 3 ATM to verify water resistance.</p>
         </div>
       </div>
     </section>
@@ -39,11 +32,7 @@
       <div class="quality-background">
         <div class="quality-overlay">
           <h3>Certified by TÜV SÜD</h3>
-          <p>The TÜV SÜD Pre-Shipment Inspection Report confirms that Cosmos Watches pass all required quality assessments.</p>
-          <ul>
-            <li>Inspection Conducted By: TÜV SÜD Group</li>
-            <li>Inspection Result: Pass (Style, Workmanship, Functionality & Packaging)</li>
-          </ul>
+          <p>The TÜV SÜD Pre-Shipment Inspection Report confirms that Cosmos Watches meet global quality standards. Every model undergoes a detailed assessment of style, workmanship, functionality, and packaging before approval.</p>
         </div>
       </div>
     </section>
@@ -51,40 +40,25 @@
     <!-- Precision & Materials -->
     <section class="quality-details">
       <h3 class="mt-4">Precision & Materials</h3>
-      <ul>
-        <li>316L Stainless Steel: Corrosion-resistant and durable.</li>
-        <li>Sapphire Glass: Scratch-resistant and ultra-clear visibility.</li>
-        <li>Japanese Movement: Engineered for accuracy and reliability.</li>
-      </ul>
+      <p>Crafted with 316L stainless steel, Cosmos Watches are corrosion-resistant and built for longevity. Sapphire glass ensures maximum scratch resistance while maintaining exceptional clarity. Each timepiece is powered by a Japanese movement, ensuring precise and reliable timekeeping.</p>
     </section>
 
     <!-- Tested & Proven Excellence -->
     <section class="quality-details">
       <h3 class="mt-4">Tested & Proven Excellence</h3>
-      <ul>
-        <li>AQL Standards: All watches are inspected following the Acceptable Quality Limit (AQL) standards.</li>
-        <li>Waterproof Testing: All models are tested for 3 ATM water resistance.</li>
-        <li>Time Accuracy Check: Verified with a ±0.23 sec/day calibration margin.</li>
-        <li>Scratch & Wear Resistance: Built for durability under extreme conditions.</li>
-      </ul>
+      <p>Our watches undergo AQL (Acceptable Quality Limit) inspections to maintain impeccable standards. Each model is tested for water resistance at 3 ATM, ensuring protection against daily exposure. Time accuracy is verified with a ±0.23 sec/day calibration margin. Designed for endurance, every watch is built to resist scratches and wear, even under demanding conditions.</p>
     </section>
 
     <!-- Warranty & Assurance -->
     <section class="quality-warranty">
       <h3 class="mt-4">Warranty & Assurance</h3>
-      <p>Each Cosmos Watch is a testament to our commitment to quality. We offer a 2-year warranty covering manufacturing defects. However, please note:</p>
-      <ul>
-        <li>The warranty does not cover the battery.</li>
-        <li>Normal wear and tear over time are not included under warranty.</li>
-      </ul>
-      <p>For further inquiries, visit our <a href="{% url 'faq' %}" style="color: white; text-decoration: underline;">FAQ</a> page or contact us.</p>
+      <p>Every Cosmos Watch is backed by a 2-year warranty, covering manufacturing defects. Please note that the warranty does not include battery replacements or standard wear over time. For further inquiries, visit our <a href="{% url 'faq' %}" style="color: white; text-decoration: underline;">FAQ</a> page or contact us.</p>
     </section>
 
     <!-- Certification Image -->
-    <div class="text-center">
-      <h4 class="mt-4">Inspection & Certification</h4>
+    <div class="quality-image-container">
       <img src="https://pp5-project.s3.eu-north-1.amazonaws.com/media/product_images/quality1.webp" 
-           class="img-fluid mb-3 certification-img" 
+           class="certification-img" 
            alt="Quality Certification">
     </div>
 
@@ -96,8 +70,8 @@
 /* General Styling */
 .quality-section {
     margin-bottom: 50px;
-    font-family: 'Roboto Mono', monospace;
-    font-weight: 100;
+    font-family: 'Lora', serif;
+    font-weight: 300;
 }
 
 /* Layout & Spacing */
@@ -113,20 +87,10 @@
     flex: 1;
     max-width: 50%;
     padding: 20px;
-    font-weight: 100;
-}
-
-/* Typography */
-.quality-text h3 {
-    color: white;
-    font-size: 24px;
-    font-weight: 100;
-}
-
-.quality-text p, .quality-text ul {
-    color: #ccc;
-    font-size: 16px;
-    font-weight: 100;
+    font-weight: 300;
+    font-size: 18px;
+    color: #ddd;
+    text-align: justify;
 }
 
 /* Background Image Section */
@@ -141,32 +105,39 @@
     position: absolute;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    text-align: center;
-    color: white;
+    align-items: flex-start;
     padding: 20px;
-    font-weight: 100;
+    text-align: left;
+    color: black;
+    font-weight: 300;
 }
 
 .quality-overlay h3 {
     font-size: 28px;
     margin-bottom: 10px;
-    font-weight: 100;
+    font-weight: 300;
 }
 
 .quality-overlay p {
     font-size: 18px;
     max-width: 700px;
-    font-weight: 100;
+    font-weight: 300;
 }
 
 /* Certification Image */
+.quality-image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+}
+
 .certification-img {
-    max-width: 100%;
+    max-width: 80%;
     height: auto;
     border-radius: 10px;
 }
@@ -175,7 +146,7 @@
 @media (max-width: 991px) {
     .quality-row {
         flex-direction: column;
-        text-align: center;
+        text-align: left;
     }
     .quality-text {
         max-width: 100%;
@@ -185,6 +156,9 @@
     }
     .quality-overlay p {
         font-size: 16px;
+    }
+    .certification-img {
+        max-width: 100%;
     }
 }
 
@@ -200,6 +174,6 @@
 </style>
 
 <!-- Load Google Font -->
-<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@300&display=swap" rel="stylesheet">
 
 {% endblock %}
