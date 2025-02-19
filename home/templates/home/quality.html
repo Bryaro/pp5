@@ -25,24 +25,24 @@
           </ul>
         </div>
         <div class="quality-image">
-          <img src="https://pp5-project.s3.eu-north-1.amazonaws.com/media/product_images/quality1.webp" alt="Quality Certification">
+          <img src="https://pp5-project.s3.eu-north-1.amazonaws.com/media/product_images/TUV_SUD.webp" alt="Quality Certification">
         </div>
       </div>
     </section>
 
-    <!-- Precision Section -->
-    <section class="quality-section">
+    <!-- Precision Section with Semi-Transparent Background -->
+    <section class="quality-section precision-section">
       <div class="quality-row reverse">
         <div class="quality-image">
-          <img src="https://pp5-project.s3.eu-north-1.amazonaws.com/media/product_images/crown.webp" alt="TÜV SÜD Certification">
-        </div>
-        <div class="quality-text">
-          <h3>Certified by TÜV SÜD</h3>
-          <p>The <strong>TÜV SÜD Pre-Shipment Inspection Report</strong> confirms that Cosmos Watches pass all required quality assessments.</p>
-          <ul>
-            <li><strong>Inspection Conducted By:</strong> TÜV SÜD Group</li>
-            <li><strong>Inspection Result:</strong> Pass (Style, Workmanship, Functionality & Packaging)</li>
-          </ul>
+          <img src="https://pp5-project.s3.eu-north-1.amazonaws.com/media/product_images/cosmos-quality.webp" alt="TÜV SÜD Certification">
+          <div class="precision-overlay">
+            <h3>Certified by TÜV SÜD</h3>
+            <p>The <strong>TÜV SÜD Pre-Shipment Inspection Report</strong> confirms that Cosmos Watches pass all required quality assessments.</p>
+            <ul>
+              <li><strong>Inspection Conducted By:</strong> TÜV SÜD Group</li>
+              <li><strong>Inspection Result:</strong> Pass (Style, Workmanship, Functionality & Packaging)</li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>
@@ -104,12 +104,25 @@
     flex: 1;
     max-width: 40%;
     text-align: center;
+    position: relative;
 }
 
-.quality-image img {
-    max-width: 100%;
-    height: auto;
+/* Precision Section Styling - Background Overlay */
+.precision-section .quality-image {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.precision-overlay {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+    color: white;
+    padding: 20px;
+    width: 80%;
     border-radius: 10px;
+    text-align: center;
 }
 
 /* Responsive Styles */
@@ -122,6 +135,10 @@
     .quality-text,
     .quality-image {
         max-width: 100%;
+    }
+
+    .precision-overlay {
+        width: 90%;
     }
 }
 
