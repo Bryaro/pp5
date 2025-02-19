@@ -30,6 +30,11 @@ def policy(request):
     return render(request, 'home/policy.html')
 
 
+def quality(request):
+    """ View for the Quality & Certification page """
+    return render(request, 'home/quality.html')
+
+
 def contact(request):
     """
     Handles the contact page display and form submission.
