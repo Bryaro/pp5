@@ -3,69 +3,68 @@
 {% block title %}Quality & Certification - Cosmos Watches{% endblock %}
 
 {% block content %}
-<div class="container-fluid mt-5 pt-5">
+<div style="background-color: black; color: white; padding: 40px 0;">
+  <div class="container" style="background-color: black; color: white; padding: 20px; border-radius: 10px; margin: 0 auto;">
     <div class="text-center mb-5">
-        <h2 class="m-0">Quality & Certification</h2>
-        <p class="text-muted">Precision. Craftsmanship. Excellence.</p>
+      <h2 class="m-0" style="color: white;">Quality & Certification</h2>
+      <p class="text-muted" style="color: #ddd;">Precision. Craftsmanship. Excellence.</p>
     </div>
 
     <!-- Quality Section -->
     <section class="quality-section">
-        <div class="quality-row">
-            <div class="quality-text">
-                <h3>Certified Quality Control</h3>
-                <p>Every watch undergoes extensive inspection to ensure compliance with international quality benchmarks.</p>
-                <ul>
-                    <li><strong>Workmanship & Aesthetics:</strong> Each watch is examined for precision and perfection.</li>
-                    <li><strong>Functionality Testing:</strong> Movement accuracy, calibration, and waterproofing are all verified.</li>
-                    <li><strong>Material Inspection:</strong> Made with 316L stainless steel and scratch-resistant sapphire glass.</li>
-                    <li><strong>Water Resistance Testing:</strong> Watches are pressure-tested up to 3 ATM.</li>
-                    <li><strong>Certification:</strong> Approved by <strong>TÜV SÜD</strong> for compliance and durability.</li>
-                </ul>
-            </div>
-            <div class="quality-image">
-                <img src="https://pp5-project.s3.eu-north-1.amazonaws.com/media/product_images/quality1.webp" 
-                     alt="Quality Certification">
-            </div>
+      <div class="quality-row">
+        <div class="quality-text">
+          <h3>Certified Quality Control</h3>
+          <p>Every watch undergoes extensive inspection to ensure compliance with international quality benchmarks.</p>
+          <ul>
+            <li><strong>Workmanship & Aesthetics:</strong> Each watch is examined for precision and perfection.</li>
+            <li><strong>Functionality Testing:</strong> Movement accuracy, calibration, and waterproofing are all verified.</li>
+            <li><strong>Material Inspection:</strong> Made with 316L stainless steel and scratch-resistant sapphire glass.</li>
+            <li><strong>Water Resistance Testing:</strong> Watches are pressure-tested up to 3 ATM.</li>
+            <li><strong>Certification:</strong> Approved by <strong>TÜV SÜD</strong> for compliance and durability.</li>
+          </ul>
         </div>
+        <div class="quality-image">
+          <img src="https://pp5-project.s3.eu-north-1.amazonaws.com/media/product_images/quality1.webp" alt="Quality Certification">
+        </div>
+      </div>
     </section>
 
     <!-- Precision Section -->
     <section class="quality-section">
-        <div class="quality-row reverse">
-            <div class="quality-image">
-                <img src="https://pp5-project.s3.eu-north-1.amazonaws.com/media/product_images/crown.webp" 
-                     alt="TÜV SÜD Certification">
-            </div>
-            <div class="quality-text">
-                <h3>Certified by TÜV SÜD</h3>
-                <p>The <strong>TÜV SÜD Pre-Shipment Inspection Report</strong> confirms that Cosmos Watches pass all required quality assessments.</p>
-                <ul>
-                    <li><strong>Inspection Conducted By:</strong> TÜV SÜD Group</li>
-                    <li><strong>Inspection Result:</strong> Pass (Style, Workmanship, Functionality & Packaging)</li>
-                </ul>
-            </div>
+      <div class="quality-row reverse">
+        <div class="quality-image">
+          <img src="https://pp5-project.s3.eu-north-1.amazonaws.com/media/product_images/crown.webp" alt="TÜV SÜD Certification">
         </div>
+        <div class="quality-text">
+          <h3>Certified by TÜV SÜD</h3>
+          <p>The <strong>TÜV SÜD Pre-Shipment Inspection Report</strong> confirms that Cosmos Watches pass all required quality assessments.</p>
+          <ul>
+            <li><strong>Inspection Conducted By:</strong> TÜV SÜD Group</li>
+            <li><strong>Inspection Result:</strong> Pass (Style, Workmanship, Functionality & Packaging)</li>
+          </ul>
+        </div>
+      </div>
     </section>
 
     <!-- Warranty Section -->
     <section class="quality-section">
-        <div class="quality-row">
-            <div class="quality-text">
-                <h3>Warranty & Assurance</h3>
-                <p>Each Cosmos Watch is a testament to our commitment to quality. We offer a <strong>2-year warranty</strong> covering manufacturing defects. However, please note:</p>
-                <ul>
-                    <li>The warranty does <strong>not</strong> cover the battery.</li>
-                    <li>Normal wear and tear over time are not included under warranty.</li>
-                </ul>
-                <p><strong>For further inquiries, visit our <a href="{% url 'faq' %}">FAQ</a> page or contact us.</strong></p>
-            </div>
-            <div class="quality-image">
-                <img src="https://pp5-project.s3.eu-north-1.amazonaws.com/media/product_images/cosmos-sweden-watches-brand.webp " 
-                     alt="Watch Durability Testing">
-            </div>
+      <div class="quality-row">
+        <div class="quality-text">
+          <h3>Warranty & Assurance</h3>
+          <p>Each Cosmos Watch is a testament to our commitment to quality. We offer a <strong>2-year warranty</strong> covering manufacturing defects. However, please note:</p>
+          <ul>
+            <li>The warranty does <strong>not</strong> cover the battery.</li>
+            <li>Normal wear and tear over time are not included under warranty.</li>
+          </ul>
+          <p><strong>For further inquiries, visit our <a href="{% url 'faq' %}" style="color: white; text-decoration: underline;">FAQ</a> page or contact us.</strong></p>
         </div>
+        <div class="quality-image">
+          <img src="https://pp5-project.s3.eu-north-1.amazonaws.com/media/product_images/cosmos-sweden-watches-brand.webp" alt="Watch Durability Testing">
+        </div>
+      </div>
     </section>
+  </div>
 </div>
 
 <!-- Inline CSS for Quality Page -->
@@ -93,6 +92,14 @@
     padding: 20px;
 }
 
+.quality-text h3 {
+    color: white;
+}
+
+.quality-text p, .quality-text ul {
+    color: #ddd;
+}
+
 .quality-image {
     flex: 1;
     max-width: 40%;
@@ -115,6 +122,13 @@
     .quality-text,
     .quality-image {
         max-width: 100%;
+    }
+}
+
+/* Adjust container width for better symmetry */
+@media (min-width: 992px) {
+    .container {
+        max-width: 80%;
     }
 }
 </style>
