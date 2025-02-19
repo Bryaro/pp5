@@ -5,28 +5,28 @@
 {% block content %}
 <div style="background-color: black; color: white; padding: 40px 0;">
   <div class="container" style="background-color: black; color: white; padding: 20px; border-radius: 10px; margin: 0 auto;">
-    
-    <!-- Page Title -->
+
+    <!-- Page Header -->
     <div class="text-center mb-5">
       <h2 class="m-0" style="color: white;">Quality & Certification</h2>
       <p class="text-muted" style="color: #ddd;">Precision. Craftsmanship. Excellence.</p>
     </div>
 
     <!-- Quality Commitment Section -->
-    <section class="quality-intro">
-      <p>At Cosmos Watches, quality is at the core of everything we create. Each timepiece is meticulously crafted using premium materials, ensuring unmatched durability and precision.</p>
-      <p>Certified by <strong>TÜV SÜD</strong>, our watches pass rigorous quality control inspections before reaching your wrist.</p>
+    <section class="quality-intro text-center">
+      <p>At Cosmos Watches, quality is not just a standard—it is a promise. Every timepiece undergoes rigorous inspection and testing to ensure precision, durability, and craftsmanship that stand the test of time.</p>
+      <p>We are proud to be certified by <strong>TÜV SÜD</strong>, a globally recognized authority in quality assurance. This certification confirms that our watches meet the highest industry standards.</p>
     </section>
 
     <section class="quality-details">
       <div class="quality-row">
         <div class="quality-text">
           <h3>Certified Quality Control</h3>
-          <p>Every watch undergoes extensive inspection to meet the highest industry standards.</p>
+          <p>Every watch goes through an extensive pre-shipment inspection to ensure compliance with international quality benchmarks.</p>
           <ul>
-            <li><strong>Workmanship & Aesthetics:</strong> Each watch is examined for perfection.</li>
-            <li><strong>Movement Accuracy:</strong> Precision-tested for reliable timekeeping.</li>
-            <li><strong>Material Durability:</strong> Crafted with 316L stainless steel and scratch-resistant sapphire glass.</li>
+            <li><strong>Workmanship & Aesthetics:</strong> Each watch is examined for precision and perfection.</li>
+            <li><strong>Functionality Testing:</strong> Movement accuracy, calibration, and waterproofing are all verified.</li>
+            <li><strong>Material Inspection:</strong> Made with 316L stainless steel and scratch-resistant sapphire glass.</li>
             <li><strong>Water Resistance Testing:</strong> Watches are pressure-tested up to 3 ATM.</li>
             <li><strong>Certification:</strong> Approved by <strong>TÜV SÜD</strong> for compliance and durability.</li>
           </ul>
@@ -39,7 +39,7 @@
       <div class="quality-background">
         <div class="quality-overlay">
           <h3>Certified by TÜV SÜD</h3>
-          <p>The <strong>TÜV SÜD Pre-Shipment Inspection Report</strong> confirms that Cosmos Watches meet global quality standards.</p>
+          <p>The <strong>TÜV SÜD Pre-Shipment Inspection Report</strong> confirms that Cosmos Watches pass all required quality assessments.</p>
           <ul>
             <li><strong>Inspection Conducted By:</strong> TÜV SÜD Group</li>
             <li><strong>Inspection Result:</strong> Pass (Style, Workmanship, Functionality & Packaging)</li>
@@ -48,20 +48,46 @@
       </div>
     </section>
 
+    <!-- Precision & Materials -->
+    <section class="quality-details">
+      <h3 class="mt-4">Precision & Materials</h3>
+      <ul>
+        <li><strong>316L Stainless Steel:</strong> Corrosion-resistant and durable.</li>
+        <li><strong>Sapphire Glass:</strong> Scratch-resistant and ultra-clear visibility.</li>
+        <li><strong>Japanese Movement:</strong> Engineered for accuracy and reliability.</li>
+      </ul>
+    </section>
+
+    <!-- Tested & Proven Excellence -->
+    <section class="quality-details">
+      <h3 class="mt-4">Tested & Proven Excellence</h3>
+      <ul>
+        <li><strong>AQL Standards:</strong> All watches are inspected following the Acceptable Quality Limit (AQL) standards.</li>
+        <li><strong>Waterproof Testing:</strong> All models are tested for 3 ATM water resistance.</li>
+        <li><strong>Time Accuracy Check:</strong> Verified with a ±0.23 sec/day calibration margin.</li>
+        <li><strong>Scratch & Wear Resistance:</strong> Built for durability under extreme conditions.</li>
+      </ul>
+    </section>
+
     <!-- Warranty & Assurance -->
     <section class="quality-warranty">
-      <div class="quality-row">
-        <div class="quality-text">
-          <h3>Warranty & Assurance</h3>
-          <p>We stand by our craftsmanship with a <strong>2-year warranty</strong> covering manufacturing defects.</p>
-          <ul>
-            <li><strong>Battery Not Included:</strong> The warranty does not cover the battery.</li>
-            <li><strong>Normal Wear & Tear:</strong> Expected aging is not included in the warranty.</li>
-          </ul>
-          <p><strong>For inquiries, visit our <a href="{% url 'faq' %}" style="color: white; text-decoration: underline;">FAQ</a> page or contact us.</strong></p>
-        </div>
-      </div>
+      <h3 class="mt-4">Warranty & Assurance</h3>
+      <p>Each Cosmos Watch is a testament to our commitment to quality. We offer a <strong>2-year warranty</strong> covering manufacturing defects. However, please note:</p>
+      <ul>
+        <li>The warranty does <strong>not</strong> cover the battery.</li>
+        <li>Normal wear and tear over time are not included under warranty.</li>
+      </ul>
+      <p><strong>For further inquiries, visit our <a href="{% url 'faq' %}" style="color: white; text-decoration: underline;">FAQ</a> page or contact us.</strong></p>
     </section>
+
+    <!-- Certification Image -->
+    <div class="text-center">
+      <h4 class="mt-4">Inspection & Certification</h4>
+      <img src="https://pp5-project.s3.eu-north-1.amazonaws.com/media/product_images/TUV_SUV.webp" 
+           class="img-fluid mb-3" 
+           style="max-width: 33%; height: auto;" 
+           alt="Quality Certification">
+    </div>
 
   </div>
 </div>
