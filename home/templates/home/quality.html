@@ -3,68 +3,119 @@
 {% block title %}Quality & Certification - Cosmos Watches{% endblock %}
 
 {% block content %}
-<div class="container mt-5 pt-5" style="max-width: 900px;">
+<div class="container-fluid mt-5 pt-5">
     <div class="text-center mb-5">
         <h2 class="m-0">Quality & Certification</h2>
         <p class="text-muted">Precision. Craftsmanship. Excellence.</p>
     </div>
 
-    <section class="quality-intro">
-        <p>At Cosmos Watches, quality is not just a standard—it is a promise. Every timepiece undergoes rigorous inspection and testing to ensure precision, durability, and craftsmanship that stand the test of time.</p>
-        <p>We are proud to be certified by <strong>TÜV SÜD</strong>, a globally recognized authority in quality assurance. This certification confirms that our watches meet the highest industry standards.</p>
+    <!-- Quality Section -->
+    <section class="quality-section">
+        <div class="quality-row">
+            <div class="quality-text">
+                <h3>Certified Quality Control</h3>
+                <p>Every watch undergoes extensive inspection to ensure compliance with international quality benchmarks.</p>
+                <ul>
+                    <li><strong>Workmanship & Aesthetics:</strong> Each watch is examined for precision and perfection.</li>
+                    <li><strong>Functionality Testing:</strong> Movement accuracy, calibration, and waterproofing are all verified.</li>
+                    <li><strong>Material Inspection:</strong> Made with 316L stainless steel and scratch-resistant sapphire glass.</li>
+                    <li><strong>Water Resistance Testing:</strong> Watches are pressure-tested up to 3 ATM.</li>
+                    <li><strong>Certification:</strong> Approved by <strong>TÜV SÜD</strong> for compliance and durability.</li>
+                </ul>
+            </div>
+            <div class="quality-image">
+                <img src="https://pp5-project.s3.eu-north-1.amazonaws.com/media/product_images/quality1.webp" 
+                     alt="Quality Certification">
+            </div>
+        </div>
     </section>
 
-    <h3 class="mt-5 text-center">Certified Quality Control</h3>
-    <p class="text-center">Every watch goes through an extensive pre-shipment inspection to ensure compliance with international quality benchmarks.</p>
+    <!-- Precision Section -->
+    <section class="quality-section">
+        <div class="quality-row reverse">
+            <div class="quality-image">
+                <img src="https://pp5-project.s3.eu-north-1.amazonaws.com/media/product_images/TUV.webp" 
+                     alt="TÜV SÜD Certification">
+            </div>
+            <div class="quality-text">
+                <h3>Certified by TÜV SÜD</h3>
+                <p>The <strong>TÜV SÜD Pre-Shipment Inspection Report</strong> confirms that Cosmos Watches pass all required quality assessments.</p>
+                <ul>
+                    <li><strong>Inspection Conducted By:</strong> TÜV SÜD Group</li>
+                    <li><strong>Inspection Result:</strong> Pass (Style, Workmanship, Functionality & Packaging)</li>
+                </ul>
+            </div>
+        </div>
+    </section>
 
-    <ul class="mx-auto" style="max-width: 700px;">
-        <li><strong>Workmanship & Aesthetics:</strong> Each watch is examined for precision and perfection.</li>
-        <li><strong>Functionality Testing:</strong> Movement accuracy, calibration, and waterproofing are all verified.</li>
-        <li><strong>Material Inspection:</strong> Made with 316L stainless steel and scratch-resistant sapphire glass.</li>
-        <li><strong>Water Resistance Testing:</strong> Watches are pressure-tested up to 3 ATM.</li>
-        <li><strong>Certification:</strong> Approved by <strong>TÜV SÜD</strong> for compliance and durability.</li>
-    </ul>
-
-    <h3 class="mt-5 text-center">Certified by TÜV SÜD</h3>
-    <p class="text-center">The <strong>TÜV SÜD Pre-Shipment Inspection Report</strong> confirms that Cosmos Watches pass all required quality assessments.</p>
-    <ul class="mx-auto" style="max-width: 700px;">
-        <li><strong>Inspection Conducted By:</strong> TÜV SÜD Group</li>
-        <li><strong>Inspection Result:</strong> Pass (Style, Workmanship, Functionality & Packaging)</li>
-    </ul>
-
-    <h3 class="mt-5 text-center">Precision & Materials</h3>
-    <ul class="mx-auto" style="max-width: 700px;">
-        <li><strong>316L Stainless Steel:</strong> Corrosion-resistant and durable.</li>
-        <li><strong>Sapphire Glass:</strong> Scratch-resistant and ultra-clear visibility.</li>
-        <li><strong>Japanese Movement:</strong> Engineered for accuracy and reliability.</li>
-    </ul>
-
-    <h3 class="mt-5 text-center">Tested & Proven Excellence</h3>
-    <ul class="mx-auto" style="max-width: 700px;">
-        <li><strong>AQL Standards:</strong> All watches are inspected following the Acceptable Quality Limit (AQL) standards.</li>
-        <li><strong>Waterproof Testing:</strong> All models are tested for 3 ATM water resistance.</li>
-        <li><strong>Time Accuracy Check:</strong> Verified with a ±0.23 sec/day calibration margin.</li>
-        <li><strong>Scratch & Wear Resistance:</strong> Built for durability under extreme conditions.</li>
-    </ul>
-
-    <h3 class="mt-5 text-center">Warranty & Assurance</h3>
-    <p class="text-center">Each Cosmos Watch is a testament to our commitment to quality. We offer a <strong>2-year warranty</strong> covering manufacturing defects. However, please note:</p>
-    <ul class="mx-auto" style="max-width: 700px;">
-        <li>The warranty does <strong>not</strong> cover the battery.</li>
-        <li>Normal wear and tear over time are not included under warranty.</li>
-    </ul>
-    
-    <p class="text-center"><strong>For further inquiries, visit our <a href="{% url 'faq' %}">FAQ</a> page or contact us.</strong></p>
-
-    <h3 class="mt-5 text-center">Certified Assurance with Every Watch</h3>
-    <p class="text-center">Every Cosmos Watch is tested and certified before shipping. Your satisfaction is our priority.</p>
-
-    <!-- Centered Image, 3x Smaller -->
-    <div class="text-center mt-4">
-        <img src="https://pp5-project.s3.eu-north-1.amazonaws.com/media/product_images/quality1.webp" 
-             class="img-fluid" 
-             style="max-width: 33%; height: auto;" 
-             alt="Quality Certification">
-    </div>
+    <!-- Warranty Section -->
+    <section class="quality-section">
+        <div class="quality-row">
+            <div class="quality-text">
+                <h3>Warranty & Assurance</h3>
+                <p>Each Cosmos Watch is a testament to our commitment to quality. We offer a <strong>2-year warranty</strong> covering manufacturing defects. However, please note:</p>
+                <ul>
+                    <li>The warranty does <strong>not</strong> cover the battery.</li>
+                    <li>Normal wear and tear over time are not included under warranty.</li>
+                </ul>
+                <p><strong>For further inquiries, visit our <a href="{% url 'faq' %}">FAQ</a> page or contact us.</strong></p>
+            </div>
+            <div class="quality-image">
+                <img src="https://pp5-project.s3.eu-north-1.amazonaws.com/media/product_images/quality3.webp" 
+                     alt="Watch Durability Testing">
+            </div>
+        </div>
+    </section>
 </div>
+
+<!-- Inline CSS for Quality Page -->
+<style>
+/* General Styling */
+.quality-section {
+    margin-bottom: 50px;
+}
+
+.quality-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    padding: 40px 0;
+}
+
+.quality-row.reverse {
+    flex-direction: row-reverse;
+}
+
+.quality-text {
+    flex: 1;
+    max-width: 50%;
+    padding: 20px;
+}
+
+.quality-image {
+    flex: 1;
+    max-width: 40%;
+    text-align: center;
+}
+
+.quality-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+/* Responsive Styles */
+@media (max-width: 991px) {
+    .quality-row {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .quality-text,
+    .quality-image {
+        max-width: 100%;
+    }
+}
+</style>
 {% endblock %}
