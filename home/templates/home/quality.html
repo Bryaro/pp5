@@ -4,7 +4,7 @@
 
 {% block content %}
 <div style="background-color: black; color: white; padding: 40px 0;">
-  <div class="container" style="background-color: black; color: white; padding: 50px 20px; border-radius: 10px; margin: 0 auto; font-family: 'Lora', serif; font-weight: 300;">
+  <div class="container" style="background-color: black; color: white; padding: 20px; border-radius: 10px; margin: 0 auto; font-family: 'Lora', serif; font-weight: 300;">
 
     <!-- Page Header -->
     <div class="mb-5">
@@ -37,29 +37,29 @@
       </div>
     </section>
 
-    <!-- Precision & Materials -->
-    <section class="quality-details">
-      <h3 class="mt-4">Precision & Materials</h3>
-      <p>Crafted with 316L stainless steel, Cosmos Watches are corrosion-resistant and built for longevity. Sapphire glass ensures maximum scratch resistance while maintaining exceptional clarity. Each timepiece is powered by a Japanese movement, ensuring precise and reliable timekeeping.</p>
-    </section>
+    <!-- White Background Sections -->
+    <div class="white-bg-section">
+      <section class="quality-details">
+        <h3 class="mt-4">Precision & Materials</h3>
+        <p>Crafted with 316L stainless steel, Cosmos Watches are corrosion-resistant and built for longevity. Sapphire glass ensures maximum scratch resistance while maintaining exceptional clarity. Each timepiece is powered by a Japanese movement, ensuring precise and reliable timekeeping.</p>
+      </section>
 
-    <!-- Tested & Proven Excellence -->
-    <section class="quality-details">
-      <h3 class="mt-4">Tested & Proven Excellence</h3>
-      <p>Our watches undergo AQL (Acceptable Quality Limit) inspections to maintain impeccable standards. Each model is tested for water resistance at 3 ATM, ensuring protection against daily exposure. Time accuracy is verified with a ±0.23 sec/day calibration margin. Designed for endurance, every watch is built to resist scratches and wear, even under demanding conditions.</p>
-    </section>
+      <section class="quality-details">
+        <h3 class="mt-4">Tested & Proven Excellence</h3>
+        <p>Our watches undergo AQL (Acceptable Quality Limit) inspections to maintain impeccable standards. Each model is tested for water resistance at 3 ATM, ensuring protection against daily exposure. Time accuracy is verified with a ±0.23 sec/day calibration margin. Designed for endurance, every watch is built to resist scratches and wear, even under demanding conditions.</p>
+      </section>
 
-    <!-- Warranty & Assurance -->
-    <section class="quality-warranty">
-      <h3 class="mt-4">Warranty & Assurance</h3>
-      <p>Every Cosmos Watch is backed by a 2-year warranty, covering manufacturing defects. Please note that the warranty does not include battery replacements or standard wear over time. For further inquiries, visit our <a href="{% url 'faq' %}" style="color: white; text-decoration: underline;">FAQ</a> page or contact us.</p>
-    </section>
+      <section class="quality-warranty">
+        <h3 class="mt-4">Warranty & Assurance</h3>
+        <p>Every Cosmos Watch is backed by a 2-year warranty, covering manufacturing defects. Please note that the warranty does not include battery replacements or standard wear over time. For further inquiries, visit our <a href="{% url 'faq' %}" style="color: black; text-decoration: underline;">FAQ</a> page or contact us.</p>
+      </section>
 
-    <!-- Certification Image -->
-    <div class="quality-image-container">
-      <img src="https://pp5-project.s3.eu-north-1.amazonaws.com/media/product_images/TUVSUV.png" 
-           class="certification-img-small" 
-           alt="TÜV SÜD Certified">
+      <!-- Certification Image -->
+      <div class="quality-image-container">
+        <img src="https://pp5-project.s3.eu-north-1.amazonaws.com/media/product_images/TUVSUV.png" 
+             class="certification-img-small" 
+             alt="TÜV SÜD Certified">
+      </div>
     </div>
 
   </div>
@@ -128,6 +128,24 @@
     font-weight: 300;
 }
 
+/* White Background Sections */
+.white-bg-section {
+    background-color: white;
+    color: black;
+    padding: 50px 30px;
+    border-radius: 10px;
+    margin-top: 40px;
+}
+
+.white-bg-section h3 {
+    color: black;
+}
+
+.white-bg-section p {
+    color: black;
+    font-size: 18px;
+}
+
 /* Certification Image */
 .quality-image-container {
     display: flex;
@@ -159,6 +177,9 @@
     }
     .certification-img-small {
         max-width: 20%;
+    }
+    .white-bg-section {
+        padding: 30px 20px;
     }
 }
 
