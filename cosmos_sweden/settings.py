@@ -260,5 +260,5 @@ else:
     EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 
     # Explicitly define default sender email
-    DEFAULT_FROM_EMAIL = 'info@cosmos-sweden.com'  
+    DEFAULT_FROM_EMAIL = 'Cosmos Sweden <info@cosmos-sweden.com>' 
     SERVER_EMAIL = 'Cosmos Sweden <info@cosmos-sweden.com>'  # For error emails
