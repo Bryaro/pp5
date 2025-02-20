@@ -249,7 +249,7 @@ STRIPE_WH_SECRET = os.getenv('STRIPE_WH_SECRET', '')
 # Email Configuration for Development
 if 'DEVELOPMENT' in os.environ:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-    DEFAULT_FROM_EMAIL = 'info@cosmos-sweden.com'
+    DEFAULT_FROM_EMAIL = 'Cosmos Sweden <info@cosmos-sweden.com>'
 else:
     # Email Configuration for Production
     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
@@ -261,4 +261,4 @@ else:
 
     # Explicitly define default sender email
     DEFAULT_FROM_EMAIL = 'info@cosmos-sweden.com'  
-    SERVER_EMAIL = 'info@cosmos-sweden.com'  # Useful for error emails
+    SERVER_EMAIL = 'Cosmos Sweden <info@cosmos-sweden.com>'  # For error emails
