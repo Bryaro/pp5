@@ -3,8 +3,8 @@
 {% block title %}Quality & Certification - Cosmos Watches{% endblock %}
 
 {% block content %}
-<div style="background-color: black; color: white; padding: 50px 20px; width: 100%;">
-  <div class="full-width-container">
+<div class="full-width black-bg">
+  <div class="content-container">
 
     <!-- Page Header -->
     <div class="quality-header">
@@ -18,12 +18,13 @@
       <p>We are proud to be certified by TÜV SÜD, a globally recognized authority in quality assurance. This certification confirms that our watches meet the highest industry standards.</p>
     </section>
 
+    <!-- Certified Quality Control -->
     <section class="quality-details">
       <h3>Certified Quality Control</h3>
       <p>Every watch undergoes extensive pre-shipment inspection to ensure compliance with international benchmarks. Each piece is examined for aesthetics, movement accuracy, calibration, and waterproofing. Materials such as 316L stainless steel and scratch-resistant sapphire glass are rigorously tested to ensure durability. Every watch is pressure-tested up to 3 ATM to verify water resistance.</p>
     </section>
 
-    <!-- Image Background Section -->
+    <!-- Background Image Section -->
     <section class="quality-certified">
       <div class="quality-overlay">
         <h3>Certified by TÜV SÜD</h3>
@@ -69,13 +70,27 @@ body {
 }
 
 /* Full Width Containers */
-.full-width-container {
+.full-width {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* Black Background */
+.black-bg {
+    background-color: black;
+    color: white;
+    padding: 50px 0;
+}
+
+/* Centered Content */
+.content-container {
     width: 100%;
     max-width: 100%;
     margin: 0 auto;
 }
 
-/* Content with Spacing */
+/* Section Styling */
 .quality-header, .quality-intro, .quality-details, .quality-warranty {
     width: 60%;
     margin: 0 auto;
@@ -83,6 +98,7 @@ body {
     text-align: justify;
 }
 
+/* Responsive Headers */
 .quality-header h2, .quality-header p {
     text-align: center;
 }
@@ -99,7 +115,7 @@ body {
     position: absolute;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.3);
+    background: rgba(0, 0, 0, 0.7);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -108,6 +124,7 @@ body {
     color: white;
 }
 
+/* Overlay Text */
 .quality-overlay h3 {
     font-size: 28px;
     margin-bottom: 10px;
@@ -118,7 +135,7 @@ body {
     max-width: 700px;
 }
 
-/* White Background Sections */
+/* White Background Section */
 .white-bg-section {
     width: 100%;
     background-color: white;
@@ -127,6 +144,7 @@ body {
     text-align: justify;
 }
 
+/* White Section Content */
 .white-bg-section h3 {
     width: 60%;
     margin: 0 auto;
@@ -149,10 +167,11 @@ body {
     margin-top: 40px;
 }
 
+/* TÜV SÜD Image Size */
 .certification-img-small {
-    max-width: 12.5%; /* Reducing the original size by 8 times */
+    max-width: 5%;
     height: auto;
-    border-radius: 5px;
+    border-radius: 0px;
 }
 
 /* Responsive Styles */
