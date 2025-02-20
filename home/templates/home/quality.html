@@ -73,7 +73,7 @@ body {
 .full-width {
     width: 100%;
     margin: 0;
-    p
+}
 
 /* Black Background */
 .black-bg {
@@ -112,7 +112,8 @@ body {
 
 .quality-overlay {
     position: absolute;
-    width: 100%;
+    width: 80%;
+    max-width: 900px;
     height: 100%;
     background: rgba(0, 0, 0, 0.3);
     display: flex;
@@ -120,6 +121,8 @@ body {
     justify-content: center;
     align-items: center;
     color: white;
+    text-align: justify;
+    padding: 20px;
 }
 
 /* Overlay Text */
@@ -167,7 +170,7 @@ body {
 
 /* TÜV SÜD Image Size */
 .certification-img-small {
-    max-width: 5%;
+    max-width: 8%;
     height: auto;
     border-radius: 0px;
 }
@@ -183,6 +186,10 @@ body {
     }
     .quality-certified {
         height: 300px;
+    }
+    .quality-overlay {
+        width: 90%;
+        padding: 15px;
     }
     .quality-overlay p {
         font-size: 16px;
