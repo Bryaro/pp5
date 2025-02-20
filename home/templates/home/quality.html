@@ -3,13 +3,13 @@
 {% block title %}Quality & Certification - Cosmos Watches{% endblock %}
 
 {% block content %}
-<div style="background-color: black; color: white; padding: 40px 0;">
-  <div class="container" style="background-color: black; color: white; padding: 20px; border-radius: 10px; margin: 0 auto; font-family: 'Lora', serif; font-weight: 300;">
+<div style="background-color: black; color: white; padding: 50px 20px; width: 100%;">
+  <div class="full-width-container">
 
     <!-- Page Header -->
-    <div class="mb-5">
-      <h2 class="m-0" style="color: white; font-weight: 300;">Quality & Certification</h2>
-      <p style="color: #ccc; font-weight: 300;">Precision. Craftsmanship. Excellence.</p>
+    <div class="quality-header">
+      <h2>Quality & Certification</h2>
+      <p>Precision. Craftsmanship. Excellence.</p>
     </div>
 
     <!-- Quality Commitment Section -->
@@ -19,38 +19,32 @@
     </section>
 
     <section class="quality-details">
-      <div class="quality-row">
-        <div class="quality-text">
-          <h3>Certified Quality Control</h3>
-          <p>Every watch undergoes extensive pre-shipment inspection to ensure compliance with international benchmarks. Each piece is examined for aesthetics, movement accuracy, calibration, and waterproofing. Materials such as 316L stainless steel and scratch-resistant sapphire glass are rigorously tested to ensure durability. Every watch is pressure-tested up to 3 ATM to verify water resistance.</p>
-        </div>
-      </div>
+      <h3>Certified Quality Control</h3>
+      <p>Every watch undergoes extensive pre-shipment inspection to ensure compliance with international benchmarks. Each piece is examined for aesthetics, movement accuracy, calibration, and waterproofing. Materials such as 316L stainless steel and scratch-resistant sapphire glass are rigorously tested to ensure durability. Every watch is pressure-tested up to 3 ATM to verify water resistance.</p>
     </section>
 
     <!-- Image Background Section -->
     <section class="quality-certified">
-      <div class="quality-background">
-        <div class="quality-overlay">
-          <h3>Certified by TÜV SÜD</h3>
-          <p>The TÜV SÜD Pre-Shipment Inspection Report confirms that Cosmos Watches meet global quality standards. Every model undergoes a detailed assessment of style, workmanship, functionality, and packaging before approval.</p>
-        </div>
+      <div class="quality-overlay">
+        <h3>Certified by TÜV SÜD</h3>
+        <p>The TÜV SÜD Pre-Shipment Inspection Report confirms that Cosmos Watches meet global quality standards. Every model undergoes a detailed assessment of style, workmanship, functionality, and packaging before approval.</p>
       </div>
     </section>
 
     <!-- White Background Sections -->
     <div class="white-bg-section">
       <section class="quality-details">
-        <h3 class="mt-4">Precision & Materials</h3>
+        <h3>Precision & Materials</h3>
         <p>Crafted with 316L stainless steel, Cosmos Watches are corrosion-resistant and built for longevity. Sapphire glass ensures maximum scratch resistance while maintaining exceptional clarity. Each timepiece is powered by a Japanese movement, ensuring precise and reliable timekeeping.</p>
       </section>
 
       <section class="quality-details">
-        <h3 class="mt-4">Tested & Proven Excellence</h3>
+        <h3>Tested & Proven Excellence</h3>
         <p>Our watches undergo AQL (Acceptable Quality Limit) inspections to maintain impeccable standards. Each model is tested for water resistance at 3 ATM, ensuring protection against daily exposure. Time accuracy is verified with a ±0.23 sec/day calibration margin. Designed for endurance, every watch is built to resist scratches and wear, even under demanding conditions.</p>
       </section>
 
       <section class="quality-warranty">
-        <h3 class="mt-4">Warranty & Assurance</h3>
+        <h3>Warranty & Assurance</h3>
         <p>Every Cosmos Watch is backed by a 2-year warranty, covering manufacturing defects. Please note that the warranty does not include battery replacements or standard wear over time. For further inquiries, visit our <a href="{% url 'faq' %}" style="color: black; text-decoration: underline;">FAQ</a> page or contact us.</p>
       </section>
 
@@ -61,36 +55,36 @@
              alt="TÜV SÜD Certified">
       </div>
     </div>
-
   </div>
 </div>
 
 <!-- Inline CSS for Quality Page -->
 <style>
 /* General Styling */
-.quality-section {
-    margin-bottom: 50px;
+body {
+    margin: 0;
+    padding: 0;
     font-family: 'Lora', serif;
     font-weight: 300;
 }
 
-/* Layout & Spacing */
-.quality-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 40px;
-    padding: 40px 0;
+/* Full Width Containers */
+.full-width-container {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
 }
 
-.quality-text {
-    flex: 1;
-    max-width: 50%;
-    padding: 20px;
-    font-weight: 300;
-    font-size: 18px;
-    color: #ddd;
+/* Content with Spacing */
+.quality-header, .quality-intro, .quality-details, .quality-warranty {
+    width: 60%;
+    margin: 0 auto;
+    padding: 40px 0;
     text-align: justify;
+}
+
+.quality-header h2, .quality-header p {
+    text-align: center;
 }
 
 /* Background Image Section */
@@ -105,43 +99,44 @@
     position: absolute;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.3);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    padding: 20px;
-    text-align: left;
+    padding: 40px;
     color: white;
-    font-weight: 300;
 }
 
 .quality-overlay h3 {
     font-size: 28px;
     margin-bottom: 10px;
-    font-weight: 300;
 }
 
 .quality-overlay p {
     font-size: 18px;
     max-width: 700px;
-    font-weight: 300;
 }
 
 /* White Background Sections */
 .white-bg-section {
+    width: 100%;
     background-color: white;
     color: black;
-    padding: 50px 30px;
-    border-radius: 10px;
-    margin-top: 40px;
+    padding: 50px 0;
+    text-align: justify;
 }
 
 .white-bg-section h3 {
+    width: 60%;
+    margin: 0 auto;
     color: black;
+    padding-bottom: 20px;
 }
 
 .white-bg-section p {
+    width: 60%;
+    margin: 0 auto;
     color: black;
     font-size: 18px;
 }
@@ -162,12 +157,12 @@
 
 /* Responsive Styles */
 @media (max-width: 991px) {
-    .quality-row {
-        flex-direction: column;
-        text-align: left;
+    .quality-header, .quality-intro, .quality-details, .quality-warranty {
+        width: 90%;
+        padding: 30px 0;
     }
-    .quality-text {
-        max-width: 100%;
+    .white-bg-section h3, .white-bg-section p {
+        width: 90%;
     }
     .quality-certified {
         height: 300px;
@@ -178,16 +173,10 @@
     .certification-img-small {
         max-width: 20%;
     }
-    .white-bg-section {
-        padding: 30px 20px;
-    }
 }
 
 /* Adjust container width for better symmetry */
 @media (min-width: 992px) {
-    .container {
-        max-width: 80%;
-    }
     .quality-certified {
         height: 500px;
     }
