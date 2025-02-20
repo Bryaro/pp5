@@ -249,14 +249,16 @@ STRIPE_WH_SECRET = os.getenv('STRIPE_WH_SECRET', '')
 # Email Configuration for Development
 if 'DEVELOPMENT' in os.environ:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-    DEFAULT_FROM_EMAIL = 'cosmos-sweden@example.com'
+    DEFAULT_FROM_EMAIL = 'info@cosmos-sweden.com'
 else:
     # Email Configuration for Production
     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-    EMAIL_HOST = 'smtp.gmail.com'
+    EMAIL_HOST = 'send.one.com'
     EMAIL_PORT = 587
     EMAIL_USE_TLS = True
     EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
     EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
-    # Use a custom "From" email address that is professional
-    DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_HOST_USER')
+
+    # Explicitly define default sender email
+    DEFAULT_FROM_EMAIL = 'info@cosmos-sweden.com'  
+    SERVER_EMAIL = 'info@cosmos-sweden.com'  # Useful for error emails
