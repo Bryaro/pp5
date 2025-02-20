@@ -4,7 +4,7 @@
 
 {% block content %}
 <div style="background-color: black; color: white; padding: 40px 0;">
-  <div class="container" style="background-color: black; color: white; padding: 20px; border-radius: 10px; margin: 0 auto; font-family: 'Lora', serif; font-weight: 300;">
+  <div class="container" style="background-color: black; color: white; padding: 50px 20px; border-radius: 10px; margin: 0 auto; font-family: 'Lora', serif; font-weight: 300;">
 
     <!-- Page Header -->
     <div class="mb-5">
@@ -57,9 +57,9 @@
 
     <!-- Certification Image -->
     <div class="quality-image-container">
-      <img src="https://pp5-project.s3.eu-north-1.amazonaws.com/media/product_images/quality1.webp" 
-           class="certification-img" 
-           alt="Quality Certification">
+      <img src="https://pp5-project.s3.eu-north-1.amazonaws.com/media/product_images/TUVSUV.png" 
+           class="certification-img-small" 
+           alt="TÜV SÜD Certified">
     </div>
 
   </div>
@@ -105,14 +105,14 @@
     position: absolute;
     width: 100%;
     height: 100%;
-    background: rgba(255, 255, 255, 0.4);
+    background: rgba(0, 0, 0, 0.7);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
     padding: 20px;
     text-align: left;
-    color: black;
+    color: white;
     font-weight: 300;
 }
 
@@ -136,10 +136,10 @@
     margin-top: 40px;
 }
 
-.certification-img {
-    max-width: 80%;
+.certification-img-small {
+    max-width: 12.5%; /* Reducing the original size by 8 times */
     height: auto;
-    border-radius: 10px;
+    border-radius: 5px;
 }
 
 /* Responsive Styles */
@@ -157,8 +157,8 @@
     .quality-overlay p {
         font-size: 16px;
     }
-    .certification-img {
-        max-width: 100%;
+    .certification-img-small {
+        max-width: 20%;
     }
 }
 
