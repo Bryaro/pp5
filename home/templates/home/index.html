@@ -14,8 +14,9 @@
 
 {% block content %}
 <div class="container h-100 pt-5">
-    <div class="row h-100">
-        <div class="col-7 col-md-6 my-auto">
+    <div class="row h-100 align-items-center">
+        <!-- Text Container -->
+        <div class="col-md-6 text-container text-center text-md-start">
             <h1 class="display-4 logo-font text-white bg-dark-75">
                 Your Universe on Your Wrist
             </h1>
@@ -25,7 +26,8 @@
                 </h2>
             </div>
         </div>
-        <div class="col-5 col-md-6 my-auto text-center">
+        <!-- Image Container -->
+        <div class="col-md-6 image-container text-center">
             <img src="https://pp5-project.s3.eu-north-1.amazonaws.com/media/product_images/dEssor-back-HQ-Diagonal.webp" 
                  alt="d’Essor Watch Back" class="responsive-img">
         </div>
@@ -33,13 +35,29 @@
 </div>
 
 <style>
+    .text-container, .image-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
     .responsive-img {
         max-width: 100%;
         height: auto;
         display: block;
         margin: 0 auto;
-        border-radius: 10px;
-        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    @media (max-width: 768px) {
+        .row {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .image-container {
+            order: 2; /* Moves image below text */
+            margin-top: 20px;
+        }
     }
 </style>
 {% endblock %}
