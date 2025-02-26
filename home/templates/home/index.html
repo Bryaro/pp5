@@ -8,58 +8,61 @@
 {% endblock %}
 
 {% block content %}
-<div class="container h-100 pt-5 text-center">
-    <!-- Image Section -->
-    <div class="image-container">
-        <img src="https://pp5-project.s3.eu-north-1.amazonaws.com/media/product_images/dEssor-back-HQ-Diagonal.webp" 
-             alt="d’Essor Watch Back" class="responsive-img">
-    </div>
+<div class="container-fluid hero-section">
+    <div class="row align-items-center">
+        <!-- Image Section -->
+        <div class="col-md-6 hero-image">
+            <img src="https://pp5-project.s3.eu-north-1.amazonaws.com/media/product_images/dEssor-back-HQ-Diagonal.webp" 
+                 alt="d’Essor Watch Back" class="responsive-img">
+        </div>
 
-    <!-- Text Section -->
-    <div class="text-section">
-        <h1 class="bold-title">Your Universe on Your Wrist</h1>
-        <p class="subtext">Utforska tid med precision och elegans</p>
-        <a href="{% url 'products' %}" class="shop-button">Shop Now</a>
+        <!-- Text Section -->
+        <div class="col-md-6 text-section text-center text-md-left">
+            <h1 class="bold-title">Your Universe on Your Wrist</h1>
+            <p class="subtext">Utforska tid med precision och elegans</p>
+            <a href="{% url 'products' %}" class="shop-button">Shop Now</a>
+        </div>
     </div>
 </div>
 
 <style>
-    /* Center content vertically */
-    .container.h-100.pt-5 {
+    /* Full-width hero section */
+    .hero-section {
+        width: 100%;
+        height: 100vh;
         display: flex;
-        flex-direction: column;
         align-items: center;
         justify-content: center;
+        background-color: #f8f8f8; /* Light background */
+        padding: 40px 0;
     }
 
-    /* Image styles */
-    .image-container {
-        width: 100%;
-        max-width: 400px; /* Adjust size */
-        margin-bottom: 20px;
+    /* Image positioning */
+    .hero-image {
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     .responsive-img {
-        width: 100%;
+        max-width: 80%;
         height: auto;
-        display: block;
         border-radius: 10px;
     }
 
     /* Text section */
     .text-section {
-        text-align: center;
         padding: 20px;
     }
 
     .bold-title {
-        font-size: 24px;
+        font-size: 36px;
         font-weight: bold;
         text-transform: uppercase;
     }
 
     .subtext {
-        font-size: 16px;
+        font-size: 18px;
         color: #555;
         margin-bottom: 20px;
     }
@@ -67,33 +70,56 @@
     /* Button styles */
     .shop-button {
         display: inline-block;
-        background-color: black;
-        color: white;
-        padding: 12px 20px;
-        font-size: 14px;
+        background-color: white;
+        color: black;
+        padding: 14px 24px;
+        font-size: 16px;
         text-transform: uppercase;
         text-decoration: none;
         font-weight: bold;
         border-radius: 5px;
+        border: 2px solid black;
+        transition: all 0.3s ease;
     }
 
     .shop-button:hover {
-        background-color: #333;
+        background-color: black;
+        color: white;
     }
 
-    /* Responsive */
+    /* Responsive - Mobile version */
     @media (max-width: 768px) {
-        .image-container {
-            max-width: 300px;
+        .hero-section {
+            flex-direction: column;
+            height: auto;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .hero-image {
+            order: 1; /* Keep image on top for mobile */
+            margin-bottom: 20px;
+        }
+
+        .text-section {
+            order: 2;
         }
 
         .bold-title {
-            font-size: 20px;
+            font-size: 24px;
+        }
+
+        .subtext {
+            font-size: 16px;
         }
 
         .shop-button {
-            font-size: 12px;
-            padding: 10px 16px;
+            font-size: 14px;
+            padding: 12px 18px;
+        }
+
+        .responsive-img {
+            max-width: 100%;
         }
     }
 </style>
