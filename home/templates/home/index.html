@@ -18,7 +18,10 @@
 
         <!-- Text Section -->
         <div class="col-md-6 text-section text-center text-md-left">
-            <h1 class="bold-title">Your Universe on Your Wrist</h1>
+            <h1 class="bold-title">
+                <span class="desktop-text">Your Universe on Your Wrist</span>
+                <span class="mobile-text">Your Universe<br>On Your Wrist</span>
+            </h1>
             <p class="subtext">d’Essor Collection – A Watch Like No Other</p>
             <a href="{% url 'products' %}" class="shop-button">Shop Now</a>
         </div>
@@ -61,10 +64,13 @@
         text-transform: uppercase;
     }
 
-    .subtext {
-        font-size: 18px;
-        color: #555;
-        margin-bottom: 20px;
+    /* Ensure correct text visibility */
+    .desktop-text {
+        display: inline;
+    }
+
+    .mobile-text {
+        display: none;
     }
 
     /* Button styles */
@@ -108,6 +114,16 @@
 
         .bold-title {
             font-size: 24px;
+        }
+
+        /* Swap text versions for mobile */
+        .desktop-text {
+            display: none;
+        }
+
+        .mobile-text {
+            display: block;
+            text-align: center;
         }
 
         .subtext {
