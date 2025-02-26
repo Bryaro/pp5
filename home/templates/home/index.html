@@ -5,46 +5,96 @@
 {% endblock %}
 
 {% block page_header %}
-    <div class="container header-container">
-        <div class="row">
-            <div class="col"></div>
-        </div>
-    </div>
 {% endblock %}
 
 {% block content %}
-<div class="container h-100 pt-5">
-    <div class="row h-100">
-        <div class="col-7 col-md-6 my-auto">
-            <h1 class="display-4 logo-font text-white bg-dark-75">
-                Your Universe on Your Wrist
-            </h1>
-            <div class="my-5">
-                <h2>
-                    <a href="{% url 'products' %}" class="shop-now-button btn btn-lg rounded-0 text-uppercase py-3">Shop Now</a>
-                </h2>
-            </div>
-        </div>
-        <div class="col-5 col-md-6 my-auto text-center">
-            <img src="https://pp5-project.s3.eu-north-1.amazonaws.com/media/product_images/dEssor-back-HQ-Diagonal.webp" 
-                 alt="d’Essor Watch Back" class="responsive-img">
-        </div>
+<div class="container h-100 pt-5 text-center">
+    <!-- Image Section -->
+    <div class="image-container">
+        <img src="https://pp5-project.s3.eu-north-1.amazonaws.com/media/product_images/dEssor-back-HQ-Diagonal.webp" 
+             alt="d’Essor Watch Back" class="responsive-img">
+    </div>
+
+    <!-- Text Section -->
+    <div class="text-section">
+        <h1 class="bold-title">Your Universe on Your Wrist</h1>
+        <p class="subtext">Utforska tid med precision och elegans</p>
+        <a href="{% url 'products' %}" class="shop-button">Shop Now</a>
     </div>
 </div>
 
 <style>
+    /* Center content vertically */
     .container.h-100.pt-5 {
         display: flex;
         flex-direction: column;
         align-items: center;
+        justify-content: center;
+    }
+
+    /* Image styles */
+    .image-container {
+        width: 100%;
+        max-width: 400px; /* Adjust size */
+        margin-bottom: 20px;
     }
 
     .responsive-img {
-        max-width: 100%;
+        width: 100%;
         height: auto;
         display: block;
-        margin: 0 auto;
         border-radius: 10px;
+    }
+
+    /* Text section */
+    .text-section {
+        text-align: center;
+        padding: 20px;
+    }
+
+    .bold-title {
+        font-size: 24px;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    .subtext {
+        font-size: 16px;
+        color: #555;
+        margin-bottom: 20px;
+    }
+
+    /* Button styles */
+    .shop-button {
+        display: inline-block;
+        background-color: black;
+        color: white;
+        padding: 12px 20px;
+        font-size: 14px;
+        text-transform: uppercase;
+        text-decoration: none;
+        font-weight: bold;
+        border-radius: 5px;
+    }
+
+    .shop-button:hover {
+        background-color: #333;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .image-container {
+            max-width: 300px;
+        }
+
+        .bold-title {
+            font-size: 20px;
+        }
+
+        .shop-button {
+            font-size: 12px;
+            padding: 10px 16px;
+        }
     }
 </style>
 {% endblock %}
