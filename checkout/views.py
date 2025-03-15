@@ -118,7 +118,7 @@ def checkout(request):
         intent = stripe.PaymentIntent.create(
             amount=stripe_total,
             currency=settings.STRIPE_CURRENCY,
-            payment_method_types=["card", "paypal", "klarna", "affirm"],
+            payment_method_types=["card", "paypal", "klarna"],
         )
 
 
