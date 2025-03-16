@@ -1,9 +1,8 @@
-from django.shortcuts import redirect, reverse, HttpResponse
+from django.shortcuts import redirect, reverse
 from django.contrib import messages
 from django.conf import settings
 from products.models import Product
 import stripe
-import json
 
 def create_checkout_session(request):
     """
@@ -35,9 +34,18 @@ def create_checkout_session(request):
         line_items=line_items,
         allow_promotion_codes=True,  # ✅ Enables discount codes
         after_completion={"type": "redirect", "redirect": {"url": request.build_absolute_uri(reverse('checkout_success'))}},
+        payment_method_types=["card", "link", "klarna"],  # ✅ Klarna included
+        payment_method_options={
+            "klarna": {
+                "preferred_locale": "sv-SE",
+                "capture_method": "automatic",
+                "allowed_payment_methods": ["pay_now"]  # ✅ Only show Klarna "Pay in full"
+            }
+        }
     )
 
     return redirect(payment_link.url)
+
 
 def checkout_success(request):
     """
