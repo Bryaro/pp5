@@ -1,196 +1,94 @@
-from django.shortcuts import render, redirect, reverse
-from django.shortcuts import get_object_or_404, HttpResponse
-from django.views.decorators.http import require_POST
+from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.conf import settings
-from django.contrib.auth.decorators import login_required
-from .forms import OrderForm
 from .models import Order, OrderLineItem
 from products.models import Product
-from cart.contexts import cart_contents
-from django.core.mail import send_mail
 import stripe
 import json
 
+stripe.api_key = settings.STRIPE_SECRET_KEY
 
-@require_POST
-def cache_checkout_data(request):
+def create_checkout_session(request):
     """
-    Stores checkout data in payment intent metadata,
-    before completing the purchase.
+    Creates a Stripe Checkout Session for the cart items.
+    Redirects the user to a secure Stripe-hosted checkout page.
+    """
+    cart = request.session.get('cart', {})
+    if not cart:
+        messages.error(request, "Your cart is empty.")
+        return redirect('products')
 
-    This includes the cart contents,
-    whether the user wishes to save their information,
-    and the username for authenticated users.
-    """
+    line_items = []
+    for item_id, item_data in cart.items():
+        try:
+            product = Product.objects.get(id=item_id)
+            line_items.append({
+                'price_data': {
+                    'currency': 'sek',
+                    'unit_amount': int(product.price * 100),  # Convert price to öre
+                    'product_data': {
+                        'name': product.name,
+                        'images': [product.image.url] if product.image else [],
+                    },
+                },
+                'quantity': item_data,
+            })
+        except Product.DoesNotExist:
+            continue  # Skip products that no longer exist
+
     try:
-        pid = request.POST.get('client_secret').split('_secret')[0]
-        stripe.api_key = settings.STRIPE_SECRET_KEY
-        stripe.PaymentIntent.modify(pid, metadata={
-            'cart': json.dumps(request.session.get('cart', {})),
-            'save_info': request.POST.get('save_info'),
-            'username': request.user,
-        })
-        return HttpResponse(status=200)
-    except Exception as e:
-        messages.error(request, 'Sorry, your payment cannot be \
-            processed right now. Please try again later.')
-        return HttpResponse(content=e, status=400)
-
-
-def checkout(request):
-    """
-    Renders the checkout page, processes the form submission,
-    and creates an Order instance.
-
-    If the POST request is valid, it saves the order and its line items,
-    and redirects to checkout success.
-    Handles creation of the stripe intent for payment as well.
-    """
-    stripe_public_key = settings.STRIPE_PUBLIC_KEY
-    stripe_secret_key = settings.STRIPE_SECRET_KEY
-
-    if request.method == 'POST':
-        cart = request.session.get('cart', {})
-
-        form_data = {
-            'full_name': request.POST['full_name'],
-            'email': request.POST['email'],
-            'phone_number': request.POST['phone_number'],
-            'country': request.POST['country'],
-            'postcode': request.POST['postcode'],
-            'town_or_city': request.POST['town_or_city'],
-            'street_address1': request.POST['street_address1'],
-            'street_address2': request.POST['street_address2'],
-            'county': request.POST['county'],
-        }
-        order_form = OrderForm(form_data)
-        if order_form.is_valid():
-            order = order_form.save(commit=False)
-            pid = request.POST.get('client_secret').split('_secret')[0]
-            order.stripe_pid = pid
-            order.original_cart = json.dumps(cart)
-            order.save()
-            for item_id, item_data in cart.items():
-                try:
-                    product = Product.objects.get(id=item_id)
-                    if isinstance(item_data, int):
-                        order_line_item = OrderLineItem(
-                            order=order,
-                            product=product,
-                            quantity=item_data,
-                        )
-                        order_line_item.save()
-                    else:
-                        for size, quantity in item_data[
-                             'items_by_size'].items():
-                            order_line_item = OrderLineItem(
-                                order=order,
-                                product=product,
-                                quantity=quantity,
-                                product_size=size,
-                            )
-                            order_line_item.save()
-                except Product.DoesNotExist:
-                    messages.error(request, (
-                        "One of the products cart wasn't found in database."
-                        "Please call us for assistance!")
-                    )
-                    order.delete()
-                    return redirect(reverse('view_cart'))
-
-            request.session['save_info'] = 'save-info' in request.POST
-            return redirect(
-                reverse('checkout_success', args=[order.order_number]))
-        else:
-            messages.error(request, 'There was an error with your form. \
-                Please double check your information.')
-    else:
-        cart = request.session.get('cart', {})
-        if not cart:
-            messages.error(request, "There's nothing in your cart yet")
-            return redirect(reverse('products'))
-
-        current_cart = cart_contents(request)
-        total = current_cart['grand_total']
-        stripe_total = round(total * 100)
-        stripe.api_key = stripe_secret_key
-        intent = stripe.PaymentIntent.create(
-            amount=stripe_total,
-            currency=settings.STRIPE_CURRENCY,
+        checkout_session = stripe.checkout.Session.create(
+            payment_method_types=['card'],
+            line_items=line_items,
+            mode='payment',
+            success_url=request.build_absolute_uri(reverse('checkout_success')) + "?session_id={CHECKOUT_SESSION_ID}",
+            cancel_url=request.build_absolute_uri(reverse('checkout')),
         )
+        return redirect(checkout_session.url)
+    except Exception as e:
+        messages.error(request, f"Stripe error: {str(e)}")
+        return redirect('checkout')
 
-        if request.user.is_authenticated:
-            initial_data = {
-                'email': request.user.email
-            }
-            order_form = OrderForm(initial=initial_data)
+def checkout_success(request):
+    """
+    Handles successful payments by verifying with Stripe.
+    Creates an order in the database after payment is confirmed.
+    """
+    session_id = request.GET.get('session_id')
+    if not session_id:
+        messages.error(request, "Invalid payment session.")
+        return redirect('checkout')
+
+    try:
+        session = stripe.checkout.Session.retrieve(session_id)
+        if session.payment_status == 'paid':
+            # Create an order
+            order = Order.objects.create(
+                full_name=session.customer_details.name,
+                email=session.customer_details.email,
+                stripe_pid=session.id,
+                original_cart=json.dumps(request.session.get('cart', {})),
+                order_total=session.amount_total / 100,  # Convert from öre to SEK
+            )
+
+            # Save order line items
+            cart = request.session.get('cart', {})
+            for item_id, item_data in cart.items():
+                product = get_object_or_404(Product, id=item_id)
+                OrderLineItem.objects.create(
+                    order=order,
+                    product=product,
+                    quantity=item_data
+                )
+
+            # Clear the cart
+            request.session['cart'] = {}
+
+            messages.success(request, "Payment successful! Your order is confirmed.")
+            return render(request, 'checkout/checkout_success.html', {'order': order})
         else:
-            order_form = OrderForm()
-
-    if not stripe_public_key:
-        messages.warning(request, 'Stripe public key is missing. \
-            Did you forget to set it in your environment?')
-
-    template = 'checkout/checkout.html'
-    context = {
-        'order_form': order_form,
-        'stripe_public_key': stripe_public_key,
-        'client_secret': intent.client_secret,
-    }
-
-    return render(request, template, context)
-
-
-def checkout_success(request, order_number):
-    """
-    Handles successful checkouts,
-    notifying the user and sending a confirmation email.
-
-    Sends an email to the site owner with the order details.
-    Clears the cart session after successful order placement.
-    """
-    save_info = request.session.get('save_info')
-    order = get_object_or_404(Order, order_number=order_number)
-    messages.success(request, f'Order successfully processed! \
-        Your order number is {order_number}. A confirmation \
-        email will be sent to {order.email}.')
-
-    # Send confirmation email to the customer
-    subject = 'Order Confirmation'
-    message = f'Thank you for your order, {order.full_name}. Your order number is {order.order_number}.'
-    email_from = settings.DEFAULT_FROM_EMAIL
-    recipient_list = [order.email]
-    send_mail(subject, message, email_from, recipient_list)
-
-    # Send order details to the site owner
-    subject = f'New Order: {order.order_number}'
-    order_items = OrderLineItem.objects.filter(order=order)
-    order_details = f'Order Number: {order.order_number}\n'
-    order_details += f'Customer: {order.full_name}\n'
-    order_details += f'Email: {order.email}\n'
-    order_details += f'Phone Number: {order.phone_number}\n'
-    order_details += f'Address:\n{order.street_address1}\n'
-    if order.street_address2:
-        order_details += f'{order.street_address2}\n'
-    order_details += f'{order.town_or_city}, {order.county}, {order.postcode}\n'
-    order_details += f'{order.country}\n\n'
-    order_details += 'Order Details:\n'
-
-    for item in order_items:
-        order_details += f'{item.product.name} (Size: {item.product_size if item.product_size else "N/A"}) - Quantity: {item.quantity} - Price: {item.product.price}\n'
-
-    order_details += f'\nTotal: {order.order_total}\n'
-    
-    owner_email = 'goodlivingab@gmail.com'
-    send_mail(subject, order_details, email_from, [owner_email])
-
-    if 'cart' in request.session:
-        del request.session['cart']
-
-    template = 'checkout/checkout_success.html'
-    context = {
-        'order': order,
-    }
-
-    return render(request, template, context)
+            messages.error(request, "Payment verification failed.")
+            return redirect('checkout')
+    except Exception as e:
+        messages.error(request, f"Error verifying payment: {str(e)}")
+        return redirect('checkout')
