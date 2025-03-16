@@ -1,13 +1,8 @@
 from django.shortcuts import render, redirect, reverse
-from django.shortcuts import get_object_or_404, HttpResponse
 from django.contrib import messages
 from django.conf import settings
-from .models import Order, OrderLineItem
 from products.models import Product
-from cart.contexts import cart_contents
 import stripe
-import json
-
 
 def create_checkout_session(request):
     """
@@ -36,21 +31,19 @@ def create_checkout_session(request):
         })
 
     # Default payment methods
-    allowed_payment_methods = ["card", "link", "klarna"]  # ✅ Klarna is always included
+    payment_methods = ["card", "link"]
+
+    # Klarna will only be shown for supported countries
+    klarna_supported_countries = ["SE", "NO", "DK", "FI", "DE", "NL", "AT", "BE"]
+    shipping_countries = ["SE", "NO", "DK", "FI", "DE", "NL", "AT", "BE"]
 
     session = stripe.checkout.Session.create(
-        payment_method_types=allowed_payment_methods, 
+        payment_method_types=payment_methods + ["klarna"],  # Adds Klarna for supported countries
         line_items=line_items,
         mode='payment',
         success_url=request.build_absolute_uri(reverse('checkout_success')) + "?session_id={CHECKOUT_SESSION_ID}",
         cancel_url=request.build_absolute_uri(reverse('view_cart')),
-        shipping_address_collection={"allowed_countries": ["SE", "NO", "DK", "FI", "DE", "NL", "AT", "BE"]},
-        payment_method_options={
-            "klarna": {
-                "preferred_locale": "sv-SE",
-                "allowed_payment_methods": ["pay_now", "pay_later"]  # ✅ No interest-based installment plans
-            }
-        }
+        shipping_address_collection={"allowed_countries": shipping_countries},
     )
 
     return redirect(session.url, code=303)
@@ -76,6 +69,7 @@ def checkout_success(request):
     messages.error(request, "Payment verification failed.")
     return redirect('view_cart')
 
+
 def webhook(request):
     """
     Handle Stripe webhooks.
@@ -88,9 +82,9 @@ def webhook(request):
         event = stripe.Webhook.construct_event(
             payload, sig_header, endpoint_secret
         )
-    except ValueError as e:
+    except ValueError:
         return HttpResponse(status=400)
-    except stripe.error.SignatureVerificationError as e:
+    except stripe.error.SignatureVerificationError:
         return HttpResponse(status=400)
 
     # Handle successful checkout session
@@ -99,6 +93,7 @@ def webhook(request):
         handle_checkout_session(session)
 
     return HttpResponse(status=200)
+
 
 def handle_checkout_session(session):
     """
