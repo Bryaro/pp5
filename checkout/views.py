@@ -6,7 +6,7 @@ import stripe
 
 def create_checkout_session(request):
     """
-    Creates a Stripe Payment Link (instead of a manual checkout session).
+    Creates a Stripe Payment Link with Klarna limited to 'Pay in Full'.
     """
     stripe.api_key = settings.STRIPE_SECRET_KEY
     cart = request.session.get('cart', {})
@@ -33,15 +33,12 @@ def create_checkout_session(request):
     payment_link = stripe.PaymentLink.create(
         line_items=line_items,
         allow_promotion_codes=True,  # ✅ Enables discount codes
-        after_completion={"type": "redirect", "redirect": {"url": request.build_absolute_uri(reverse('checkout_success'))}},
+        after_completion={
+            "type": "redirect",
+            "redirect": {"url": request.build_absolute_uri(reverse('checkout_success'))}
+        },
         payment_method_types=["card", "link", "klarna"],  # ✅ Klarna included
-        payment_method_options={
-            "klarna": {
-                "preferred_locale": "sv-SE",
-                "capture_method": "automatic",
-                "allowed_payment_methods": ["pay_now"]  # ✅ Only show Klarna "Pay in full"
-            }
-        }
+        payment_method_collection="if_required"  # ✅ Ensures Klarna only appears if available
     )
 
     return redirect(payment_link.url)
@@ -52,8 +49,9 @@ def checkout_success(request):
     Handles successful payments by verifying with Stripe Webhook.
     """
     messages.success(request, "Payment successful! Your order is confirmed.")
-    request.session['cart'] = {}  # Clear cart after payment
+    request.session['cart'] = {}  # ✅ Clears cart after payment
     return redirect('products')  # ✅ Redirects to the products page after successful payment
+
 
 def webhook(request):
     """
