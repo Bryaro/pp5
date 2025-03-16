@@ -1,13 +1,3 @@
-from django.shortcuts import render, redirect, reverse
-from django.shortcuts import get_object_or_404, HttpResponse
-from django.contrib import messages
-from django.conf import settings
-from .models import Order, OrderLineItem
-from products.models import Product
-from cart.contexts import cart_contents
-import stripe
-import json
-
 def create_checkout_session(request):
     """
     Creates a Stripe Checkout Session for the cart items.
@@ -34,33 +24,21 @@ def create_checkout_session(request):
             'quantity': item_data,
         })
 
+    # Payment method settings
+    allowed_payment_methods = ["card", "link"]
+
+    # Only show Klarna if user is from a supported country
+    supported_klarna_countries = ["SE", "NO", "DK", "FI", "DE", "NL", "AT", "BE"]
+    if request.user.is_authenticated and request.user.profile.country in supported_klarna_countries:
+        allowed_payment_methods.append("klarna")
+
     session = stripe.checkout.Session.create(
-        payment_method_types=['card', 'klarna'],
+        payment_method_types=allowed_payment_methods,
         line_items=line_items,
         mode='payment',
         success_url=request.build_absolute_uri(reverse('checkout_success')) + "?session_id={CHECKOUT_SESSION_ID}",
-        cancel_url=request.build_absolute_uri(reverse('view_cart')),  # ✅ Fixed here
-        shipping_address_collection={"allowed_countries": ["SE", "NO", "DK", "FI"]},
+        cancel_url=request.build_absolute_uri(reverse('view_cart')),
+        shipping_address_collection={"allowed_countries": ["SE", "NO", "DK", "FI", "DE", "NL", "AT", "BE"]},
     )
 
     return redirect(session.url, code=303)
-
-def checkout_success(request):
-    """
-    Handles successful payments by verifying with Stripe Webhook.
-    """
-    session_id = request.GET.get('session_id')
-    if not session_id:
-        messages.error(request, "Invalid payment session.")
-        return redirect('view_cart')
-
-    stripe.api_key = settings.STRIPE_SECRET_KEY
-    session = stripe.checkout.Session.retrieve(session_id)
-
-    if session.payment_status == 'paid':
-        messages.success(request, "Payment successful! Your order is confirmed.")
-        request.session['cart'] = {}  # Clear cart
-        return render(request, 'checkout/checkout_success.html')
-
-    messages.error(request, "Payment verification failed.")
-    return redirect('view_cart')
