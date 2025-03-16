@@ -39,7 +39,7 @@ def create_checkout_session(request):
         line_items=line_items,
         mode='payment',
         success_url=request.build_absolute_uri(reverse('checkout_success')) + "?session_id={CHECKOUT_SESSION_ID}",
-        cancel_url=request.build_absolute_uri(reverse('cart')),  # Redirect to cart instead of 'checkout'
+        cancel_url=request.build_absolute_uri(reverse('view_cart')),  # ✅ Redirect to cart correctly
     )
     
     return redirect(session.url, code=303)
@@ -52,8 +52,8 @@ def checkout_success(request):
     session_id = request.GET.get('session_id')
     if not session_id:
         messages.error(request, "Invalid payment session.")
-        return redirect('cart')  # Redirect to cart instead
-    
+        return redirect('view_cart')  # ✅ Corrected
+
     stripe.api_key = settings.STRIPE_SECRET_KEY
     session = stripe.checkout.Session.retrieve(session_id)
     
@@ -63,4 +63,4 @@ def checkout_success(request):
         return render(request, 'checkout/checkout_success.html')
     
     messages.error(request, "Payment not verified.")
-    return redirect('cart')
+    return redirect('view_cart')  # ✅ Corrected
