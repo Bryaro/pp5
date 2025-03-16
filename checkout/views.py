@@ -17,7 +17,7 @@ def create_checkout_session(request):
 
     if not cart:
         messages.error(request, "Your cart is empty.")
-        return redirect('products')  # Redirect to products if cart is empty
+        return redirect('products')
 
     line_items = []
     for item_id, item_data in cart.items():
@@ -39,8 +39,8 @@ def create_checkout_session(request):
         line_items=line_items,
         mode='payment',
         success_url=request.build_absolute_uri(reverse('checkout_success')) + "?session_id={CHECKOUT_SESSION_ID}",
-        cancel_url=request.build_absolute_uri(reverse('cart')),  # Redirect to cart on cancel
-        shipping_address_collection={"allowed_countries": ["SE", "NO", "DK", "FI"]},  # Enable shipping fields
+        cancel_url=request.build_absolute_uri(reverse('view_cart')),  # ✅ Fixed here
+        shipping_address_collection={"allowed_countries": ["SE", "NO", "DK", "FI"]},
     )
 
     return redirect(session.url, code=303)
@@ -52,7 +52,7 @@ def checkout_success(request):
     session_id = request.GET.get('session_id')
     if not session_id:
         messages.error(request, "Invalid payment session.")
-        return redirect('cart')  # Redirect to cart if session_id is missing
+        return redirect('view_cart')
 
     stripe.api_key = settings.STRIPE_SECRET_KEY
     session = stripe.checkout.Session.retrieve(session_id)
@@ -63,4 +63,4 @@ def checkout_success(request):
         return render(request, 'checkout/checkout_success.html')
 
     messages.error(request, "Payment verification failed.")
-    return redirect('cart')
+    return redirect('view_cart')
