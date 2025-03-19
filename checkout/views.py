@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, reverse, get_object_or_404
+from django.shortcuts import render, redirect, reverse
 from django.contrib import messages
 from django.conf import settings
 from django.http import HttpResponse
@@ -9,53 +9,6 @@ from products.models import Product
 from checkout.models import Order, OrderLineItem
 import stripe
 import json
-
-def send_order_confirmation_email(order):
-    """
-    Sends an order confirmation email to the user after payment.
-    """
-    subject = f"Your Order #{order.order_number} Confirmation"
-    recipient_email = order.email
-
-    html_message = render_to_string("checkout/order_confirmation_email.html", {"order": order})
-    plain_message = strip_tags(html_message)
-
-    send_mail(
-        subject,
-        plain_message,
-        settings.DEFAULT_FROM_EMAIL,
-        [recipient_email],
-        html_message=html_message,
-        fail_silently=False,
-    )
-
-
-def handle_checkout_session(session):
-    """
-    Process the Stripe checkout session.
-    Saves the order and sends a confirmation email.
-    """
-    email = session["customer_details"]["email"]
-    amount_total = session["amount_total"] / 100
-    shipping_details = session.get("shipping", {})
-
-    order = Order.objects.create(
-        full_name=shipping_details.get("name", ""),
-        email=email,
-        phone_number=shipping_details.get("phone", ""),
-        street_address1=shipping_details["address"].get("line1", ""),
-        street_address2=shipping_details["address"].get("line2", ""),
-        town_or_city=shipping_details["address"].get("city", ""),
-        postcode=shipping_details["address"].get("postal_code", ""),
-        country=shipping_details["address"].get("country", ""),
-        order_total=amount_total,
-        grand_total=amount_total,
-        stripe_pid=session["id"]
-    )
-
-    # ✅ Send Confirmation Email After Order is Created
-    send_order_confirmation_email(order)
-
 
 def create_checkout_session(request):
     """
@@ -130,6 +83,27 @@ def create_checkout_session(request):
     return redirect(session.url, code=303)
 
 
+def checkout_success(request):
+    """
+    Handles successful payments by verifying with Stripe Webhook.
+    """
+    session_id = request.GET.get('session_id')
+    if not session_id:
+        messages.error(request, "Invalid payment session.")
+        return redirect('view_cart')
+
+    stripe.api_key = settings.STRIPE_SECRET_KEY
+    session = stripe.checkout.Session.retrieve(session_id)
+
+    if session.payment_status == 'paid':
+        messages.success(request, "Payment successful! Your order is confirmed.")
+        request.session['cart'] = {}  # Clear cart
+        return render(request, 'checkout/checkout_success.html')
+
+    messages.error(request, "Payment verification failed.")
+    return redirect('view_cart')
+
+
 def webhook(request):
     """
     Handle Stripe webhooks.
@@ -153,3 +127,49 @@ def webhook(request):
         handle_checkout_session(session)
 
     return HttpResponse(status=200)
+
+
+def handle_checkout_session(session):
+    """
+    Process the Stripe checkout session.
+    Saves the order and sends a confirmation email.
+    """
+    email = session["customer_details"]["email"]
+    amount_total = session["amount_total"] / 100
+    shipping_details = session.get("shipping", {})
+
+    order = Order.objects.create(
+        full_name=shipping_details.get("name", ""),
+        email=email,
+        phone_number=shipping_details.get("phone", ""),
+        street_address1=shipping_details["address"].get("line1", ""),
+        street_address2=shipping_details["address"].get("line2", ""),
+        town_or_city=shipping_details["address"].get("city", ""),
+        postcode=shipping_details["address"].get("postal_code", ""),
+        country=shipping_details["address"].get("country", ""),
+        order_total=amount_total,
+        grand_total=amount_total,
+        stripe_pid=session["id"]
+    )
+
+    send_order_confirmation_email(order)
+
+
+def send_order_confirmation_email(order):
+    """
+    Sends an order confirmation email to the user after payment.
+    """
+    subject = f"Your Order #{order.order_number} Confirmation"
+    recipient_email = order.email
+
+    html_message = render_to_string("checkout/order_confirmation_email.html", {"order": order})
+    plain_message = strip_tags(html_message)
+
+    send_mail(
+        subject,
+        plain_message,
+        settings.DEFAULT_FROM_EMAIL,
+        [recipient_email],
+        html_message=html_message,
+        fail_silently=False,
+    )
