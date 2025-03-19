@@ -1,10 +1,8 @@
 from django.shortcuts import render, redirect, reverse
 from django.contrib import messages
 from django.conf import settings
-from checkout.models import Order, OrderLineItem
 from products.models import Product
 import stripe
-import json
 
 def create_checkout_session(request):
     """
@@ -62,15 +60,9 @@ def create_checkout_session(request):
                     {"label": "L", "value": "large"}
                 ]
             },
-            "optional": True
+            "optional": True  # Marking it optional
         }
     ]
-
-    # Store cart data in metadata
-    metadata = {
-        "cart": json.dumps(cart),
-        "user_email": request.user.email if request.user.is_authenticated else ""
-    }
 
     session = stripe.checkout.Session.create(
         payment_method_types=payment_methods,
@@ -78,9 +70,8 @@ def create_checkout_session(request):
         mode='payment',
         success_url=request.build_absolute_uri(reverse('checkout_success')) + "?session_id={CHECKOUT_SESSION_ID}",
         cancel_url=request.build_absolute_uri(reverse('view_cart')),
-        shipping_address_collection={"allowed_countries": shipping_countries},
-        custom_fields=custom_fields,
-        metadata=metadata
+        shipping_address_collection={"allowed_countries": shipping_countries},  # Collects shipping address
+        custom_fields=custom_fields  # Adds hand size selection
     )
 
     return redirect(session.url, code=303)
@@ -88,8 +79,7 @@ def create_checkout_session(request):
 
 def checkout_success(request):
     """
-    Handles successful payments by verifying with Stripe Checkout.
-    Saves order details to the database.
+    Handles successful payments by verifying with Stripe Webhook.
     """
     session_id = request.GET.get('session_id')
     if not session_id:
@@ -100,48 +90,42 @@ def checkout_success(request):
     session = stripe.checkout.Session.retrieve(session_id)
 
     if session.payment_status == 'paid':
-        email = session["customer_details"]["email"]
-        amount_total = session["amount_total"] / 100
-        shipping_details = session.get("shipping", {})
-        metadata = session.get("metadata", {})
-
-        cart_json = metadata.get("cart", "{}")
-        cart = json.loads(cart_json)
-
-        order = Order.objects.create(
-            full_name=shipping_details.get("name", ""),
-            email=email,
-            phone_number=shipping_details.get("phone", ""),
-            street_address1=shipping_details["address"].get("line1", ""),
-            street_address2=shipping_details["address"].get("line2", ""),
-            town_or_city=shipping_details["address"].get("city", ""),
-            postcode=shipping_details["address"].get("postal_code", ""),
-            country=shipping_details["address"].get("country", ""),
-            order_total=amount_total,
-            grand_total=amount_total,
-            stripe_pid=session["id"],
-            original_cart=cart_json
-        )
-
-        if request.user.is_authenticated:
-            order.user = request.user
-            order.save()
-
-        for item_id, item_data in cart.items():
-            try:
-                product = Product.objects.get(id=item_id)
-                OrderLineItem.objects.create(
-                    order=order,
-                    product=product,
-                    quantity=item_data
-                )
-            except Product.DoesNotExist:
-                continue
-
-        request.session['cart'] = {}
-
-        messages.success(request, "Payment successful! Your order has been recorded.")
-        return render(request, 'checkout/checkout_success.html', {"order": order})
+        messages.success(request, "Payment successful! Your order is confirmed.")
+        request.session['cart'] = {}  # Clear cart
+        return render(request, 'checkout/checkout_success.html')
 
     messages.error(request, "Payment verification failed.")
     return redirect('view_cart')
+
+
+def webhook(request):
+    """
+    Handle Stripe webhooks.
+    """
+    payload = request.body
+    sig_header = request.META.get('HTTP_STRIPE_SIGNATURE')
+    endpoint_secret = settings.STRIPE_WEBHOOK_SECRET
+
+    try:
+        event = stripe.Webhook.construct_event(
+            payload, sig_header, endpoint_secret
+        )
+    except ValueError:
+        return HttpResponse(status=400)
+    except stripe.error.SignatureVerificationError:
+        return HttpResponse(status=400)
+
+    # Handle successful checkout session
+    if event['type'] == 'checkout.session.completed':
+        session = event['data']['object']
+        handle_checkout_session(session)
+
+    return HttpResponse(status=200)
+
+
+def handle_checkout_session(session):
+    """
+    Process the Stripe checkout session.
+    """
+    # Implement any logic you need, such as saving order details to the database.
+    pass
