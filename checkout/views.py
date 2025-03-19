@@ -30,15 +30,39 @@ def create_checkout_session(request):
             'quantity': item_data,
         })
 
-    # Default payment methods (Klarna removed)
-    payment_methods = ["card", "link"]
+    # Payment methods (Added PayPal & Google Pay, removed Klarna)
+    payment_methods = ["card", "link", "paypal", "google_pay"]
+
+    # Enable shipping address collection for worldwide shipping
+    shipping_options = {
+        "allowed_countries": ["US", "CA", "GB", "SE", "NO", "DK", "FI", "DE", "NL", "AT", "BE", "FR", "IT", "ES", "AU", "NZ"]
+    }
+
+    # Add custom field for Hand Size (Small, Medium, Large)
+    custom_fields = [
+        {
+            "key": "hand_size",
+            "label": {"type": "custom", "custom": "Hand Size"},
+            "type": "dropdown",
+            "dropdown": {
+                "options": [
+                    {"label": "Small", "value": "small"},
+                    {"label": "Medium", "value": "medium"},
+                    {"label": "Large", "value": "large"},
+                ]
+            },
+            "optional": True
+        }
+    ]
 
     session = stripe.checkout.Session.create(
-        payment_method_types=payment_methods,  # Klarna removed
+        payment_method_types=payment_methods,
         line_items=line_items,
         mode='payment',
         success_url=request.build_absolute_uri(reverse('checkout_success')) + "?session_id={CHECKOUT_SESSION_ID}",
-        cancel_url=request.build_absolute_uri(reverse('view_cart'))
+        cancel_url=request.build_absolute_uri(reverse('view_cart')),
+        shipping_address_collection=shipping_options,
+        custom_fields=custom_fields
     )
 
     return redirect(session.url, code=303)
