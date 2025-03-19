@@ -1,8 +1,14 @@
 from django.shortcuts import render, redirect, reverse
 from django.contrib import messages
 from django.conf import settings
+from django.http import HttpResponse
+from django.core.mail import send_mail
+from django.template.loader import render_to_string
+from django.utils.html import strip_tags
 from products.models import Product
+from checkout.models import Order, OrderLineItem
 import stripe
+import json
 
 def create_checkout_session(request):
     """
@@ -126,6 +132,44 @@ def webhook(request):
 def handle_checkout_session(session):
     """
     Process the Stripe checkout session.
+    Saves the order and sends a confirmation email.
     """
-    # Implement any logic you need, such as saving order details to the database.
-    pass
+    email = session["customer_details"]["email"]
+    amount_total = session["amount_total"] / 100
+    shipping_details = session.get("shipping", {})
+
+    order = Order.objects.create(
+        full_name=shipping_details.get("name", ""),
+        email=email,
+        phone_number=shipping_details.get("phone", ""),
+        street_address1=shipping_details["address"].get("line1", ""),
+        street_address2=shipping_details["address"].get("line2", ""),
+        town_or_city=shipping_details["address"].get("city", ""),
+        postcode=shipping_details["address"].get("postal_code", ""),
+        country=shipping_details["address"].get("country", ""),
+        order_total=amount_total,
+        grand_total=amount_total,
+        stripe_pid=session["id"]
+    )
+
+    send_order_confirmation_email(order)
+
+
+def send_order_confirmation_email(order):
+    """
+    Sends an order confirmation email to the user after payment.
+    """
+    subject = f"Your Order #{order.order_number} Confirmation"
+    recipient_email = order.email
+
+    html_message = render_to_string("checkout/order_confirmation_email.html", {"order": order})
+    plain_message = strip_tags(html_message)
+
+    send_mail(
+        subject,
+        plain_message,
+        settings.DEFAULT_FROM_EMAIL,
+        [recipient_email],
+        html_message=html_message,
+        fail_silently=False,
+    )
