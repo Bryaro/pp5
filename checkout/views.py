@@ -33,7 +33,7 @@ def create_checkout_session(request):
 
     # ✅ Adding Swish as a payment method (without Klarna)
     session = stripe.checkout.Session.create(
-        payment_method_types=['card', 'swish', 'link'],  # ✅ Swish added
+        payment_method_types=['card', 'link'],  # ✅ Swish added
         line_items=line_items,
         mode='payment',
         success_url=request.build_absolute_uri(reverse('checkout_success')) + "?session_id={CHECKOUT_SESSION_ID}",
