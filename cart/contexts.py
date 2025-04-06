@@ -13,14 +13,24 @@ def cart_contents(request):
     product_count = 0
     cart = request.session.get('cart', {})
 
-    for item_id, quantity in cart.items():
+    for item_id, item_data in cart.items():
         product = get_object_or_404(Product, pk=item_id)
-        total += quantity * product.price
-        product_count += quantity
+        
+        # Ensure the 'price' is correctly handled as a float (sale_price if available)
+        price = item_data.get('price', product.price)  # Use the stored price in the cart or the default price
+
+        # Check if the cart item is using the sale price
+        if product.sale_price:
+            price = product.sale_price
+
+        total += item_data['quantity'] * price  # Multiply price by quantity
+        product_count += item_data['quantity']
+
         cart_items.append({
             'item_id': item_id,
-            'quantity': quantity,
+            'quantity': item_data['quantity'],
             'product': product,
+            'price': price,  # Add price to context
         })
 
     grand_total = total
