@@ -9,7 +9,7 @@ def cart_contents(request):
     the total number of items in the cart.
     """
     cart_items = []
-    total = 0
+    total = 0.0  # Initialize as float
     product_count = 0
     cart = request.session.get('cart', {})
 
@@ -23,7 +23,7 @@ def cart_contents(request):
         if product.sale_price:
             price = product.sale_price
 
-        total += item_data['quantity'] * price  # Multiply price by quantity
+        total += item_data['quantity'] * float(price)  # Convert price to float before adding to total
         product_count += item_data['quantity']
 
         cart_items.append({
