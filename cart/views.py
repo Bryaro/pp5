@@ -16,7 +16,7 @@ def add_to_cart(request, item_id):
     product = Product.objects.get(id=item_id)
 
     # Check if sale_price exists; otherwise, use regular price
-    price = product.sale_price if product.sale_price else product.price
+    price = float(product.sale_price) if product.sale_price else float(product.price)  # Convert Decimal to float
 
     if quantity is not None:
         quantity = int(quantity)
@@ -35,7 +35,6 @@ def add_to_cart(request, item_id):
     # Save updated cart back to session
     request.session['cart'] = cart
     return redirect(redirect_url)
-
 
 
 def adjust_cart(request, item_id):
