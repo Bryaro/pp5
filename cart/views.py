@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, reverse, HttpResponse
-
+from products.models import Product
 
 def view_cart(request):
     """ View cart to render users added items """
