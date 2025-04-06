@@ -24,16 +24,17 @@ def create_checkout_session(request):
     line_items = []
     for item_id, item_data in cart.items():
         product = Product.objects.get(id=item_id)
+        price = item_data['price']  # Get the price (either sale or regular price)
         line_items.append({
             'price_data': {
                 'currency': 'sek',
-                'unit_amount': int(product.price * 100),
+                'unit_amount': int(price * 100),  # Convert to smallest unit (cents)
                 'product_data': {
                     'name': product.name,
                     'images': [product.image.url] if product.image else [],
                 },
             },
-            'quantity': item_data,
+            'quantity': item_data['quantity'],
         })
 
     # Default payment methods (Apple Pay and Google Pay work automatically with "card")
@@ -82,7 +83,6 @@ def create_checkout_session(request):
 
     return redirect(session.url, code=303)
 
-
 def checkout_success(request):
     """
     Handles successful payments by verifying with Stripe Webhook.
@@ -102,7 +102,6 @@ def checkout_success(request):
 
     messages.error(request, "Payment verification failed.")
     return redirect('view_cart')
-
 
 def webhook(request):
     """

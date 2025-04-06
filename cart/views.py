@@ -12,18 +12,30 @@ def add_to_cart(request, item_id):
     redirect_url = request.POST.get('redirect_url')
     cart = request.session.get('cart', {})
 
+    # Fetch the product from the database
+    product = Product.objects.get(id=item_id)
+
+    # Check if sale_price exists; otherwise, use regular price
+    price = product.sale_price if product.sale_price else product.price
+
     if quantity is not None:
         quantity = int(quantity)
     else:
         quantity = 1
 
+    # Add product to the cart with the correct price
     if item_id in cart:
-        cart[item_id] += quantity
+        cart[item_id]['quantity'] += quantity
     else:
-        cart[item_id] = quantity
+        cart[item_id] = {
+            'quantity': quantity,
+            'price': price  # Save sale_price if available
+        }
 
+    # Save updated cart back to session
     request.session['cart'] = cart
     return redirect(redirect_url)
+
 
 
 def adjust_cart(request, item_id):
