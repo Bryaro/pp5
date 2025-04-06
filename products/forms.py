@@ -8,7 +8,7 @@ class ProductForm(forms.ModelForm):
     """
     class Meta:
         model = Product
-        fields = ['name', 'description', 'price', 'category', 'image', 'rating', 'sold', 'sold_out']
+        fields = ['name', 'description', 'price', 'sale_price', 'category', 'image', 'rating', 'sold', 'sold_out']
 
 # Inline formset for ProductImage
 ProductImageFormSet = inlineformset_factory(
