@@ -20,11 +20,6 @@ def faq(request):
     return render(request, 'home/faq.html')
 
 
-def contact(request):
-    """ View to Contact page """
-    return render(request, 'home/contact.html')
-
-
 def policy(request):
     """ View to Privacy Policy page """
     return render(request, 'home/policy.html')
@@ -47,18 +42,20 @@ def contact(request):
         if form.is_valid():
             name = form.cleaned_data['name']
             email = form.cleaned_data['email']
-            message = form.cleaned_data['message']
+            user_message = form.cleaned_data['message']  # Rename to avoid conflict
 
             subject = f"Contact Form Submission from {name}"
-            message = f"From: {name}\nEmail: {email}\n\nMessage:\n{message}"
+            message_body = f"From: {name}\nEmail: {email}\n\nMessage:\n{user_message}"
             recipient_list = [settings.DEFAULT_FROM_EMAIL]
 
+            # CORRECT VERSION:
             send_mail(
                 subject,
-                message,
-                email,
+                message_body,
+                settings.DEFAULT_FROM_EMAIL,  # ← Use YOUR authorized email here
                 recipient_list,
                 fail_silently=False,
+                reply_to=[email],  # ← Add reply_to with visitor's email
             )
 
             messages.success(request, 'Your message has been sent. Thank you!')
